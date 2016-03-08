@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Resource from 'vue-resource';
 import Main from './components/main.vue';
 import BugList from './components/bugList.vue';
+import BugInfo from './components/bugInfo.vue';
 import SubmitBug from './components/submitBug.vue';
 import CompanyList from './components/companyList.vue';
 import UserList from './components/userList.vue';
@@ -18,22 +19,28 @@ var router = new Router();
 router.map({
   "/BugList": {
     component: BugList,
-    menuIndex: 0
+    menuIndex: 0,
+    subRoutes: {
+      "/BugInfo/:id":{
+        component: BugInfo,
+        name: "BugInfo"
+      }
+    }
   },
   "/SubmitBug": {
     component: SubmitBug,
     menuIndex: 1
   },
-  "/CompanyList": {
-    component: CompanyList,
+  "/BugSummary": {
+    component: BugSummary,
     menuIndex: 2
   },
   "/UserList": {
     component: UserList,
     menuIndex: 3
   },
-  "/BugSummary": {
-    component: BugSummary,
+  "/CompanyList": {
+    component: CompanyList,
     menuIndex: 4
   }
 });

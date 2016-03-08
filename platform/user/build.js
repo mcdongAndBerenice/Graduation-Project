@@ -73,19 +73,23 @@
 	
 	var _bugList2 = _interopRequireDefault(_bugList);
 	
-	var _submitBug = __webpack_require__(38);
+	var _bugInfo = __webpack_require__(52);
+	
+	var _bugInfo2 = _interopRequireDefault(_bugInfo);
+	
+	var _submitBug = __webpack_require__(41);
 	
 	var _submitBug2 = _interopRequireDefault(_submitBug);
 	
-	var _companyList = __webpack_require__(40);
+	var _companyList = __webpack_require__(43);
 	
 	var _companyList2 = _interopRequireDefault(_companyList);
 	
-	var _userList = __webpack_require__(42);
+	var _userList = __webpack_require__(47);
 	
 	var _userList2 = _interopRequireDefault(_userList);
 	
-	var _bugSummary = __webpack_require__(44);
+	var _bugSummary = __webpack_require__(49);
 	
 	var _bugSummary2 = _interopRequireDefault(_bugSummary);
 	
@@ -101,22 +105,28 @@
 	router.map({
 	  "/BugList": {
 	    component: _bugList2.default,
-	    menuIndex: 0
+	    menuIndex: 0,
+	    subRoutes: {
+	      "/BugInfo/:id": {
+	        component: _bugInfo2.default,
+	        name: "BugInfo"
+	      }
+	    }
 	  },
 	  "/SubmitBug": {
 	    component: _submitBug2.default,
 	    menuIndex: 1
 	  },
-	  "/CompanyList": {
-	    component: _companyList2.default,
+	  "/BugSummary": {
+	    component: _bugSummary2.default,
 	    menuIndex: 2
 	  },
 	  "/UserList": {
 	    component: _userList2.default,
 	    menuIndex: 3
 	  },
-	  "/BugSummary": {
-	    component: _bugSummary2.default,
+	  "/CompanyList": {
+	    component: _companyList2.default,
 	    menuIndex: 4
 	  }
 	});
@@ -14550,15 +14560,15 @@
 /* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">厂商列表</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <ul>\r\n        <li>退出</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">厂商列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <ul>\r\n        <li>退出</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(46)
-	__vue_template__ = __webpack_require__(37)
+	__webpack_require__(37)
+	__vue_template__ = __webpack_require__(40)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14578,135 +14588,12 @@
 
 /***/ },
 /* 37 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<ul class=\"list\">\n  <li class=\"clearfix\">\n    <!-- <a v-link=\"{ name: 'site', params: { id: item.media }}\" class=\"pull-left\" href=\"#\">{{item.disp}}</a>\n    <span>\n    <a v-on:click=\"showInfo(item.media)\">查看</a><a v-link=\"{ name: 'ChartMedia', params: { id: item.media }}\">报告<em></em></a>\n    </span> -->\n    <a class=\"pull-left\" href=\"#\">优酷某系统未授权访问可入内网</a>\n    <span class=\"goto-buginfo\">\n      <a>详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n  <li class=\"clearfix\">\n    <a class=\"pull-left\" href=\"#\">管家帮某站漏洞导致Getshehll(跑马场几十个Shell涉及100W+各种用户数据包括密码\\身份证\\职业\\联系方式等)</a>\n    <span class=\"goto-buginfo\">\n      <a>详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n</ul>\n<nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav>\n";
-
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(39)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/submitBug.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 39 */
-/***/ function(module, exports) {
-
-	module.exports = "\nbbbb\n";
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(49)
-	__vue_template__ = __webpack_require__(41)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/companyList.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 41 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<ul class=\"list\">\n  <li class=\"clearfix\">\n    <!-- <a v-link=\"{ name: 'site', params: { id: item.media }}\" class=\"pull-left\" href=\"#\">{{item.disp}}</a>\n    <span>\n    <a v-on:click=\"showInfo(item.media)\">查看</a><a v-link=\"{ name: 'ChartMedia', params: { id: item.media }}\">报告<em></em></a>\n    </span> -->\n    <a class=\"pull-left\">腾讯</a>\n    <span class=\"goto-buginfo\">\n      <a title=\"http://www.tencent.com\" href=\"http://www.tencent.com\">详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n  <li class=\"clearfix\">\n    <a class=\"pull-left\">百度</a>\n    <span class=\"goto-buginfo\">\n      <a title=\"http://www.baidu.com\" href=\"http://www.baidu.com\">详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n</ul>\n<nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav>\n";
-
-/***/ },
-/* 42 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(43)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/userList.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 43 */
-/***/ function(module, exports) {
-
-	module.exports = "\nddd\n";
-
-/***/ },
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(45)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugSummary.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 45 */
-/***/ function(module, exports) {
-
-	module.exports = "\nfff\n";
-
-/***/ },
-/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(47);
+	var content = __webpack_require__(38);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(34)(content, {});
@@ -14726,7 +14613,7 @@
 	}
 
 /***/ },
-/* 47 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(32)();
@@ -14734,25 +14621,85 @@
 	
 	
 	// module
-	exports.push([module.id, ".list {\n  border-top: 1px solid #d9d9d9;\n}\n.list li {\n  line-height: 20px;\n  padding: 22px 0;\n  border-bottom: 1px solid #d9d9d9;\n}\n.list li .pull-left {\n  font-size: 18px;\n  font-weight: 700;\n  float: left;\n}\n.list li .data {\n  display: inline-block;\n  width: 100%;\n}\n.list li .goto-buginfo {\n  float: right;\n}\n.list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.list li .goto-buginfo a:first-child {\n  border: none;\n}\n.list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(" + __webpack_require__(48) + ") no-repeat;\n}\n", "", {"version":3,"sources":["/./src/components/bugList.vue"],"names":[],"mappings":"AAAA;EACE,8BAA8B;CAC/B;AACD;EACE,kBAAkB;EAClB,gBAAgB;EAChB,iCAAiC;CAClC;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;AACD;EACE,sBAAsB;EACtB,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,oDAA6C;CAC9C","file":"bugList.vue","sourcesContent":[".list {\n  border-top: 1px solid #d9d9d9;\n}\n.list li {\n  line-height: 20px;\n  padding: 22px 0;\n  border-bottom: 1px solid #d9d9d9;\n}\n.list li .pull-left {\n  font-size: 18px;\n  font-weight: 700;\n  float: left;\n}\n.list li .data {\n  display: inline-block;\n  width: 100%;\n}\n.list li .goto-buginfo {\n  float: right;\n}\n.list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.list li .goto-buginfo a:first-child {\n  border: none;\n}\n.list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(\"../img/goto.png\") no-repeat;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(" + __webpack_require__(39) + ") no-repeat;\n}\n", "", {"version":3,"sources":["/./src/components/bugList.vue"],"names":[],"mappings":"AAAA;EACE,8BAA8B;CAC/B;AACD;EACE,kBAAkB;EAClB,kBAAkB;EAClB,iCAAiC;CAClC;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,oBAAoB;EACpB,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,qBAAqB;CACtB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,oDAA6C;CAC9C","file":"bugList.vue","sourcesContent":[".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(\"../img/goto.png\") no-repeat;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 48 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,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"
 
 /***/ },
-/* 49 */
+/* 40 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<ul class=\"bug-list\">\n  <li class=\"clearfix\">\n    <!-- <a v-link=\"{ name: 'site', params: { id: item.media }}\" class=\"pull-left\" href=\"#\">{{item.disp}}</a>\n    <span>\n    <a v-on:click=\"showInfo(item.media)\">查看</a><a v-link=\"{ name: 'ChartMedia', params: { id: item.media }}\">报告<em></em></a>\n    </span> -->\n    <a class=\"buglist-pull-left\" href=\"#\">优酷某系统未授权访问可入内网</a>\n    <span class=\"goto-buginfo\">\n      <a>详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n  <li class=\"clearfix\">\n    <a class=\"buglist-pull-left\" href=\"#\">管家帮某站漏洞导致Getshehll(跑马场几十个Shell涉及100W+各种用户数据包括密码\\身份证\\职业\\联系方式等)</a>\n    <span class=\"goto-buginfo\">\n      <a>详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n</ul>\n<!-- <nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav> -->\n";
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(54)
+	__vue_template__ = __webpack_require__(42)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/submitBug.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"headTitle\">\n    <p>提交漏洞</p>\n  </div>\n  <div class=\"submitBugsTip\">你可以提交关于厂商的各种漏洞，不局限于传统意义上的产品漏洞，包括网络配置，服务器管理，钓鱼欺诈甚至是有证据的黑客事件都可以作为有效的信息提交</div>\n  <form class=\"submitBugsInfo\">\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"AppType\" class=\"formTitle control-label\">问题类型：</label>\n      <div class=\"formReplay\">\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"webApp\" /> 互联网应用（如微博，网站，web邮箱等）\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"software\" /> 通用性软件（如客户端浏览器，手机应用，开源cms等）\n        <span class=\"submitTips\">该漏洞对应厂商的类型</span>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"companyName\" class=\"formTitle control-label\">问题厂商：</label>\n      <div class=\"formReplay\">\n        <select name=\"companyRegion\" id=\"companyRegion\">\n          <option value=\"\">大陆地区</option>\n          <option value=\"hongkong\">香港地区</option>\n          <option value=\"taiwan\">台湾地区</option>\n        </select>  \n        <select name=\"companyName\" id=\"companyName\">\n          <option value=\"aaa\">aaa</option>\n          <option value=\"bbb\">bbb</option>\n          <option value=\"ccc\">ccc</option>\n          <option value=\"other\">其他厂商</option>\n        </select>  \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugType\" class=\"formTitle control-label\">漏洞类型：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugType\" id=\"bugType\">\n          <option value=\"\">--选择漏洞大类--</option>\n          <option value=\"6\">网络设备/硬件设施</option>\n          <option value=\"7\">操作系统/系统服务</option>\n          <option value=\"8\">基础组件/开发框架</option>\n          <option value=\"9\">建站软件/web应用</option>\n          <option value=\"10\">常用软件/客户端应用</option>\n          <option value=\"11\">入侵事件/安全情报</option>\n          <option value=\"0\">其他类型</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugName\" class=\"formTitle control-label\">漏洞标题：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugName\" name=\"bugName\"/> \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugLevel\" class=\"formTitle control-label\">漏洞等级：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugLevel\" id=\"bugLevel\">\n          <option value=\"\">低</option>\n          <option value=\"\">中</option>\n          <option value=\"\">高</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugDescription\" class=\"formTitle control-label\">问题描述：</label>\n      <div class=\"formReplay\">\n        <textarea name=\"bugDescription\" id=\"bugDescription\"></textarea>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugTag\" class=\"formTitle control-label\">标签：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugTag\" name=\"bugTag\">\n      </div>\n    </div>\n    <div class=\"submitBtn\">\n      <button class=\"btn btn-primary\">确定</button>\n      <button class=\"btn btn-default\">取消</button>\n    </div>\n  </form>\n</div>\n";
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(44)
+	__vue_template__ = __webpack_require__(46)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/companyList.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(50);
+	var content = __webpack_require__(45);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(34)(content, {});
@@ -14772,7 +14719,7 @@
 	}
 
 /***/ },
-/* 50 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(32)();
@@ -14780,7 +14727,146 @@
 	
 	
 	// module
-	exports.push([module.id, ".list {\n  border-top: 1px solid #d9d9d9;\n}\n.list li {\n  line-height: 20px;\n  padding: 22px 0;\n  border-bottom: 1px solid #d9d9d9;\n}\n.list li .pull-left {\n  font-size: 18px;\n  font-weight: 700;\n  float: left;\n}\n.list li .data {\n  display: inline-block;\n  width: 100%;\n}\n.list li .goto-buginfo {\n  float: right;\n}\n.list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.list li .goto-buginfo a:first-child {\n  border: none;\n}\n.list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(" + __webpack_require__(48) + ") no-repeat;\n}\n", "", {"version":3,"sources":["/./src/components/companyList.vue"],"names":[],"mappings":"AAAA;EACE,8BAA8B;CAC/B;AACD;EACE,kBAAkB;EAClB,gBAAgB;EAChB,iCAAiC;CAClC;AACD;EACE,gBAAgB;EAChB,iBAAiB;EACjB,YAAY;CACb;AACD;EACE,sBAAsB;EACtB,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,oDAA6C;CAC9C","file":"companyList.vue","sourcesContent":[".list {\n  border-top: 1px solid #d9d9d9;\n}\n.list li {\n  line-height: 20px;\n  padding: 22px 0;\n  border-bottom: 1px solid #d9d9d9;\n}\n.list li .pull-left {\n  font-size: 18px;\n  font-weight: 700;\n  float: left;\n}\n.list li .data {\n  display: inline-block;\n  width: 100%;\n}\n.list li .goto-buginfo {\n  float: right;\n}\n.list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.list li .goto-buginfo a:first-child {\n  border: none;\n}\n.list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(\"../img/goto.png\") no-repeat;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".company-list .logo {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.company-list .logo img {\n  width: 180px;\n}\n.company-list .logo:not(:nth-child(4n)) {\n  margin-right: 10px;\n}\n", "", {"version":3,"sources":["/./src/components/companyList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,oBAAoB;CACrB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;CACpB","file":"companyList.vue","sourcesContent":[".company-list .logo {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.company-list .logo img {\n  width: 180px;\n}\n.company-list .logo:not(:nth-child(4n)) {\n  margin-right: 10px;\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n<div class=\"company-list\">\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n</div>\n";
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(48)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/userList.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	module.exports = "\nddd\n";
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(50)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugSummary.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 50 */
+/***/ function(module, exports) {
+
+	module.exports = "\nfff\n";
+
+/***/ },
+/* 51 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "9401f7667bc19e83d31c004980429978.png";
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(53)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugInfo.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 53 */
+/***/ function(module, exports) {
+
+	module.exports = "\n12341234\n";
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(55);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(34)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./submitBug.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./submitBug.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(32)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,iBAAiB;EACjB,0BAA0B;EAC1B,uBAAuB;CACxB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,WAAW;CACZ;AACD;EACE,kBAAkB;EAClB,YAAY;CACb;AACD;EACE,WAAW;EACX,iBAAiB;CAClB;AACD;EACE,WAAW;CACZ;AACD;EACE,WAAW;EACX,cAAc;EACd,aAAa;CACd;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,iBAAiB;CAClB;AACD;EACE,aAAa;EACb,cAAc;CACf","file":"submitBug.vue","sourcesContent":[".submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 

@@ -1,25 +1,25 @@
 <template class="bugList">
-  <ul class="list">
+  <ul class="bug-list">
     <li class="clearfix">
       <!-- <a v-link="{ name: 'site', params: { id: item.media }}" class="pull-left" href="#">{{item.disp}}</a>
       <span>
       <a v-on:click="showInfo(item.media)">查看</a><a v-link="{ name: 'ChartMedia', params: { id: item.media }}">报告<em></em></a>
       </span> -->
-      <a class="pull-left" href="#">优酷某系统未授权访问可入内网</a>
+      <a class="buglist-pull-left" href="#">优酷某系统未授权访问可入内网</a>
       <span class="goto-buginfo">
         <a>详情<em></em></a>
       </span>
       <span class="data">2015-12-18</span>
     </li>
     <li class="clearfix">
-      <a class="pull-left" href="#">管家帮某站漏洞导致Getshehll(跑马场几十个Shell涉及100W+各种用户数据包括密码\身份证\职业\联系方式等)</a>
+      <a class="buglist-pull-left" href="#">管家帮某站漏洞导致Getshehll(跑马场几十个Shell涉及100W+各种用户数据包括密码\身份证\职业\联系方式等)</a>
       <span class="goto-buginfo">
         <a>详情<em></em></a>
       </span>
       <span class="data">2015-12-18</span>
     </li>
   </ul>
-  <nav>
+  <!-- <nav>
     <ul class="pagination">
       <li>
         <a href="#" aria-label="Previous">
@@ -37,23 +37,30 @@
         </a>
       </li>
     </ul>
-  </nav>
+  </nav> -->
 </template>
 <style lang="less">
 @borderColor:#d9d9d9;
-.list {
+.bug-list {
   border-top:1px solid #d9d9d9;
   li{ 
     line-height:20px;
-     padding:22px 0;
-     border-bottom:1px solid @borderColor;
-    .pull-left{ font-size:18px;
-     font-weight:700;
-     float:left;
+    padding-top:22px;
+    border-bottom:1px solid @borderColor;
+    .buglist-pull-left{ 
+      display: inline-block;
+      font-size:18px;
+      font-weight:bolder;
+      width: 600px;
+      height: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space:nowrap;
     }
     .data{
       display: inline-block;
       width: 100%;
+      margin: 10px 0 5px 0;
     }
     .goto-buginfo{ 
       float:right;
@@ -73,7 +80,7 @@
         background:url("../img/goto.png") no-repeat;
      }
     }
-
   }
 }
+
 </style>
