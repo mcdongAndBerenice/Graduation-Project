@@ -5,9 +5,9 @@
       <span>
       <a v-on:click="showInfo(item.media)">查看</a><a v-link="{ name: 'ChartMedia', params: { id: item.media }}">报告<em></em></a>
       </span> -->
-      <a class="buglist-pull-left" href="#">优酷某系统未授权访问可入内网</a>
+      <a class="buglist-pull-left" v-link="{ name: 'BugInfo'}" href="#">优酷某系统未授权访问可入内网</a>
       <span class="goto-buginfo">
-        <a>详情<em></em></a>
+        <a v-link="{ name: 'BugInfo'}" href="#">详情<em></em></a>
       </span>
       <span class="data">2015-12-18</span>
     </li>

@@ -19,13 +19,12 @@ var router = new Router();
 router.map({
   "/BugList": {
     component: BugList,
-    menuIndex: 0,
-    subRoutes: {
-      "/BugInfo/:id":{
-        component: BugInfo,
-        name: "BugInfo"
-      }
-    }
+    menuIndex: 0
+  },
+  "/BugInfo":{
+    component: BugInfo,
+    name: "BugInfo",
+    menuIndex: 0
   },
   "/SubmitBug": {
     component: SubmitBug,

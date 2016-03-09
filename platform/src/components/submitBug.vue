@@ -81,42 +81,41 @@
 </template>
 <style lang="less">
 .submitBugs{
-
-}
-.submitBugsTip{
-  width: 90%;
-  margin-top: 20px;
-  padding: 5px 0px 5px 30px;
-  background-color: #eee;
-}
-.submitBugsInfo{
-  margin: 30px auto;
-}
-.submitBugsInfo .formTitle{
-  width: 20%;
-  text-align: right;
-  vertical-align: middle;
-  padding-right: 10px;
-}
-.submitBugsInfo .formReplay{
-  display: inline-block;
-  width: 70%;
-}
-.submitTips{
-  margin-left: 10px;
-  color: #888;
-}
-.submitBugsInfo  select{
-  width: 20%;
-  margin-right: 3%;
-}
-.submitBugsInfo input[type="text"]{
-  width: 60%;
-}
-.submitBugsInfo textarea{
-  width: 60%;
-  height: 100px;
-  resize: none;
+  .submitBugsTip{
+    width: 90%;
+    margin-top: 20px;
+    padding: 5px 0px 5px 30px;
+    background-color: #eee;
+  }
+  .submitBugsInfo{
+    margin: 30px auto;
+    .formTitle{
+      width: 20%;
+      text-align: right;
+      vertical-align: middle;
+      padding-right: 10px;
+    }
+    .formReplay{
+      display: inline-block;
+      width: 70%;
+    }
+    .submitTips{
+      margin-left: 10px;
+      color: #888;
+    }
+    select{
+      width: 20%;
+      margin-right: 3%;
+    }
+    input[type="text"]{
+      width: 60%;
+    }
+    textarea{
+      width: 60%;
+      height: 100px;
+      resize: none;
+    }
+  }
 }
 .submitBugsInfoItem{
   margin: 20px 0px;
@@ -124,9 +123,9 @@
 .submitBtn{
   margin-top: 20px;
   margin-left: 12%;
-}
-.submitBtn .btn{
-  width: 150px;
-  margin: 0 5px;
+  .btn{
+    width: 150px;
+    margin: 0 5px;
+  }
 }
 </style>
