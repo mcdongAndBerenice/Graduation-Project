@@ -77,19 +77,19 @@
 	
 	var _bugInfo2 = _interopRequireDefault(_bugInfo);
 	
-	var _submitBug = __webpack_require__(43);
+	var _submitBug = __webpack_require__(45);
 	
 	var _submitBug2 = _interopRequireDefault(_submitBug);
 	
-	var _companyList = __webpack_require__(47);
+	var _companyList = __webpack_require__(49);
 	
 	var _companyList2 = _interopRequireDefault(_companyList);
 	
-	var _userList = __webpack_require__(52);
+	var _userList = __webpack_require__(54);
 	
 	var _userList2 = _interopRequireDefault(_userList);
 	
-	var _bugSummary = __webpack_require__(54);
+	var _bugSummary = __webpack_require__(56);
 	
 	var _bugSummary2 = _interopRequireDefault(_bugSummary);
 	
@@ -14642,8 +14642,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(56)
-	__vue_template__ = __webpack_require__(42)
+	__webpack_require__(42)
+	__vue_template__ = __webpack_require__(44)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14663,222 +14663,12 @@
 
 /***/ },
 /* 42 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"bugInfo\">\n  <div class=\"headTitle\">\n    <p>漏洞概要</p>\n  </div>\n  <div>\n    <ul class=\"bugSummaryList\">\n      <li>缺陷编号：<span>WooYun-2015-163147</span></li>\n      <li>漏洞标题：<span>爱卡汽车两处问题(绑定账号与任意解绑定)</span></li>\n      <li>相关厂商：<span>爱卡汽车网</span></li>\n      <li>漏洞作者：<span>路人甲</span></li>\n      <li>提交时间：<span>2015-12-21 13:59</span></li>\n      <li>公开时间：<span>2016-02-04 13:59</span></li>\n      <li>漏洞类型：<span>CSRF</span></li>\n      <li>危害等级：<span>高</span></li>\n      <li>漏洞状态：<span>等待厂商处理</span></li>\n      <li>漏洞来源：<span>http://www.wooyun.org</span></li>\n      <li>Tags标签：<span>无</span></li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>漏洞详情</p>\n  </div>\n  <div>\n    <ul class=\"bugDetailsList\">\n      <li>\n        <span>披露状态：</span>\n        <ul>\n          <li>2015-12-21： 细节已通知厂商并且等待厂商处理中</li>\n        </ul>\n      </li>\n      <li><span>简要描述：</span>\n      <ul>\n        <li>爱卡汽车两处问题(绑定账号与任意解绑定)</li>\n      </ul>\n      </li>\n      <li><span>漏洞hash：</span>26863ecbb23db2b7a9711caac791ae0e</li>\n      <li><span>版权声明：</span>转载请注明来源 路人甲@乌云</li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>漏洞回应</p>\n  </div>\n  <div class=\"companyResponse\">\n    <ul>\n      <li><span>厂商回应：</span>\n      <ul><li>暂无</li></ul>\n    </li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>评论</p>\n  </div>\n  <div class=\"comments\">\n    <p class=\"visible\"  >登录后才能发表评论，请先 <a href=\"#\">登录</a> 。</p>\n    <div class=\" \">\n      <ul>\n        <li>aaaaa</li>\n        <li>aaawewwwaa</li>\n        <li>aaasdfaasdfaa</li>\n        <li>aaadsfsdafaa</li>\n        <li>aaaaa</li>\n      </ul>\n      <textarea name=\"addComments\" class=\"addComments\"></textarea>\n      <br>\n      <button class=\"btn btn-primary\">提交</button>\n    </div>\n  </div>\n</div>\n";
-
-/***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(44)
-	__vue_template__ = __webpack_require__(46)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/submitBug.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(45);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./submitBug.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./submitBug.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 45 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(32)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".submitBugs .submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugs .submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugs .submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugs .submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitBugs .submitBugsInfo .submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugs .submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugs .submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugs .submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,iBAAiB;EACjB,0BAA0B;EAC1B,uBAAuB;CACxB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,WAAW;CACZ;AACD;EACE,kBAAkB;EAClB,YAAY;CACb;AACD;EACE,WAAW;EACX,iBAAiB;CAClB;AACD;EACE,WAAW;CACZ;AACD;EACE,WAAW;EACX,cAAc;EACd,aAAa;CACd;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,iBAAiB;CAClB;AACD;EACE,aAAa;EACb,cAAc;CACf","file":"submitBug.vue","sourcesContent":[".submitBugs .submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugs .submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugs .submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugs .submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitBugs .submitBugsInfo .submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugs .submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugs .submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugs .submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n"],"sourceRoot":"webpack://"}]);
-	
-	// exports
-
-
-/***/ },
-/* 46 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"headTitle\">\n    <p>提交漏洞</p>\n  </div>\n  <div class=\"submitBugsTip\">你可以提交关于厂商的各种漏洞，不局限于传统意义上的产品漏洞，包括网络配置，服务器管理，钓鱼欺诈甚至是有证据的黑客事件都可以作为有效的信息提交</div>\n  <form class=\"submitBugsInfo\">\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"AppType\" class=\"formTitle control-label\">问题类型：</label>\n      <div class=\"formReplay\">\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"webApp\" /> 互联网应用（如微博，网站，web邮箱等）\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"software\" /> 通用性软件（如客户端浏览器，手机应用，开源cms等）\n        <span class=\"submitTips\">该漏洞对应厂商的类型</span>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"companyName\" class=\"formTitle control-label\">问题厂商：</label>\n      <div class=\"formReplay\">\n        <select name=\"companyRegion\" id=\"companyRegion\">\n          <option value=\"\">大陆地区</option>\n          <option value=\"hongkong\">香港地区</option>\n          <option value=\"taiwan\">台湾地区</option>\n        </select>  \n        <select name=\"companyName\" id=\"companyName\">\n          <option value=\"aaa\">aaa</option>\n          <option value=\"bbb\">bbb</option>\n          <option value=\"ccc\">ccc</option>\n          <option value=\"other\">其他厂商</option>\n        </select>  \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugType\" class=\"formTitle control-label\">漏洞类型：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugType\" id=\"bugType\">\n          <option value=\"\">--选择漏洞大类--</option>\n          <option value=\"6\">网络设备/硬件设施</option>\n          <option value=\"7\">操作系统/系统服务</option>\n          <option value=\"8\">基础组件/开发框架</option>\n          <option value=\"9\">建站软件/web应用</option>\n          <option value=\"10\">常用软件/客户端应用</option>\n          <option value=\"11\">入侵事件/安全情报</option>\n          <option value=\"0\">其他类型</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugName\" class=\"formTitle control-label\">漏洞标题：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugName\" name=\"bugName\"/> \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugLevel\" class=\"formTitle control-label\">漏洞等级：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugLevel\" id=\"bugLevel\">\n          <option value=\"\">低</option>\n          <option value=\"\">中</option>\n          <option value=\"\">高</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugDescription\" class=\"formTitle control-label\">问题描述：</label>\n      <div class=\"formReplay\">\n        <textarea name=\"bugDescription\" id=\"bugDescription\"></textarea>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugTag\" class=\"formTitle control-label\">标签：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugTag\" name=\"bugTag\">\n      </div>\n    </div>\n    <div class=\"submitBtn\">\n      <button class=\"btn btn-primary\">确定</button>\n      <button class=\"btn btn-default\">取消</button>\n    </div>\n  </form>\n</div>\n";
-
-/***/ },
-/* 47 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__webpack_require__(48)
-	__vue_template__ = __webpack_require__(50)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/companyList.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 48 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(49);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./companyList.vue", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./companyList.vue");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 49 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(32)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".company-list .logo {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.company-list .logo img {\n  width: 180px;\n}\n.company-list .logo:not(:nth-child(4n)) {\n  margin-right: 10px;\n}\n", "", {"version":3,"sources":["/./src/components/companyList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,oBAAoB;CACrB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;CACpB","file":"companyList.vue","sourcesContent":[".company-list .logo {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.company-list .logo img {\n  width: 180px;\n}\n.company-list .logo:not(:nth-child(4n)) {\n  margin-right: 10px;\n}\n"],"sourceRoot":"webpack://"}]);
-	
-	// exports
-
-
-/***/ },
-/* 50 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n<div class=\"company-list\">\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(51) + "\" alt=\"facebook\"></a>\n</div>\n";
-
-/***/ },
-/* 51 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "9401f7667bc19e83d31c004980429978.png";
-
-/***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(53)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/userList.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 53 */
-/***/ function(module, exports) {
-
-	module.exports = "\nddd\n";
-
-/***/ },
-/* 54 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(55)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	if (__vue_template__) {
-	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
-	}
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), true)
-	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugSummary.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 55 */
-/***/ function(module, exports) {
-
-	module.exports = "\nfff\n";
-
-/***/ },
-/* 56 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(57);
+	var content = __webpack_require__(43);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(34)(content, {});
@@ -14898,7 +14688,7 @@
 	}
 
 /***/ },
-/* 57 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(32)();
@@ -14910,6 +14700,216 @@
 	
 	// exports
 
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"bugInfo\">\n  <div class=\"headTitle\">\n    <p>漏洞概要</p>\n  </div>\n  <div>\n    <ul class=\"bugSummaryList\">\n      <li>缺陷编号：<span>WooYun-2015-163147</span></li>\n      <li>漏洞标题：<span>爱卡汽车两处问题(绑定账号与任意解绑定)</span></li>\n      <li>相关厂商：<span>爱卡汽车网</span></li>\n      <li>漏洞作者：<span>路人甲</span></li>\n      <li>提交时间：<span>2015-12-21 13:59</span></li>\n      <li>公开时间：<span>2016-02-04 13:59</span></li>\n      <li>漏洞类型：<span>CSRF</span></li>\n      <li>危害等级：<span>高</span></li>\n      <li>漏洞状态：<span>等待厂商处理</span></li>\n      <li>漏洞来源：<span>http://www.wooyun.org</span></li>\n      <li>Tags标签：<span>无</span></li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>漏洞详情</p>\n  </div>\n  <div>\n    <ul class=\"bugDetailsList\">\n      <li>\n        <span>披露状态：</span>\n        <ul>\n          <li>2015-12-21： 细节已通知厂商并且等待厂商处理中</li>\n        </ul>\n      </li>\n      <li><span>简要描述：</span>\n      <ul>\n        <li>爱卡汽车两处问题(绑定账号与任意解绑定)</li>\n      </ul>\n      </li>\n      <li><span>漏洞hash：</span>26863ecbb23db2b7a9711caac791ae0e</li>\n      <li><span>版权声明：</span>转载请注明来源 路人甲@乌云</li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>漏洞回应</p>\n  </div>\n  <div class=\"companyResponse\">\n    <ul>\n      <li><span>厂商回应：</span>\n      <ul><li>暂无</li></ul>\n    </li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>评论</p>\n  </div>\n  <div class=\"comments\">\n    <p class=\"visible\"  >登录后才能发表评论，请先 <a href=\"#\">登录</a> 。</p>\n    <div class=\" \">\n      <ul>\n        <li>aaaaa</li>\n        <li>aaawewwwaa</li>\n        <li>aaasdfaasdfaa</li>\n        <li>aaadsfsdafaa</li>\n        <li>aaaaa</li>\n      </ul>\n      <textarea name=\"addComments\" class=\"addComments\"></textarea>\n      <br>\n      <button class=\"btn btn-primary\">提交</button>\n    </div>\n  </div>\n</div>\n";
+
+/***/ },
+/* 45 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(46)
+	__vue_template__ = __webpack_require__(48)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/submitBug.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 46 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(47);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(34)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./submitBug.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./submitBug.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(32)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".submitBugs .submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugs .submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugs .submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugs .submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitBugs .submitBugsInfo .submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugs .submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugs .submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugs .submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,iBAAiB;EACjB,0BAA0B;EAC1B,uBAAuB;CACxB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,WAAW;CACZ;AACD;EACE,kBAAkB;EAClB,YAAY;CACb;AACD;EACE,WAAW;EACX,iBAAiB;CAClB;AACD;EACE,WAAW;CACZ;AACD;EACE,WAAW;EACX,cAAc;EACd,aAAa;CACd;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,iBAAiB;CAClB;AACD;EACE,aAAa;EACb,cAAc;CACf","file":"submitBug.vue","sourcesContent":[".submitBugs .submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugs .submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugs .submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugs .submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitBugs .submitBugsInfo .submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugs .submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugs .submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugs .submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"headTitle\">\n    <p>提交漏洞</p>\n  </div>\n  <div class=\"submitBugsTip\">你可以提交关于厂商的各种漏洞，不局限于传统意义上的产品漏洞，包括网络配置，服务器管理，钓鱼欺诈甚至是有证据的黑客事件都可以作为有效的信息提交</div>\n  <form class=\"submitBugsInfo\">\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"AppType\" class=\"formTitle control-label\">问题类型：</label>\n      <div class=\"formReplay\">\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"webApp\" /> 互联网应用（如微博，网站，web邮箱等）\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"software\" /> 通用性软件（如客户端浏览器，手机应用，开源cms等）\n        <span class=\"submitTips\">该漏洞对应厂商的类型</span>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"companyName\" class=\"formTitle control-label\">问题厂商：</label>\n      <div class=\"formReplay\">\n        <select name=\"companyRegion\" id=\"companyRegion\">\n          <option value=\"\">大陆地区</option>\n          <option value=\"hongkong\">香港地区</option>\n          <option value=\"taiwan\">台湾地区</option>\n        </select>  \n        <select name=\"companyName\" id=\"companyName\">\n          <option value=\"aaa\">aaa</option>\n          <option value=\"bbb\">bbb</option>\n          <option value=\"ccc\">ccc</option>\n          <option value=\"other\">其他厂商</option>\n        </select>  \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugType\" class=\"formTitle control-label\">漏洞类型：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugType\" id=\"bugType\">\n          <option value=\"\">--选择漏洞大类--</option>\n          <option value=\"6\">网络设备/硬件设施</option>\n          <option value=\"7\">操作系统/系统服务</option>\n          <option value=\"8\">基础组件/开发框架</option>\n          <option value=\"9\">建站软件/web应用</option>\n          <option value=\"10\">常用软件/客户端应用</option>\n          <option value=\"11\">入侵事件/安全情报</option>\n          <option value=\"0\">其他类型</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugName\" class=\"formTitle control-label\">漏洞标题：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugName\" name=\"bugName\"/> \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugLevel\" class=\"formTitle control-label\">漏洞等级：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugLevel\" id=\"bugLevel\">\n          <option value=\"\">低</option>\n          <option value=\"\">中</option>\n          <option value=\"\">高</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugDescription\" class=\"formTitle control-label\">问题描述：</label>\n      <div class=\"formReplay\">\n        <textarea name=\"bugDescription\" id=\"bugDescription\"></textarea>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugTag\" class=\"formTitle control-label\">标签：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugTag\" name=\"bugTag\">\n      </div>\n    </div>\n    <div class=\"submitBtn\">\n      <button class=\"btn btn-primary\">确定</button>\n      <button class=\"btn btn-default\">取消</button>\n    </div>\n  </form>\n</div>\n";
+
+/***/ },
+/* 49 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__webpack_require__(50)
+	__vue_template__ = __webpack_require__(52)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/companyList.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(51);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(34)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./companyList.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./companyList.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 51 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(32)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".company-list .logo {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.company-list .logo img {\n  width: 180px;\n}\n.company-list .logo:not(:nth-child(4n)) {\n  margin-right: 10px;\n}\n", "", {"version":3,"sources":["/./src/components/companyList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,oBAAoB;CACrB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;CACpB","file":"companyList.vue","sourcesContent":[".company-list .logo {\n  display: inline-block;\n  margin-bottom: 10px;\n}\n.company-list .logo img {\n  width: 180px;\n}\n.company-list .logo:not(:nth-child(4n)) {\n  margin-right: 10px;\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n<div class=\"company-list\">\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n</div>\n";
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "9401f7667bc19e83d31c004980429978.png";
+
+/***/ },
+/* 54 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(55)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/userList.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 55 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"userList\">\n  <div class=\"headTitle\">\n    <p>白帽子列表</p>\n  </div>\n  <div class=\"userListTip\">我们将一切对安全极为感兴趣，对事物运行的原理有着天生的好奇心，愿意将技术回归技术，愿意为其他朋友做出贡献的人定义为白帽子，你可以通过注册提交漏洞来成为白帽子中的一员</div>\n  <table class=\"table table-hover userInfoList\">\n    <thead>\n      <tr>\n        <th class=\"userDate\">注册日期</th>\n        <th class=\"userName\">昵称</th>\n        <th class=\"userLevel\">等级</th> \n        <th class=\"submitBugNum\">提交漏洞数</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      \n    </tbody>\n  </table>\n</div>\n";
+
+/***/ },
+/* 56 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	__vue_template__ = __webpack_require__(57)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	if (__vue_template__) {
+	(typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports).template = __vue_template__
+	}
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), true)
+	  if (!hotAPI.compatible) return
+	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugSummary.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 57 */
+/***/ function(module, exports) {
+
+	module.exports = "\nfff\n";
 
 /***/ }
 /******/ ]);
