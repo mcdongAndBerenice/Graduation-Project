@@ -14559,7 +14559,7 @@
 /* 35 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">厂商列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <ul>\r\n        <li>退出</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">高校列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <ul>\r\n        <li>退出</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 36 */
@@ -14766,7 +14766,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".submitBugs .submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugs .submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugs .submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugs .submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitBugs .submitBugsInfo .submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugs .submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugs .submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugs .submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,WAAW;EACX,iBAAiB;EACjB,0BAA0B;EAC1B,uBAAuB;CACxB;AACD;EACE,kBAAkB;CACnB;AACD;EACE,WAAW;EACX,kBAAkB;EAClB,uBAAuB;EACvB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,WAAW;CACZ;AACD;EACE,kBAAkB;EAClB,YAAY;CACb;AACD;EACE,WAAW;EACX,iBAAiB;CAClB;AACD;EACE,WAAW;CACZ;AACD;EACE,WAAW;EACX,cAAc;EACd,aAAa;CACd;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,iBAAiB;CAClB;AACD;EACE,aAAa;EACb,cAAc;CACf","file":"submitBug.vue","sourcesContent":[".submitBugs .submitBugsTip {\n  width: 90%;\n  margin-top: 20px;\n  padding: 5px 0px 5px 30px;\n  background-color: #eee;\n}\n.submitBugs .submitBugsInfo {\n  margin: 30px auto;\n}\n.submitBugs .submitBugsInfo .formTitle {\n  width: 20%;\n  text-align: right;\n  vertical-align: middle;\n  padding-right: 10px;\n}\n.submitBugs .submitBugsInfo .formReplay {\n  display: inline-block;\n  width: 70%;\n}\n.submitBugs .submitBugsInfo .submitTips {\n  margin-left: 10px;\n  color: #888;\n}\n.submitBugs .submitBugsInfo select {\n  width: 20%;\n  margin-right: 3%;\n}\n.submitBugs .submitBugsInfo input[type=\"text\"] {\n  width: 60%;\n}\n.submitBugs .submitBugsInfo textarea {\n  width: 60%;\n  height: 100px;\n  resize: none;\n}\n.submitBugsInfoItem {\n  margin: 20px 0px;\n}\n.submitBtn {\n  margin-top: 20px;\n  margin-left: 12%;\n}\n.submitBtn .btn {\n  width: 150px;\n  margin: 0 5px;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n}\n.submitBugs input[select] {\n  height: 35px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,gBAAgB;CACjB;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,oBAAoB;CACrB","file":"submitBug.vue","sourcesContent":[".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n}\n.submitBugs input[select] {\n  height: 35px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -14775,7 +14775,7 @@
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"headTitle\">\n    <p>提交漏洞</p>\n  </div>\n  <div class=\"submitBugsTip\">你可以提交关于厂商的各种漏洞，不局限于传统意义上的产品漏洞，包括网络配置，服务器管理，钓鱼欺诈甚至是有证据的黑客事件都可以作为有效的信息提交</div>\n  <form class=\"submitBugsInfo\">\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"AppType\" class=\"formTitle control-label\">问题类型：</label>\n      <div class=\"formReplay\">\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"webApp\" /> 互联网应用（如微博，网站，web邮箱等）\n        <input type=\"radio\" id=\"AppType\" name=\"AppType\" value=\"software\" /> 通用性软件（如客户端浏览器，手机应用，开源cms等）\n        <span class=\"submitTips\">该漏洞对应厂商的类型</span>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"companyName\" class=\"formTitle control-label\">问题厂商：</label>\n      <div class=\"formReplay\">\n        <select name=\"companyRegion\" id=\"companyRegion\">\n          <option value=\"\">大陆地区</option>\n          <option value=\"hongkong\">香港地区</option>\n          <option value=\"taiwan\">台湾地区</option>\n        </select>  \n        <select name=\"companyName\" id=\"companyName\">\n          <option value=\"aaa\">aaa</option>\n          <option value=\"bbb\">bbb</option>\n          <option value=\"ccc\">ccc</option>\n          <option value=\"other\">其他厂商</option>\n        </select>  \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugType\" class=\"formTitle control-label\">漏洞类型：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugType\" id=\"bugType\">\n          <option value=\"\">--选择漏洞大类--</option>\n          <option value=\"6\">网络设备/硬件设施</option>\n          <option value=\"7\">操作系统/系统服务</option>\n          <option value=\"8\">基础组件/开发框架</option>\n          <option value=\"9\">建站软件/web应用</option>\n          <option value=\"10\">常用软件/客户端应用</option>\n          <option value=\"11\">入侵事件/安全情报</option>\n          <option value=\"0\">其他类型</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugName\" class=\"formTitle control-label\">漏洞标题：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugName\" name=\"bugName\"/> \n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugLevel\" class=\"formTitle control-label\">漏洞等级：</label>\n      <div class=\"formReplay\">\n        <select name=\"bugLevel\" id=\"bugLevel\">\n          <option value=\"\">低</option>\n          <option value=\"\">中</option>\n          <option value=\"\">高</option>\n        </select>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugDescription\" class=\"formTitle control-label\">问题描述：</label>\n      <div class=\"formReplay\">\n        <textarea name=\"bugDescription\" id=\"bugDescription\"></textarea>\n      </div>\n    </div>\n    <div class=\"submitBugsInfoItem\">\n      <label for=\"bugTag\" class=\"formTitle control-label\">标签：</label>\n      <div class=\"formReplay\">\n        <input type=\"text\" id=\"bugTag\" name=\"bugTag\">\n      </div>\n    </div>\n    <div class=\"submitBtn\">\n      <button class=\"btn btn-primary\">确定</button>\n      <button class=\"btn btn-default\">取消</button>\n    </div>\n  </form>\n</div>\n";
+	module.exports = "\n<div class=\"submitBugs\">\n  <span class=\"tagTitle\">问题类型：</span>\n  <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n  <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n  <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n  <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  <br>\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option selected>A</option>\n    <option>B</option>\n    <option>C</option>\n    <option value=\"other\">其他厂商</option>\n  </select> \n  <br>\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">漏洞标题：</span>\n  <input type=\"text\" v-model=\"bugName\"/>\n  <br>\n  <span class=\"tagTitle\">漏洞等级：</span>\n  <select v-model=\"bugLevel\">\n    <option value=\"0\">低</option>\n    <option value=\"1\">中</option>\n    <option value=\"2\">高</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">问题描述：</span>\n  <textarea v-model=\"bugDescription\"></textarea>\n  <br>\n  <span class=\"tagTitle\">详细说明：</span>\n  <textarea v-model=\"bugDetail\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞证明：</span>\n  <textarea v-model=\"bugProve\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞修复：</span>\n  <textarea v-model=\"bugFix\"></textarea>\n  <br>\n  <button class=\"btn\">确定</button>\n  <button class=\"btn\">取消</button>\n</div>\n";
 
 /***/ },
 /* 49 */
@@ -14845,13 +14845,13 @@
 /* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class=\"company-list\">\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n  <a href=\"https://www.facebook.com\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"facebook\"></a>\n</div>\n";
+	module.exports = "\n<div class=\"company-list\">\n  <a href=\"http://www.tjut.edu.cn/\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"天津理工大学\"></a>\n</div>\n";
 
 /***/ },
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "9401f7667bc19e83d31c004980429978.png";
+	module.exports = __webpack_require__.p + "1281ea140e16e39e77c9d4c5229670a6.jpg";
 
 /***/ },
 /* 54 */
@@ -14887,12 +14887,12 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(58)
+	__vue_script__ = __webpack_require__(57)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/bugSummary.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(57)
+	__vue_template__ = __webpack_require__(58)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14912,12 +14912,6 @@
 
 /***/ },
 /* 57 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div id=\"container\" style=\"min-width:400px;height:400px\"></div>\n";
-
-/***/ },
-/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14982,6 +14976,12 @@
 	// </script>
 
 	/* generated by vue-loader */
+
+/***/ },
+/* 58 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div id=\"container\" style=\"min-width:400px;height:400px\"></div>\n";
 
 /***/ }
 /******/ ]);

@@ -6,7 +6,7 @@
       <li><a v-link="{ path: '/SubmitBug' }">提交漏洞</a></li>
       <li><a v-link="{ path: '/BugSummary' }">漏洞统计</a></li>
       <li><a v-link="{ path: '/UserList' }">白帽子列表</a></li>
-      <li><a v-link="{ path: '/CompanyList' }">厂商列表</a></li>
+      <li><a v-link="{ path: '/CompanyList' }">高校列表</a></li>
     </ul>
     <div class="user-info">
       <ul>
