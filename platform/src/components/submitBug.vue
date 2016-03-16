@@ -8,9 +8,10 @@
     <br>
     <span class="tagTitle">问题高校：</span>
     <select v-model="schoolName">
-      <option selected>A</option>
-      <option>B</option>
-      <option>C</option>
+      <option value="">--选择问题高校--</option>
+      <option value="a">A</option>
+      <option value="b">B</option>
+      <option value="c">C</option>
       <option value="other">其他厂商</option>
     </select> 
     <br>
@@ -27,10 +28,11 @@
     </select>
     <br>
     <span class="tagTitle">漏洞标题：</span>
-    <input type="text" v-model="bugName"/>
+    <input type="text" class="bug-name" v-model="bugName"/>
     <br>
     <span class="tagTitle">漏洞等级：</span>
     <select v-model="bugLevel">
+      <option value="">--选择漏洞等级--</option>
       <option value="0">低</option>
       <option value="1">中</option>
       <option value="2">高</option>
@@ -48,25 +50,76 @@
     <span class="tagTitle">漏洞修复：</span>
     <textarea v-model="bugFix"></textarea>
     <br>
-    <button class="btn">确定</button>
-    <button class="btn">取消</button>
+    <div class="sumbit-btn">
+      <button class="btn btn-submit">确 定</button>
+      <button class="btn btn-cancel">取 消</button>
+    </div>
   </div>
 </template>
+<script>
+export default{
+  name: 'submitBugs',
+  data () {
+    return {
+      schoolName: "",
+      bugType: "",
+      bugName: "",
+      bugLevel: "",
+      bugDescription: "",
+      bugDetail: "",
+      bugProve: "",
+      bugFix: ""
+    }
+  },
+  computed: { // 计算属性
+    
+  },
+  methods : {
+
+  }
+}
+</script>
 <style lang="less">
 .submitBugs{
   font-size: 14px;
   textarea{
     resize: none;
+    width: 500px;
+    height: 200px;
+    margin-bottom: 20px;
   }
-  input[select]{
-    height: 35px;
+  select{
+    background-color: #fff;
+    height: 30px;
+    width: 200px;
+  }
+  .bug-name{
+    height: 30px;
+    width: 500px;
   }
   .tagTitle{
     display: inline-block;
     width: 80px;
     line-height: 35px;
+    vertical-align: top;
     margin-right: 10px;
     margin-bottom: 20px;
+  }
+  .sumbit-btn{
+    text-align: center;
+    .btn{
+      height: 35px;
+      padding: 0 20px;
+      border: 0px;
+      font-size: 16px;
+    }
+    .btn-submit{
+      background-color: #9ac3dd;
+      margin-right: 50px;
+    }
+    .btn-cancel{
+      background-color: #eee;
+    }
   }
 }
 </style>

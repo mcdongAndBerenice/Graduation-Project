@@ -14713,6 +14713,11 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(46)
+	__vue_script__ = __webpack_require__(59)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/components/submitBug.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(48)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -14766,7 +14771,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n}\n.submitBugs input[select] {\n  height: 35px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,gBAAgB;CACjB;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,oBAAoB;CACrB","file":"submitBug.vue","sourcesContent":[".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n}\n.submitBugs input[select] {\n  height: 35px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n  width: 500px;\n  height: 200px;\n  margin-bottom: 20px;\n}\n.submitBugs select {\n  background-color: #fff;\n  height: 30px;\n  width: 200px;\n}\n.submitBugs .bug-name {\n  height: 30px;\n  width: 500px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  vertical-align: top;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n.submitBugs .sumbit-btn {\n  text-align: center;\n}\n.submitBugs .sumbit-btn .btn {\n  height: 35px;\n  padding: 0 20px;\n  border: 0px;\n  font-size: 16px;\n}\n.submitBugs .sumbit-btn .btn-submit {\n  background-color: #9ac3dd;\n  margin-right: 50px;\n}\n.submitBugs .sumbit-btn .btn-cancel {\n  background-color: #eee;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,gBAAgB;CACjB;AACD;EACE,aAAa;EACb,aAAa;EACb,cAAc;EACd,oBAAoB;CACrB;AACD;EACE,uBAAuB;EACvB,aAAa;EACb,aAAa;CACd;AACD;EACE,aAAa;EACb,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,kBAAkB;EAClB,oBAAoB;EACpB,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,aAAa;EACb,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;CACjB;AACD;EACE,0BAA0B;EAC1B,mBAAmB;CACpB;AACD;EACE,uBAAuB;CACxB","file":"submitBug.vue","sourcesContent":[".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n  width: 500px;\n  height: 200px;\n  margin-bottom: 20px;\n}\n.submitBugs select {\n  background-color: #fff;\n  height: 30px;\n  width: 200px;\n}\n.submitBugs .bug-name {\n  height: 30px;\n  width: 500px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  vertical-align: top;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n.submitBugs .sumbit-btn {\n  text-align: center;\n}\n.submitBugs .sumbit-btn .btn {\n  height: 35px;\n  padding: 0 20px;\n  border: 0px;\n  font-size: 16px;\n}\n.submitBugs .sumbit-btn .btn-submit {\n  background-color: #9ac3dd;\n  margin-right: 50px;\n}\n.submitBugs .sumbit-btn .btn-cancel {\n  background-color: #eee;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -14775,7 +14780,7 @@
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"submitBugs\">\n  <span class=\"tagTitle\">问题类型：</span>\n  <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n  <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n  <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n  <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  <br>\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option selected>A</option>\n    <option>B</option>\n    <option>C</option>\n    <option value=\"other\">其他厂商</option>\n  </select> \n  <br>\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">漏洞标题：</span>\n  <input type=\"text\" v-model=\"bugName\"/>\n  <br>\n  <span class=\"tagTitle\">漏洞等级：</span>\n  <select v-model=\"bugLevel\">\n    <option value=\"0\">低</option>\n    <option value=\"1\">中</option>\n    <option value=\"2\">高</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">问题描述：</span>\n  <textarea v-model=\"bugDescription\"></textarea>\n  <br>\n  <span class=\"tagTitle\">详细说明：</span>\n  <textarea v-model=\"bugDetail\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞证明：</span>\n  <textarea v-model=\"bugProve\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞修复：</span>\n  <textarea v-model=\"bugFix\"></textarea>\n  <br>\n  <button class=\"btn\">确定</button>\n  <button class=\"btn\">取消</button>\n</div>\n";
+	module.exports = "\n<div class=\"submitBugs\">\n  <span class=\"tagTitle\">问题类型：</span>\n  <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n  <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n  <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n  <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  <br>\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"a\">A</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他厂商</option>\n  </select> \n  <br>\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">漏洞标题：</span>\n  <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  <br>\n  <span class=\"tagTitle\">漏洞等级：</span>\n  <select v-model=\"bugLevel\">\n    <option value=\"\">--选择漏洞等级--</option>\n    <option value=\"0\">低</option>\n    <option value=\"1\">中</option>\n    <option value=\"2\">高</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">问题描述：</span>\n  <textarea v-model=\"bugDescription\"></textarea>\n  <br>\n  <span class=\"tagTitle\">详细说明：</span>\n  <textarea v-model=\"bugDetail\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞证明：</span>\n  <textarea v-model=\"bugProve\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞修复：</span>\n  <textarea v-model=\"bugFix\"></textarea>\n  <br>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\">确 定</button>\n    <button class=\"btn btn-cancel\">取 消</button>\n  </div>\n</div>\n";
 
 /***/ },
 /* 49 */
@@ -14982,6 +14987,142 @@
 /***/ function(module, exports) {
 
 	module.exports = "\n<div id=\"container\" style=\"min-width:400px;height:400px\"></div>\n";
+
+/***/ },
+/* 59 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="submitBugs">
+	//     <span class="tagTitle">问题类型：</span>
+	//     <input type="radio" id="web" value="web" v-model="submitType">
+	//     <label for="web">互联网应用（如微博，网站，web邮箱等）</label>
+	//     <input type="radio" id="app" value="app" v-model="submitType">
+	//     <label for="app">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>
+	//     <br>
+	//     <span class="tagTitle">问题高校：</span>
+	//     <select v-model="schoolName">
+	//       <option value="">--选择问题高校--</option>
+	//       <option value="a">A</option>
+	//       <option value="b">B</option>
+	//       <option value="c">C</option>
+	//       <option value="other">其他厂商</option>
+	//     </select>
+	//     <br>
+	//     <span class="tagTitle">漏洞类型：</span>
+	//     <select v-model="bugType">
+	//       <option value="">--选择漏洞大类--</option>
+	//       <option value="6">网络设备/硬件设施</option>
+	//       <option value="7">操作系统/系统服务</option>
+	//       <option value="8">基础组件/开发框架</option>
+	//       <option value="9">建站软件/web应用</option>
+	//       <option value="10">常用软件/客户端应用</option>
+	//       <option value="11">入侵事件/安全情报</option>
+	//       <option value="0">其他类型</option>
+	//     </select>
+	//     <br>
+	//     <span class="tagTitle">漏洞标题：</span>
+	//     <input type="text" class="bug-name" v-model="bugName"/>
+	//     <br>
+	//     <span class="tagTitle">漏洞等级：</span>
+	//     <select v-model="bugLevel">
+	//       <option value="">--选择漏洞等级--</option>
+	//       <option value="0">低</option>
+	//       <option value="1">中</option>
+	//       <option value="2">高</option>
+	//     </select>
+	//     <br>
+	//     <span class="tagTitle">问题描述：</span>
+	//     <textarea v-model="bugDescription"></textarea>
+	//     <br>
+	//     <span class="tagTitle">详细说明：</span>
+	//     <textarea v-model="bugDetail"></textarea>
+	//     <br>
+	//     <span class="tagTitle">漏洞证明：</span>
+	//     <textarea v-model="bugProve"></textarea>
+	//     <br>
+	//     <span class="tagTitle">漏洞修复：</span>
+	//     <textarea v-model="bugFix"></textarea>
+	//     <br>
+	//     <div class="sumbit-btn">
+	//       <button class="btn btn-submit">确 定</button>
+	//       <button class="btn btn-cancel">取 消</button>
+	//     </div>
+	//   </div>
+	// </template>
+	// <script>
+	exports.default = {
+	  name: 'submitBugs',
+	  data: function data() {
+	    return {
+	      schoolName: "",
+	      bugType: "",
+	      bugName: "",
+	      bugLevel: "",
+	      bugDescription: "",
+	      bugDetail: "",
+	      bugProve: "",
+	      bugFix: ""
+	    };
+	  },
+	
+	  computed: {// 计算属性
+	
+	  },
+	  methods: {}
+	};
+	// </script>
+	// <style lang="less">
+	// .submitBugs{
+	//   font-size: 14px;
+	//   textarea{
+	//     resize: none;
+	//     width: 500px;
+	//     height: 200px;
+	//     margin-bottom: 20px;
+	//   }
+	//   select{
+	//     background-color: #fff;
+	//     height: 30px;
+	//     width: 200px;
+	//   }
+	//   .bug-name{
+	//     height: 30px;
+	//     width: 500px;
+	//   }
+	//   .tagTitle{
+	//     display: inline-block;
+	//     width: 80px;
+	//     line-height: 35px;
+	//     vertical-align: top;
+	//     margin-right: 10px;
+	//     margin-bottom: 20px;
+	//   }
+	//   .sumbit-btn{
+	//     text-align: center;
+	//     .btn{
+	//       height: 35px;
+	//       padding: 0 20px;
+	//       border: 0px;
+	//       font-size: 16px;
+	//     }
+	//     .btn-submit{
+	//       background-color: #9ac3dd;
+	//       margin-right: 50px;
+	//     }
+	//     .btn-cancel{
+	//       background-color: #eee;
+	//     }
+	//   }
+	// }
+	// </style>
+
+	/* generated by vue-loader */
 
 /***/ }
 /******/ ]);
