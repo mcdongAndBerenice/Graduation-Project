@@ -40,47 +40,5 @@
   </nav> -->
 </template>
 <style lang="less">
-@borderColor:#d9d9d9;
-.bug-list {
-  border-top:1px solid #d9d9d9;
-  li{ 
-    line-height:20px;
-    padding-top:22px;
-    border-bottom:1px solid @borderColor;
-    .buglist-pull-left{ 
-      display: inline-block;
-      font-size:18px;
-      font-weight:bolder;
-      width: 600px;
-      height: 20px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space:nowrap;
-    }
-    .data{
-      display: inline-block;
-      width: 100%;
-      margin: 10px 0 5px 0;
-    }
-    .goto-buginfo{ 
-      float:right;
-      a{ 
-        padding-left:12px;
-        padding-right:12px;
-        border-left:1px solid @borderColor;
-        &:first-child{ 
-          border:none;
-        }
-      }
-      em{
-        display:inline-block;
-        margin-left:10px;
-        width:8px;
-        height:14px;
-        background:url("../img/goto.png") no-repeat;
-     }
-    }
-  }
-}
-
+@import url("../less/bugList.less");
 </style>

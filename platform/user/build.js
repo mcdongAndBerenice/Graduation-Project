@@ -81,15 +81,15 @@
 	
 	var _submitBug2 = _interopRequireDefault(_submitBug);
 	
-	var _companyList = __webpack_require__(49);
+	var _companyList = __webpack_require__(50);
 	
 	var _companyList2 = _interopRequireDefault(_companyList);
 	
-	var _userList = __webpack_require__(54);
+	var _userList = __webpack_require__(55);
 	
 	var _userList2 = _interopRequireDefault(_userList);
 	
-	var _bugSummary = __webpack_require__(56);
+	var _bugSummary = __webpack_require__(57);
 	
 	var _bugSummary2 = _interopRequireDefault(_bugSummary);
 	
@@ -14696,7 +14696,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".bugInfo ul {\n  list-style-type: none;\n}\n.bugInfo .bugSummaryList {\n  padding: 1% 3%;\n  font-size: 14px;\n  color: #333;\n}\n.bugInfo .bugSummaryList > li {\n  height: 30px;\n  line-height: 30px;\n}\n.bugInfo .bugSummaryList span {\n  color: #555;\n}\n.bugInfo .bugDetailsList li {\n  margin: 1%;\n  color: #555;\n}\n.bugInfo .bugDetailsList span {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .companyResponse li {\n  margin: 1%;\n  color: #555;\n}\n.bugInfo .companyResponse span {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .comments {\n  margin: 1% 4%;\n}\n.bugInfo .comments li {\n  height: 100px;\n  padding: 10px;\n  font-size: 16px;\n  border-bottom: 1px solid #ddd;\n}\n.bugInfo .comments li:first-child {\n  border-top: 1px solid #ddd;\n}\n.bugInfo .comments .addComments {\n  width: 80%;\n  margin: 4%;\n  min-width: 400px;\n  height: 100px;\n  resize: none;\n}\n.bugInfo .comments .btn {\n  margin-left: 4%;\n}\n", "", {"version":3,"sources":["/./src/components/bugInfo.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;CACvB;AACD;EACE,eAAe;EACf,gBAAgB;EAChB,YAAY;CACb;AACD;EACE,aAAa;EACb,kBAAkB;CACnB;AACD;EACE,YAAY;CACb;AACD;EACE,WAAW;EACX,YAAY;CACb;AACD;EACE,sBAAsB;EACtB,aAAa;EACb,4BAA4B;EAC5B,mBAAmB;EACnB,YAAY;CACb;AACD;EACE,WAAW;EACX,YAAY;CACb;AACD;EACE,sBAAsB;EACtB,aAAa;EACb,4BAA4B;EAC5B,mBAAmB;EACnB,YAAY;CACb;AACD;EACE,cAAc;CACf;AACD;EACE,cAAc;EACd,cAAc;EACd,gBAAgB;EAChB,8BAA8B;CAC/B;AACD;EACE,2BAA2B;CAC5B;AACD;EACE,WAAW;EACX,WAAW;EACX,iBAAiB;EACjB,cAAc;EACd,aAAa;CACd;AACD;EACE,gBAAgB;CACjB","file":"bugInfo.vue","sourcesContent":[".bugInfo ul {\n  list-style-type: none;\n}\n.bugInfo .bugSummaryList {\n  padding: 1% 3%;\n  font-size: 14px;\n  color: #333;\n}\n.bugInfo .bugSummaryList > li {\n  height: 30px;\n  line-height: 30px;\n}\n.bugInfo .bugSummaryList span {\n  color: #555;\n}\n.bugInfo .bugDetailsList li {\n  margin: 1%;\n  color: #555;\n}\n.bugInfo .bugDetailsList span {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .companyResponse li {\n  margin: 1%;\n  color: #555;\n}\n.bugInfo .companyResponse span {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .comments {\n  margin: 1% 4%;\n}\n.bugInfo .comments li {\n  height: 100px;\n  padding: 10px;\n  font-size: 16px;\n  border-bottom: 1px solid #ddd;\n}\n.bugInfo .comments li:first-child {\n  border-top: 1px solid #ddd;\n}\n.bugInfo .comments .addComments {\n  width: 80%;\n  margin: 4%;\n  min-width: 400px;\n  height: 100px;\n  resize: none;\n}\n.bugInfo .comments .btn {\n  margin-left: 4%;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".bugInfo ul {\n  list-style-type: none;\n}\n.bugInfo .head-title {\n  font-size: 18px;\n  color: #333;\n  border-top: 1px solid #aaa;\n  padding-top: 30px;\n}\n.bugInfo .head-title:first-child {\n  border: none;\n  padding: 0;\n}\n.bugInfo .bug-summaryList {\n  padding: 20px 20px;\n  font-size: 14px;\n  color: #333;\n}\n.bugInfo .bug-summaryList > li {\n  height: 30px;\n  line-height: 30px;\n}\n.bugInfo .bug-summaryList span {\n  color: #555;\n}\n.bugInfo .bug-detailsList li {\n  margin: 20px;\n  color: #555;\n}\n.bugInfo .bug-detailsList .tag-title {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .school-response li {\n  margin: 20px;\n  color: #555;\n}\n.bugInfo .school-response .tag-title {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .comments {\n  margin-top: 20px;\n}\n.bugInfo .comments li {\n  height: 100px;\n  padding: 10px;\n  font-size: 16px;\n  border-bottom: 1px solid #ddd;\n}\n.bugInfo .comments li:first-child {\n  border-top: 1px solid #ddd;\n}\n.bugInfo .comments .addComments {\n  width: 80%;\n  margin: 30px;\n  min-width: 400px;\n  height: 100px;\n  resize: none;\n}\n.bugInfo .comments .btn {\n  margin-left: 30px;\n}\n", "", {"version":3,"sources":["/./src/components/bugInfo.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;CACvB;AACD;EACE,gBAAgB;EAChB,YAAY;EACZ,2BAA2B;EAC3B,kBAAkB;CACnB;AACD;EACE,aAAa;EACb,WAAW;CACZ;AACD;EACE,mBAAmB;EACnB,gBAAgB;EAChB,YAAY;CACb;AACD;EACE,aAAa;EACb,kBAAkB;CACnB;AACD;EACE,YAAY;CACb;AACD;EACE,aAAa;EACb,YAAY;CACb;AACD;EACE,sBAAsB;EACtB,aAAa;EACb,4BAA4B;EAC5B,mBAAmB;EACnB,YAAY;CACb;AACD;EACE,aAAa;EACb,YAAY;CACb;AACD;EACE,sBAAsB;EACtB,aAAa;EACb,4BAA4B;EAC5B,mBAAmB;EACnB,YAAY;CACb;AACD;EACE,iBAAiB;CAClB;AACD;EACE,cAAc;EACd,cAAc;EACd,gBAAgB;EAChB,8BAA8B;CAC/B;AACD;EACE,2BAA2B;CAC5B;AACD;EACE,WAAW;EACX,aAAa;EACb,iBAAiB;EACjB,cAAc;EACd,aAAa;CACd;AACD;EACE,kBAAkB;CACnB","file":"bugInfo.vue","sourcesContent":[".bugInfo ul {\n  list-style-type: none;\n}\n.bugInfo .head-title {\n  font-size: 18px;\n  color: #333;\n  border-top: 1px solid #aaa;\n  padding-top: 30px;\n}\n.bugInfo .head-title:first-child {\n  border: none;\n  padding: 0;\n}\n.bugInfo .bug-summaryList {\n  padding: 20px 20px;\n  font-size: 14px;\n  color: #333;\n}\n.bugInfo .bug-summaryList > li {\n  height: 30px;\n  line-height: 30px;\n}\n.bugInfo .bug-summaryList span {\n  color: #555;\n}\n.bugInfo .bug-detailsList li {\n  margin: 20px;\n  color: #555;\n}\n.bugInfo .bug-detailsList .tag-title {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .school-response li {\n  margin: 20px;\n  color: #555;\n}\n.bugInfo .school-response .tag-title {\n  display: inline-block;\n  height: 20px;\n  border-left: 3px solid #999;\n  padding-left: 10px;\n  color: #333;\n}\n.bugInfo .comments {\n  margin-top: 20px;\n}\n.bugInfo .comments li {\n  height: 100px;\n  padding: 10px;\n  font-size: 16px;\n  border-bottom: 1px solid #ddd;\n}\n.bugInfo .comments li:first-child {\n  border-top: 1px solid #ddd;\n}\n.bugInfo .comments .addComments {\n  width: 80%;\n  margin: 30px;\n  min-width: 400px;\n  height: 100px;\n  resize: none;\n}\n.bugInfo .comments .btn {\n  margin-left: 30px;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -14705,7 +14705,7 @@
 /* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"bugInfo\">\n  <div class=\"headTitle\">\n    <p>漏洞概要</p>\n  </div>\n  <div>\n    <ul class=\"bugSummaryList\">\n      <li>缺陷编号：<span>WooYun-2015-163147</span></li>\n      <li>漏洞标题：<span>爱卡汽车两处问题(绑定账号与任意解绑定)</span></li>\n      <li>相关厂商：<span>爱卡汽车网</span></li>\n      <li>漏洞作者：<span>路人甲</span></li>\n      <li>提交时间：<span>2015-12-21 13:59</span></li>\n      <li>公开时间：<span>2016-02-04 13:59</span></li>\n      <li>漏洞类型：<span>CSRF</span></li>\n      <li>危害等级：<span>高</span></li>\n      <li>漏洞状态：<span>等待厂商处理</span></li>\n      <li>漏洞来源：<span>http://www.wooyun.org</span></li>\n      <li>Tags标签：<span>无</span></li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>漏洞详情</p>\n  </div>\n  <div>\n    <ul class=\"bugDetailsList\">\n      <li>\n        <span>披露状态：</span>\n        <ul>\n          <li>2015-12-21： 细节已通知厂商并且等待厂商处理中</li>\n        </ul>\n      </li>\n      <li><span>简要描述：</span>\n      <ul>\n        <li>爱卡汽车两处问题(绑定账号与任意解绑定)</li>\n      </ul>\n      </li>\n      <li><span>漏洞hash：</span>26863ecbb23db2b7a9711caac791ae0e</li>\n      <li><span>版权声明：</span>转载请注明来源 路人甲@乌云</li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>漏洞回应</p>\n  </div>\n  <div class=\"companyResponse\">\n    <ul>\n      <li><span>厂商回应：</span>\n      <ul><li>暂无</li></ul>\n    </li>\n    </ul>\n  </div>\n  <hr>\n  <div class=\"headTitle\">\n    <p>评论</p>\n  </div>\n  <div class=\"comments\">\n    <p class=\"visible\"  >登录后才能发表评论，请先 <a href=\"#\">登录</a> 。</p>\n    <div class=\" \">\n      <ul>\n        <li>aaaaa</li>\n        <li>aaawewwwaa</li>\n        <li>aaasdfaasdfaa</li>\n        <li>aaadsfsdafaa</li>\n        <li>aaaaa</li>\n      </ul>\n      <textarea name=\"addComments\" class=\"addComments\"></textarea>\n      <br>\n      <button class=\"btn btn-primary\">提交</button>\n    </div>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"bugInfo\">\n  <div class=\"head-title\">\n    <p>漏洞概要</p>\n  </div>\n  <div>\n    <ul class=\"bug-summaryList\">\n      <li>缺陷编号：<span>{{bugInfo.bugNum}}</span></li>\n      <li>漏洞标题：<span>{{bugInfo.bugTitle}}</span></li>\n      <li>相关高校：<span>{{bugInfo.schoolName}}</span></li>\n      <li>漏洞作者：<span>{{bugInfo.userName}}</span></li>\n      <li>提交时间：<span>{{bugInfo.submitDate}}</span></li>\n      <li>公开时间：<span>{{bugInfo.publicDate}}</span></li>\n      <li>漏洞类型：<span>{{bugInfo.bugType}}</span></li>\n      <li>危害等级：<span>{{bugInfo.bugLevel}}</span></li>\n      <li>漏洞状态：<span>{{bugInfo.bugStatus}}</span></li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞详情</p>\n  </div>\n  <div>\n    <ul class=\"bug-detailsList\">\n      <li>\n        <span class=\"tag-title\">披露状态：</span>\n        <ul v-for=\"statusItem in statusItems\">\n          <li><span>{{statusItem.date}}：</span>{{statusItem.statusDetail}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">简要描述：</span>\n        <ul>\n          <li>{{bugInfo.description}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">漏洞hash：</span>{{bugInfo.hash}}\n      </li>\n      <li>\n        <span class=\"tag-title\">版权声明：</span>转载请注明来源 {{bugInfo.userName}}@xxx\n      </li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞回应</p>\n  </div>\n  <div class=\"school-response\">\n    <ul>\n      <li>\n        <span class=\"tag-title\">高校回应：</span>\n        <ul><li>暂无</li></ul>\n    </li>\n    </ul>\n  </div>\n  <!-- <div class=\"head-title\">\n    <p>评论</p>\n  </div>\n  <div class=\"comments\">\n    <p class=\"visible\"  >登录后才能发表评论，请先 <a href=\"#\">登录</a> 。</p>\n    <div class=\" \">\n      <ul>\n        <li>aaaaa</li>\n        <li>aaawewwwaa</li>\n        <li>aaasdfaasdfaa</li>\n        <li>aaadsfsdafaa</li>\n        <li>aaaaa</li>\n      </ul>\n      <textarea name=\"addComments\" class=\"addComments\"></textarea>\n      <br>\n      <button class=\"btn btn-primary\">提交</button>\n    </div>\n  </div>  -->\n</div>\n";
 
 /***/ },
 /* 45 */
@@ -14713,12 +14713,12 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(46)
-	__vue_script__ = __webpack_require__(59)
+	__vue_script__ = __webpack_require__(48)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/submitBug.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(48)
+	__vue_template__ = __webpack_require__(49)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14771,7 +14771,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n  width: 500px;\n  height: 200px;\n  margin-bottom: 20px;\n}\n.submitBugs select {\n  background-color: #fff;\n  height: 30px;\n  width: 200px;\n}\n.submitBugs .bug-name {\n  height: 30px;\n  width: 500px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  vertical-align: top;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n.submitBugs .sumbit-btn {\n  text-align: center;\n}\n.submitBugs .sumbit-btn .btn {\n  height: 35px;\n  padding: 0 20px;\n  border: 0px;\n  font-size: 16px;\n}\n.submitBugs .sumbit-btn .btn-submit {\n  background-color: #9ac3dd;\n  margin-right: 50px;\n}\n.submitBugs .sumbit-btn .btn-cancel {\n  background-color: #eee;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,gBAAgB;CACjB;AACD;EACE,aAAa;EACb,aAAa;EACb,cAAc;EACd,oBAAoB;CACrB;AACD;EACE,uBAAuB;EACvB,aAAa;EACb,aAAa;CACd;AACD;EACE,aAAa;EACb,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,kBAAkB;EAClB,oBAAoB;EACpB,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,aAAa;EACb,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;CACjB;AACD;EACE,0BAA0B;EAC1B,mBAAmB;CACpB;AACD;EACE,uBAAuB;CACxB","file":"submitBug.vue","sourcesContent":[".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n  width: 500px;\n  height: 200px;\n  margin-bottom: 20px;\n}\n.submitBugs select {\n  background-color: #fff;\n  height: 30px;\n  width: 200px;\n}\n.submitBugs .bug-name {\n  height: 30px;\n  width: 500px;\n}\n.submitBugs .tagTitle {\n  display: inline-block;\n  width: 80px;\n  line-height: 35px;\n  vertical-align: top;\n  margin-right: 10px;\n  margin-bottom: 20px;\n}\n.submitBugs .sumbit-btn {\n  text-align: center;\n}\n.submitBugs .sumbit-btn .btn {\n  height: 35px;\n  padding: 0 20px;\n  border: 0px;\n  font-size: 16px;\n}\n.submitBugs .sumbit-btn .btn-submit {\n  background-color: #9ac3dd;\n  margin-right: 50px;\n}\n.submitBugs .sumbit-btn .btn-cancel {\n  background-color: #eee;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n  width: 500px;\n  height: 200px;\n}\n.submitBugs .submit-item {\n  line-height: 35px;\n  margin-bottom: 20px;\n}\n.submitBugs .submit-item .bug-name {\n  height: 30px;\n  width: 500px;\n}\n.submitBugs .submit-item .tagTitle {\n  display: inline-block;\n  width: 80px;\n  vertical-align: top;\n  margin-right: 10px;\n}\n.submitBugs .submit-item .bug-description {\n  height: 100px;\n}\n.submitBugs select {\n  background-color: #fff;\n  height: 30px;\n  width: 200px;\n}\n.submitBugs .sumbit-btn {\n  text-align: center;\n}\n.submitBugs .sumbit-btn .btn {\n  height: 35px;\n  padding: 0 30px;\n  border: 0px;\n  font-size: 16px;\n}\n.submitBugs .sumbit-btn .btn-submit {\n  background-color: #476191;\n  margin-right: 60px;\n  color: #fff;\n}\n.submitBugs .sumbit-btn .btn-cancel {\n  background-color: #ddd;\n}\n", "", {"version":3,"sources":["/./src/components/submitBug.vue"],"names":[],"mappings":"AAAA;EACE,gBAAgB;CACjB;AACD;EACE,aAAa;EACb,aAAa;EACb,cAAc;CACf;AACD;EACE,kBAAkB;EAClB,oBAAoB;CACrB;AACD;EACE,aAAa;EACb,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,oBAAoB;EACpB,mBAAmB;CACpB;AACD;EACE,cAAc;CACf;AACD;EACE,uBAAuB;EACvB,aAAa;EACb,aAAa;CACd;AACD;EACE,mBAAmB;CACpB;AACD;EACE,aAAa;EACb,gBAAgB;EAChB,YAAY;EACZ,gBAAgB;CACjB;AACD;EACE,0BAA0B;EAC1B,mBAAmB;EACnB,YAAY;CACb;AACD;EACE,uBAAuB;CACxB","file":"submitBug.vue","sourcesContent":[".submitBugs {\n  font-size: 14px;\n}\n.submitBugs textarea {\n  resize: none;\n  width: 500px;\n  height: 200px;\n}\n.submitBugs .submit-item {\n  line-height: 35px;\n  margin-bottom: 20px;\n}\n.submitBugs .submit-item .bug-name {\n  height: 30px;\n  width: 500px;\n}\n.submitBugs .submit-item .tagTitle {\n  display: inline-block;\n  width: 80px;\n  vertical-align: top;\n  margin-right: 10px;\n}\n.submitBugs .submit-item .bug-description {\n  height: 100px;\n}\n.submitBugs select {\n  background-color: #fff;\n  height: 30px;\n  width: 200px;\n}\n.submitBugs .sumbit-btn {\n  text-align: center;\n}\n.submitBugs .sumbit-btn .btn {\n  height: 35px;\n  padding: 0 30px;\n  border: 0px;\n  font-size: 16px;\n}\n.submitBugs .sumbit-btn .btn-submit {\n  background-color: #476191;\n  margin-right: 60px;\n  color: #fff;\n}\n.submitBugs .sumbit-btn .btn-cancel {\n  background-color: #ddd;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -14780,15 +14780,145 @@
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"submitBugs\">\n  <span class=\"tagTitle\">问题类型：</span>\n  <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n  <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n  <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n  <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  <br>\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"a\">A</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他厂商</option>\n  </select> \n  <br>\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">漏洞标题：</span>\n  <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  <br>\n  <span class=\"tagTitle\">漏洞等级：</span>\n  <select v-model=\"bugLevel\">\n    <option value=\"\">--选择漏洞等级--</option>\n    <option value=\"0\">低</option>\n    <option value=\"1\">中</option>\n    <option value=\"2\">高</option>\n  </select>\n  <br>\n  <span class=\"tagTitle\">问题描述：</span>\n  <textarea v-model=\"bugDescription\"></textarea>\n  <br>\n  <span class=\"tagTitle\">详细说明：</span>\n  <textarea v-model=\"bugDetail\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞证明：</span>\n  <textarea v-model=\"bugProve\"></textarea>\n  <br>\n  <span class=\"tagTitle\">漏洞修复：</span>\n  <textarea v-model=\"bugFix\"></textarea>\n  <br>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\">确 定</button>\n    <button class=\"btn btn-cancel\">取 消</button>\n  </div>\n</div>\n";
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="submitBugs">
+	//     <div class="submit-item">
+	//       <span class="tagTitle">问题类型：</span>
+	//       <input type="radio" id="web" value="web" v-model="submitType">
+	//       <label for="web">互联网应用（如微博，网站，web邮箱等）</label>
+	//       <input type="radio" id="app" value="app" v-model="submitType">
+	//       <label for="app">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>
+	//     </div>
+	//     <div class="submit-item">
+	//     <span class="tagTitle">问题高校：</span>
+	//     <select v-model="schoolName">
+	//       <option value="">--选择问题高校--</option>
+	//       <option value="a">A</option>
+	//       <option value="b">B</option>
+	//       <option value="c">C</option>
+	//       <option value="other">其他高校</option>
+	//     </select>
+	//     </div>
+	//     <div class="submit-item">
+	//     <span class="tagTitle">漏洞类型：</span>
+	//     <select v-model="bugType">
+	//       <option value="">--选择漏洞大类--</option>
+	//       <option value="6">网络设备/硬件设施</option>
+	//       <option value="7">操作系统/系统服务</option>
+	//       <option value="8">基础组件/开发框架</option>
+	//       <option value="9">建站软件/web应用</option>
+	//       <option value="10">常用软件/客户端应用</option>
+	//       <option value="11">入侵事件/安全情报</option>
+	//       <option value="0">其他类型</option>
+	//     </select>
+	//     </div>
+	//       <div class="submit-item">
+	//       <span class="tagTitle">漏洞标题：</span>
+	//       <input type="text" class="bug-name" v-model="bugName"/>
+	//     </div>
+	//     <div class="submit-item">
+	//       <span class="tagTitle">漏洞等级：</span>
+	//       <select v-model="bugLevel">
+	//         <option value="">--选择漏洞等级--</option>
+	//         <option value="0">低</option>
+	//         <option value="1">中</option>
+	//         <option value="2">高</option>
+	//       </select>
+	//     </div>
+	//     <div class="submit-item">
+	//       <span class="tagTitle">问题描述：</span>
+	//       <textarea class="bug-description" v-model="bugDescription"></textarea>
+	//     </div>
+	//     <div class="submit-item">
+	//       <span class="tagTitle">详细说明：</span>
+	//       <textarea v-model="bugDetail"></textarea>
+	//     </div>
+	//     <div class="submit-item">
+	//       <span class="tagTitle">漏洞证明：</span>
+	//       <textarea v-model="bugProve"></textarea>
+	//     </div>
+	//     <div class="submit-item">
+	//       <span class="tagTitle">漏洞修复：</span>
+	//       <textarea v-model="bugFix"></textarea>
+	//     </div>
+	//     <div class="sumbit-btn">
+	//       <button class="btn btn-submit" v-on:click="submit">确 定</button>
+	//       <button class="btn btn-cancel" v-link="{ path: '/BugList' }">取 消</button>
+	//     </div>
+	//   </div>
+	// </template>
+	// <script>
+	exports.default = {
+	  name: 'submitBugs',
+	  data: function data() {
+	    return {
+	      schoolName: "",
+	      bugType: "",
+	      bugName: "",
+	      bugLevel: "",
+	      bugDescription: "",
+	      bugDetail: "",
+	      bugProve: "",
+	      bugFix: ""
+	    };
+	  },
+	
+	  computed: {// 计算属性
+	
+	  },
+	  methods: {
+	    submit: function submit() {
+	      alert("submit");
+	    },
+	    send: function send() {
+	      var t = this;
+	      var date = new Date();
+	      var data = {
+	        schoolName: t.schoolName,
+	        type: t.bugType,
+	        name: t.bugName,
+	        level: t.bugLevel,
+	        description: t.bugDescription,
+	        detail: t.bugDetail,
+	        prove: t.bugProve,
+	        fix: t.bugFix,
+	        date: date
+	      };
+	      this.$http({
+	        url: '',
+	        method: 'POST',
+	        params: data
+	      }).then(function (json) {
+	        //成功
+	      });
+	    }
+	  }
+	};
+	// </script>
+	// <style lang="less">
+	// @import "../less/submitBug.less";
+	// </style>
+
+	/* generated by vue-loader */
 
 /***/ },
 /* 49 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题类型：</span>\n    <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n    <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n    <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n    <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"a\">A</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他高校</option>\n  </select> \n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  </div>\n    <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞标题：</span>\n    <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞等级：</span>\n    <select v-model=\"bugLevel\">\n      <option value=\"\">--选择漏洞等级--</option>\n      <option value=\"0\">低</option>\n      <option value=\"1\">中</option>\n      <option value=\"2\">高</option>\n    </select>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题描述：</span>\n    <textarea class=\"bug-description\" v-model=\"bugDescription\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">详细说明：</span>\n    <textarea v-model=\"bugDetail\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞证明：</span>\n    <textarea v-model=\"bugProve\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞修复：</span>\n    <textarea v-model=\"bugFix\"></textarea>\n  </div>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\" v-on:click=\"submit\">确 定</button>\n    <button class=\"btn btn-cancel\" v-link=\"{ path: '/BugList' }\">取 消</button>\n  </div>\n</div>\n";
+
+/***/ },
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(50)
-	__vue_template__ = __webpack_require__(52)
+	__webpack_require__(51)
+	__vue_template__ = __webpack_require__(53)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14807,13 +14937,13 @@
 	})()}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(51);
+	var content = __webpack_require__(52);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(34)(content, {});
@@ -14833,7 +14963,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(32)();
@@ -14847,23 +14977,23 @@
 
 
 /***/ },
-/* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = "\n<div class=\"company-list\">\n  <a href=\"http://www.tjut.edu.cn/\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(53) + "\" alt=\"天津理工大学\"></a>\n</div>\n";
-
-/***/ },
 /* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "1281ea140e16e39e77c9d4c5229670a6.jpg";
+	module.exports = "\n<div class=\"company-list\">\n  <a href=\"http://www.tjut.edu.cn/\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(54) + "\" alt=\"天津理工大学\"></a>\n</div>\n";
 
 /***/ },
 /* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = __webpack_require__.p + "1281ea140e16e39e77c9d4c5229670a6.jpg";
+
+/***/ },
+/* 55 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(55)
+	__vue_template__ = __webpack_require__(56)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14882,22 +15012,22 @@
 	})()}
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"userList\">\n  <div class=\"headTitle\">\n    <p>白帽子列表</p>\n  </div>\n  <div class=\"userListTip\">我们将一切对安全极为感兴趣，对事物运行的原理有着天生的好奇心，愿意将技术回归技术，愿意为其他朋友做出贡献的人定义为白帽子，你可以通过注册提交漏洞来成为白帽子中的一员</div>\n  <table class=\"table table-hover userInfoList\">\n    <thead>\n      <tr>\n        <th class=\"userDate\">注册日期</th>\n        <th class=\"userName\">昵称</th>\n        <th class=\"userLevel\">等级</th> \n        <th class=\"submitBugNum\">提交漏洞数</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      \n    </tbody>\n  </table>\n</div>\n";
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(57)
+	__vue_script__ = __webpack_require__(58)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/bugSummary.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(58)
+	__vue_template__ = __webpack_require__(59)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14916,7 +15046,7 @@
 	})()}
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14983,146 +15113,10 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 58 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div id=\"container\" style=\"min-width:400px;height:400px\"></div>\n";
-
-/***/ },
 /* 59 */
 /***/ function(module, exports) {
 
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="submitBugs">
-	//     <span class="tagTitle">问题类型：</span>
-	//     <input type="radio" id="web" value="web" v-model="submitType">
-	//     <label for="web">互联网应用（如微博，网站，web邮箱等）</label>
-	//     <input type="radio" id="app" value="app" v-model="submitType">
-	//     <label for="app">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>
-	//     <br>
-	//     <span class="tagTitle">问题高校：</span>
-	//     <select v-model="schoolName">
-	//       <option value="">--选择问题高校--</option>
-	//       <option value="a">A</option>
-	//       <option value="b">B</option>
-	//       <option value="c">C</option>
-	//       <option value="other">其他厂商</option>
-	//     </select>
-	//     <br>
-	//     <span class="tagTitle">漏洞类型：</span>
-	//     <select v-model="bugType">
-	//       <option value="">--选择漏洞大类--</option>
-	//       <option value="6">网络设备/硬件设施</option>
-	//       <option value="7">操作系统/系统服务</option>
-	//       <option value="8">基础组件/开发框架</option>
-	//       <option value="9">建站软件/web应用</option>
-	//       <option value="10">常用软件/客户端应用</option>
-	//       <option value="11">入侵事件/安全情报</option>
-	//       <option value="0">其他类型</option>
-	//     </select>
-	//     <br>
-	//     <span class="tagTitle">漏洞标题：</span>
-	//     <input type="text" class="bug-name" v-model="bugName"/>
-	//     <br>
-	//     <span class="tagTitle">漏洞等级：</span>
-	//     <select v-model="bugLevel">
-	//       <option value="">--选择漏洞等级--</option>
-	//       <option value="0">低</option>
-	//       <option value="1">中</option>
-	//       <option value="2">高</option>
-	//     </select>
-	//     <br>
-	//     <span class="tagTitle">问题描述：</span>
-	//     <textarea v-model="bugDescription"></textarea>
-	//     <br>
-	//     <span class="tagTitle">详细说明：</span>
-	//     <textarea v-model="bugDetail"></textarea>
-	//     <br>
-	//     <span class="tagTitle">漏洞证明：</span>
-	//     <textarea v-model="bugProve"></textarea>
-	//     <br>
-	//     <span class="tagTitle">漏洞修复：</span>
-	//     <textarea v-model="bugFix"></textarea>
-	//     <br>
-	//     <div class="sumbit-btn">
-	//       <button class="btn btn-submit">确 定</button>
-	//       <button class="btn btn-cancel">取 消</button>
-	//     </div>
-	//   </div>
-	// </template>
-	// <script>
-	exports.default = {
-	  name: 'submitBugs',
-	  data: function data() {
-	    return {
-	      schoolName: "",
-	      bugType: "",
-	      bugName: "",
-	      bugLevel: "",
-	      bugDescription: "",
-	      bugDetail: "",
-	      bugProve: "",
-	      bugFix: ""
-	    };
-	  },
-	
-	  computed: {// 计算属性
-	
-	  },
-	  methods: {}
-	};
-	// </script>
-	// <style lang="less">
-	// .submitBugs{
-	//   font-size: 14px;
-	//   textarea{
-	//     resize: none;
-	//     width: 500px;
-	//     height: 200px;
-	//     margin-bottom: 20px;
-	//   }
-	//   select{
-	//     background-color: #fff;
-	//     height: 30px;
-	//     width: 200px;
-	//   }
-	//   .bug-name{
-	//     height: 30px;
-	//     width: 500px;
-	//   }
-	//   .tagTitle{
-	//     display: inline-block;
-	//     width: 80px;
-	//     line-height: 35px;
-	//     vertical-align: top;
-	//     margin-right: 10px;
-	//     margin-bottom: 20px;
-	//   }
-	//   .sumbit-btn{
-	//     text-align: center;
-	//     .btn{
-	//       height: 35px;
-	//       padding: 0 20px;
-	//       border: 0px;
-	//       font-size: 16px;
-	//     }
-	//     .btn-submit{
-	//       background-color: #9ac3dd;
-	//       margin-right: 50px;
-	//     }
-	//     .btn-cancel{
-	//       background-color: #eee;
-	//     }
-	//   }
-	// }
-	// </style>
-
-	/* generated by vue-loader */
+	module.exports = "\n<div id=\"container\" style=\"min-width:400px;height:400px\"></div>\n";
 
 /***/ }
 /******/ ]);
