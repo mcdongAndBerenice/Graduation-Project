@@ -21,7 +21,7 @@ router.map({
     component: BugList,
     menuIndex: 0
   },
-  "/BugInfo":{
+  "/BugInfo/:id":{
     component: BugInfo,
     name: "BugInfo",
     menuIndex: 0

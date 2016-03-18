@@ -1,0 +1,45 @@
+.userList{
+  .userInfoList{
+    word-wrap: break-word;
+    border-collapse:collapse;
+    thead{
+      font-size: 18px;
+      color: #555;
+      // border: 1px solid #eee;
+      th{
+        padding: 8px 10px; 
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space:nowrap;
+      }
+    }
+    tbody{
+      tr{
+        // border: 1px solid #eee;
+        &:hover{
+          background-color: #eee;
+        }
+      }
+      td{
+        padding: 5px 10px; 
+        font-size: 14px;
+        color: #666;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space:nowrap;
+      }
+    } 
+    .user-date{
+      width: 146px;
+    }
+    .user-name{
+      width: 300px;
+    }
+    .user-level{
+      width: 142px;
+    }
+    .submit-bugNum{
+      width: 142px;
+    }
+  }
+}

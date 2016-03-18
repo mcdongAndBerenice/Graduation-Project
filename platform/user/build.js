@@ -44,52 +44,56 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1);
+	module.exports = __webpack_require__(5);
 
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var _vue = __webpack_require__(2);
+	var _vue = __webpack_require__(6);
 	
 	var _vue2 = _interopRequireDefault(_vue);
 	
-	var _vueRouter = __webpack_require__(4);
+	var _vueRouter = __webpack_require__(8);
 	
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
 	
-	var _vueResource = __webpack_require__(5);
+	var _vueResource = __webpack_require__(9);
 	
 	var _vueResource2 = _interopRequireDefault(_vueResource);
 	
-	var _main = __webpack_require__(29);
+	var _main = __webpack_require__(33);
 	
 	var _main2 = _interopRequireDefault(_main);
 	
-	var _bugList = __webpack_require__(36);
+	var _bugList = __webpack_require__(40);
 	
 	var _bugList2 = _interopRequireDefault(_bugList);
 	
-	var _bugInfo = __webpack_require__(41);
+	var _bugInfo = __webpack_require__(45);
 	
 	var _bugInfo2 = _interopRequireDefault(_bugInfo);
 	
-	var _submitBug = __webpack_require__(45);
+	var _submitBug = __webpack_require__(49);
 	
 	var _submitBug2 = _interopRequireDefault(_submitBug);
 	
-	var _companyList = __webpack_require__(50);
+	var _companyList = __webpack_require__(54);
 	
 	var _companyList2 = _interopRequireDefault(_companyList);
 	
-	var _userList = __webpack_require__(55);
+	var _userList = __webpack_require__(59);
 	
 	var _userList2 = _interopRequireDefault(_userList);
 	
-	var _bugSummary = __webpack_require__(57);
+	var _bugSummary = __webpack_require__(61);
 	
 	var _bugSummary2 = _interopRequireDefault(_bugSummary);
 	
@@ -107,7 +111,7 @@
 	    component: _bugList2.default,
 	    menuIndex: 0
 	  },
-	  "/BugInfo": {
+	  "/BugInfo/:id": {
 	    component: _bugInfo2.default,
 	    name: "BugInfo",
 	    menuIndex: 0
@@ -144,7 +148,7 @@
 	router.start(_main2.default, '#main');
 
 /***/ },
-/* 2 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {/*!
@@ -9838,10 +9842,10 @@
 	}
 	
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(7)))
 
 /***/ },
-/* 3 */
+/* 7 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9938,7 +9942,7 @@
 
 
 /***/ },
-/* 4 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -12592,7 +12596,7 @@
 	}));
 
 /***/ },
-/* 5 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12601,16 +12605,16 @@
 	
 	function install(Vue) {
 	
-	    var _ = __webpack_require__(6);
+	    var _ = __webpack_require__(10);
 	
 	    _.config = Vue.config;
 	    _.warning = Vue.util.warn;
 	    _.nextTick = Vue.util.nextTick;
 	
-	    Vue.url = __webpack_require__(7);
-	    Vue.http = __webpack_require__(13);
-	    Vue.resource = __webpack_require__(28);
-	    Vue.Promise = __webpack_require__(15);
+	    Vue.url = __webpack_require__(11);
+	    Vue.http = __webpack_require__(17);
+	    Vue.resource = __webpack_require__(32);
+	    Vue.Promise = __webpack_require__(19);
 	
 	    Object.defineProperties(Vue.prototype, {
 	
@@ -12651,7 +12655,7 @@
 
 
 /***/ },
-/* 6 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/**
@@ -12779,14 +12783,14 @@
 
 
 /***/ },
-/* 7 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for URL templating.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	var ie = document.documentMode;
 	var el = document.createElement('a');
 	
@@ -12822,10 +12826,10 @@
 	 */
 	
 	Url.transforms = [
-	    __webpack_require__(8),
-	    __webpack_require__(10),
-	    __webpack_require__(11),
-	    __webpack_require__(12)
+	    __webpack_require__(12),
+	    __webpack_require__(14),
+	    __webpack_require__(15),
+	    __webpack_require__(16)
 	];
 	
 	/**
@@ -12915,14 +12919,14 @@
 
 
 /***/ },
-/* 8 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * URL Template (RFC 6570) Transform.
 	 */
 	
-	var UrlTemplate = __webpack_require__(9);
+	var UrlTemplate = __webpack_require__(13);
 	
 	module.exports = function (options) {
 	
@@ -12937,7 +12941,7 @@
 
 
 /***/ },
-/* 9 */
+/* 13 */
 /***/ function(module, exports) {
 
 	/**
@@ -13093,14 +13097,14 @@
 
 
 /***/ },
-/* 10 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Legacy Transform.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	module.exports = function (options, next) {
 	
@@ -13145,14 +13149,14 @@
 
 
 /***/ },
-/* 11 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Query Parameter Transform.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	module.exports = function (options, next) {
 	
@@ -13175,14 +13179,14 @@
 
 
 /***/ },
-/* 12 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Root Prefix Transform.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	module.exports = function (options, next) {
 	
@@ -13197,17 +13201,17 @@
 
 
 /***/ },
-/* 13 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for sending network requests.
 	 */
 	
-	var _ = __webpack_require__(6);
-	var Client = __webpack_require__(14);
-	var Promise = __webpack_require__(15);
-	var interceptor = __webpack_require__(18);
+	var _ = __webpack_require__(10);
+	var Client = __webpack_require__(18);
+	var Promise = __webpack_require__(19);
+	var interceptor = __webpack_require__(22);
 	var jsonType = {'Content-Type': 'application/json'};
 	
 	function Http(url, options) {
@@ -13259,13 +13263,13 @@
 	};
 	
 	Http.interceptors = [
-	    __webpack_require__(19),
-	    __webpack_require__(20),
-	    __webpack_require__(21),
 	    __webpack_require__(23),
 	    __webpack_require__(24),
 	    __webpack_require__(25),
-	    __webpack_require__(26)
+	    __webpack_require__(27),
+	    __webpack_require__(28),
+	    __webpack_require__(29),
+	    __webpack_require__(30)
 	];
 	
 	Http.headers = {
@@ -13300,16 +13304,16 @@
 
 
 /***/ },
-/* 14 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Base client.
 	 */
 	
-	var _ = __webpack_require__(6);
-	var Promise = __webpack_require__(15);
-	var xhrClient = __webpack_require__(17);
+	var _ = __webpack_require__(10);
+	var Promise = __webpack_require__(19);
+	var xhrClient = __webpack_require__(21);
 	
 	module.exports = function (request) {
 	
@@ -13371,15 +13375,15 @@
 
 
 /***/ },
-/* 15 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Promise adapter.
 	 */
 	
-	var _ = __webpack_require__(6);
-	var PromiseObj = window.Promise || __webpack_require__(16);
+	var _ = __webpack_require__(10);
+	var PromiseObj = window.Promise || __webpack_require__(20);
 	
 	function Promise(executor, context) {
 	
@@ -13486,14 +13490,14 @@
 
 
 /***/ },
-/* 16 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Promises/A+ polyfill v1.1.4 (https://github.com/bramstein/promis)
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	var RESOLVED = 0;
 	var REJECTED = 1;
@@ -13671,15 +13675,15 @@
 
 
 /***/ },
-/* 17 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XMLHttp client.
 	 */
 	
-	var _ = __webpack_require__(6);
-	var Promise = __webpack_require__(15);
+	var _ = __webpack_require__(10);
+	var Promise = __webpack_require__(19);
 	
 	module.exports = function (request) {
 	    return new Promise(function (resolve) {
@@ -13720,15 +13724,15 @@
 
 
 /***/ },
-/* 18 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Interceptor factory.
 	 */
 	
-	var _ = __webpack_require__(6);
-	var Promise = __webpack_require__(15);
+	var _ = __webpack_require__(10);
+	var Promise = __webpack_require__(19);
 	
 	module.exports = function (handler, vm) {
 	
@@ -13771,14 +13775,14 @@
 
 
 /***/ },
-/* 19 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Before Interceptor.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	module.exports = {
 	
@@ -13795,7 +13799,7 @@
 
 
 /***/ },
-/* 20 */
+/* 24 */
 /***/ function(module, exports) {
 
 	/**
@@ -13831,14 +13835,14 @@
 
 
 /***/ },
-/* 21 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP Interceptor.
 	 */
 	
-	var jsonpClient = __webpack_require__(22);
+	var jsonpClient = __webpack_require__(26);
 	
 	module.exports = {
 	
@@ -13855,15 +13859,15 @@
 
 
 /***/ },
-/* 22 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * JSONP client.
 	 */
 	
-	var _ = __webpack_require__(6);
-	var Promise = __webpack_require__(15);
+	var _ = __webpack_require__(10);
+	var Promise = __webpack_require__(19);
 	
 	module.exports = function (request) {
 	    return new Promise(function (resolve) {
@@ -13909,7 +13913,7 @@
 
 
 /***/ },
-/* 23 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/**
@@ -13932,14 +13936,14 @@
 
 
 /***/ },
-/* 24 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Mime Interceptor.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	module.exports = {
 	
@@ -13974,14 +13978,14 @@
 
 
 /***/ },
-/* 25 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Header Interceptor.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	module.exports = {
 	
@@ -14006,15 +14010,15 @@
 
 
 /***/ },
-/* 26 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * CORS Interceptor.
 	 */
 	
-	var _ = __webpack_require__(6);
-	var xdrClient = __webpack_require__(27);
+	var _ = __webpack_require__(10);
+	var xdrClient = __webpack_require__(31);
 	var xhrCors = 'withCredentials' in new XMLHttpRequest();
 	var originUrl = _.url.parse(location.href);
 	
@@ -14049,15 +14053,15 @@
 
 
 /***/ },
-/* 27 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * XDomain client (Internet Explorer).
 	 */
 	
-	var _ = __webpack_require__(6);
-	var Promise = __webpack_require__(15);
+	var _ = __webpack_require__(10);
+	var Promise = __webpack_require__(19);
 	
 	module.exports = function (request) {
 	    return new Promise(function (resolve) {
@@ -14092,14 +14096,14 @@
 
 
 /***/ },
-/* 28 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Service for interacting with RESTful services.
 	 */
 	
-	var _ = __webpack_require__(6);
+	var _ = __webpack_require__(10);
 	
 	function Resource(url, params, actions, options) {
 	
@@ -14208,12 +14212,12 @@
 
 
 /***/ },
-/* 29 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(30)
-	__vue_template__ = __webpack_require__(35)
+	__webpack_require__(34)
+	__vue_template__ = __webpack_require__(39)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14232,16 +14236,16 @@
 	})()}
 
 /***/ },
-/* 30 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(31);
+	var content = __webpack_require__(35);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
+	var update = __webpack_require__(38)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14258,21 +14262,21 @@
 	}
 
 /***/ },
-/* 31 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(32)();
+	exports = module.exports = __webpack_require__(36)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(" + __webpack_require__(33) + ");\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info ul {\n  display: inline-block;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  font-size: 12px;\n  color: #c2c2c4;\n  height: 75px;\n  line-height: 75px;\n  text-align: center;\n  float: right;\n}\n.container .menu .user-info ul li {\n  display: inline-block;\n  width: 40px;\n  margin-right: 20px;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n", "", {"version":3,"sources":["/./src/components/main.vue"],"names":[],"mappings":"AAAA;;;;;;EAME,UAAU;EACV,WAAW;EACX,iBAAiB;CAClB;AACD;;EAEE,gDAAqC;EACrC,sBAAsB;EACtB,UAAU;EACV,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,0BAA0B;EAC1B,kBAAkB;CACnB;AACD;EACE,gBAAgB;CACjB;AACD;;;;;EAKE,0BAA0B;EAC1B,sBAAsB;CACvB;AACD;EACE,eAAe;CAChB;AACD;EACE,aAAa;EACb,eAAe;EACf,UAAU;EACV,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,kBAAkB;CACnB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,YAAY;EACZ,UAAU;CACX;AACD;EACE,iBAAiB;EACjB,mBAAmB;EACnB,sBAAsB;EACtB,cAAc;EACd,cAAc;EACd,kBAAkB;EAClB,uBAAuB;CACxB;AACD;EACE,mBAAmB;EACnB,OAAO;EACP,QAAQ;EACR,0BAA0B;EAC1B,sBAAsB;EACtB,aAAa;EACb,WAAW;CACZ;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,iCAAiC;EACjC,aAAa;EACb,WAAW;EACX,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,UAAU;EACV,YAAY;EACZ,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,UAAU;EACV,WAAW;EACX,iBAAiB;EACjB,gBAAgB;EAChB,eAAe;EACf,aAAa;EACb,kBAAkB;EAClB,mBAAmB;EACnB,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,0BAA0B;EAC1B,eAAe;EACf,+BAA+B;EAC/B,wBAAwB;CACzB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,eAAe;EACf,cAAc;CACf;AACD;EACE,cAAc;CACf;AACD;EACE,YAAY;EACZ,0BAA0B;EAC1B,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,SAAS;CACV;AACD;EACE,mBAAmB;CACpB;AACD;;EAEE,aAAa;EACb,iBAAiB;EACjB,UAAU;EACV,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,aAAa;CACd","file":"main.vue","sourcesContent":["input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(../img/bg.png);\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info ul {\n  display: inline-block;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  font-size: 12px;\n  color: #c2c2c4;\n  height: 75px;\n  line-height: 75px;\n  text-align: center;\n  float: right;\n}\n.container .menu .user-info ul li {\n  display: inline-block;\n  width: 40px;\n  margin-right: 20px;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(" + __webpack_require__(37) + ");\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info ul {\n  display: inline-block;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  font-size: 12px;\n  color: #c2c2c4;\n  height: 75px;\n  line-height: 75px;\n  text-align: center;\n  float: right;\n}\n.container .menu .user-info ul li {\n  display: inline-block;\n  width: 40px;\n  margin-right: 20px;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n", "", {"version":3,"sources":["/./src/components/main.vue"],"names":[],"mappings":"AAAA;;;;;;EAME,UAAU;EACV,WAAW;EACX,iBAAiB;CAClB;AACD;;EAEE,gDAAqC;EACrC,sBAAsB;EACtB,UAAU;EACV,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,0BAA0B;EAC1B,kBAAkB;CACnB;AACD;EACE,gBAAgB;CACjB;AACD;;;;;EAKE,0BAA0B;EAC1B,sBAAsB;CACvB;AACD;EACE,eAAe;CAChB;AACD;EACE,aAAa;EACb,eAAe;EACf,UAAU;EACV,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,kBAAkB;CACnB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,YAAY;EACZ,UAAU;CACX;AACD;EACE,iBAAiB;EACjB,mBAAmB;EACnB,sBAAsB;EACtB,cAAc;EACd,cAAc;EACd,kBAAkB;EAClB,uBAAuB;CACxB;AACD;EACE,mBAAmB;EACnB,OAAO;EACP,QAAQ;EACR,0BAA0B;EAC1B,sBAAsB;EACtB,aAAa;EACb,WAAW;CACZ;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,iCAAiC;EACjC,aAAa;EACb,WAAW;EACX,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,UAAU;EACV,YAAY;EACZ,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,UAAU;EACV,WAAW;EACX,iBAAiB;EACjB,gBAAgB;EAChB,eAAe;EACf,aAAa;EACb,kBAAkB;EAClB,mBAAmB;EACnB,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,0BAA0B;EAC1B,eAAe;EACf,+BAA+B;EAC/B,wBAAwB;CACzB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,eAAe;EACf,cAAc;CACf;AACD;EACE,cAAc;CACf;AACD;EACE,YAAY;EACZ,0BAA0B;EAC1B,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,SAAS;CACV;AACD;EACE,mBAAmB;CACpB;AACD;;EAEE,aAAa;EACb,iBAAiB;EACjB,UAAU;EACV,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,aAAa;CACd","file":"main.vue","sourcesContent":["input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(../img/bg.png);\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info ul {\n  display: inline-block;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  font-size: 12px;\n  color: #c2c2c4;\n  height: 75px;\n  line-height: 75px;\n  text-align: center;\n  float: right;\n}\n.container .menu .user-info ul li {\n  display: inline-block;\n  width: 40px;\n  margin-right: 20px;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 32 */
+/* 36 */
 /***/ function(module, exports) {
 
 	/*
@@ -14328,13 +14332,13 @@
 
 
 /***/ },
-/* 33 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "3b8f2014e2cbb978a55d9a568c8e03ae.png";
 
 /***/ },
-/* 34 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -14556,18 +14560,23 @@
 
 
 /***/ },
-/* 35 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">高校列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <ul>\r\n        <li>退出</li>\r\n      </ul>\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
-/* 36 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(37)
-	__vue_template__ = __webpack_require__(40)
+	__webpack_require__(41)
+	__vue_script__ = __webpack_require__(68)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/components/bugList.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(44)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14586,16 +14595,16 @@
 	})()}
 
 /***/ },
-/* 37 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(38);
+	var content = __webpack_require__(42);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
+	var update = __webpack_require__(38)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14612,38 +14621,38 @@
 	}
 
 /***/ },
-/* 38 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(32)();
+	exports = module.exports = __webpack_require__(36)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, ".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(" + __webpack_require__(39) + ") no-repeat;\n}\n", "", {"version":3,"sources":["/./src/components/bugList.vue"],"names":[],"mappings":"AAAA;EACE,8BAA8B;CAC/B;AACD;EACE,kBAAkB;EAClB,kBAAkB;EAClB,iCAAiC;CAClC;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,oBAAoB;EACpB,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,qBAAqB;CACtB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,oDAA6C;CAC9C","file":"bugList.vue","sourcesContent":[".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(\"../img/goto.png\") no-repeat;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(" + __webpack_require__(43) + ") no-repeat;\n}\n", "", {"version":3,"sources":["/./src/components/bugList.vue"],"names":[],"mappings":"AAAA;EACE,8BAA8B;CAC/B;AACD;EACE,kBAAkB;EAClB,kBAAkB;EAClB,iCAAiC;CAClC;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,oBAAoB;EACpB,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,qBAAqB;CACtB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,oDAA6C;CAC9C","file":"bugList.vue","sourcesContent":[".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(\"../img/goto.png\") no-repeat;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 39 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,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"
 
 /***/ },
-/* 40 */
+/* 44 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"bug-list\">\n  <li class=\"clearfix\">\n    <!-- <a v-link=\"{ name: 'site', params: { id: item.media }}\" class=\"pull-left\" href=\"#\">{{item.disp}}</a>\n    <span>\n    <a v-on:click=\"showInfo(item.media)\">查看</a><a v-link=\"{ name: 'ChartMedia', params: { id: item.media }}\">报告<em></em></a>\n    </span> -->\n    <a class=\"buglist-pull-left\" v-link=\"{ name: 'BugInfo'}\" href=\"#\">优酷某系统未授权访问可入内网</a>\n    <span class=\"goto-buginfo\">\n      <a v-link=\"{ name: 'BugInfo'}\" href=\"#\">详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n  <li class=\"clearfix\">\n    <a class=\"buglist-pull-left\" href=\"#\">管家帮某站漏洞导致Getshehll(跑马场几十个Shell涉及100W+各种用户数据包括密码\\身份证\\职业\\联系方式等)</a>\n    <span class=\"goto-buginfo\">\n      <a>详情<em></em></a>\n    </span>\n    <span class=\"data\">2015-12-18</span>\n  </li>\n</ul>\n<!-- <nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav> -->\n";
+	module.exports = "\n<ul class=\"bug-list\">\n  <li class=\"clearfix\" v-for=\"item in items\">\n    <a class=\"buglist-pull-left\" v-link=\"{ name: 'BugInfo', params: {id: item.bugNum}}\" href=\"#\">{{item.disp}}</a>\n    <span class=\"goto-buginfo\">\n      <a v-link=\"{ name: 'BugInfo', params: {id: item.bugNum}}\" href=\"#\">详情<em></em></a>\n    </span>\n    <span class=\"data\">{{item.date}}</span>\n  </li>\n</ul>\n<!-- <nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav> -->\n";
 
 /***/ },
-/* 41 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(42)
-	__vue_template__ = __webpack_require__(44)
+	__webpack_require__(46)
+	__vue_template__ = __webpack_require__(48)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14662,16 +14671,16 @@
 	})()}
 
 /***/ },
-/* 42 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(43);
+	var content = __webpack_require__(47);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
+	var update = __webpack_require__(38)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14688,10 +14697,10 @@
 	}
 
 /***/ },
-/* 43 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(32)();
+	exports = module.exports = __webpack_require__(36)();
 	// imports
 	
 	
@@ -14702,23 +14711,23 @@
 
 
 /***/ },
-/* 44 */
+/* 48 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"bugInfo\">\n  <div class=\"head-title\">\n    <p>漏洞概要</p>\n  </div>\n  <div>\n    <ul class=\"bug-summaryList\">\n      <li>缺陷编号：<span>{{bugInfo.bugNum}}</span></li>\n      <li>漏洞标题：<span>{{bugInfo.bugTitle}}</span></li>\n      <li>相关高校：<span>{{bugInfo.schoolName}}</span></li>\n      <li>漏洞作者：<span>{{bugInfo.userName}}</span></li>\n      <li>提交时间：<span>{{bugInfo.submitDate}}</span></li>\n      <li>公开时间：<span>{{bugInfo.publicDate}}</span></li>\n      <li>漏洞类型：<span>{{bugInfo.bugType}}</span></li>\n      <li>危害等级：<span>{{bugInfo.bugLevel}}</span></li>\n      <li>漏洞状态：<span>{{bugInfo.bugStatus}}</span></li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞详情</p>\n  </div>\n  <div>\n    <ul class=\"bug-detailsList\">\n      <li>\n        <span class=\"tag-title\">披露状态：</span>\n        <ul v-for=\"statusItem in statusItems\">\n          <li><span>{{statusItem.date}}：</span>{{statusItem.statusDetail}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">简要描述：</span>\n        <ul>\n          <li>{{bugInfo.description}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">漏洞hash：</span>{{bugInfo.hash}}\n      </li>\n      <li>\n        <span class=\"tag-title\">版权声明：</span>转载请注明来源 {{bugInfo.userName}}@xxx\n      </li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞回应</p>\n  </div>\n  <div class=\"school-response\">\n    <ul>\n      <li>\n        <span class=\"tag-title\">高校回应：</span>\n        <ul><li>暂无</li></ul>\n    </li>\n    </ul>\n  </div>\n  <!-- <div class=\"head-title\">\n    <p>评论</p>\n  </div>\n  <div class=\"comments\">\n    <p class=\"visible\"  >登录后才能发表评论，请先 <a href=\"#\">登录</a> 。</p>\n    <div class=\" \">\n      <ul>\n        <li>aaaaa</li>\n        <li>aaawewwwaa</li>\n        <li>aaasdfaasdfaa</li>\n        <li>aaadsfsdafaa</li>\n        <li>aaaaa</li>\n      </ul>\n      <textarea name=\"addComments\" class=\"addComments\"></textarea>\n      <br>\n      <button class=\"btn btn-primary\">提交</button>\n    </div>\n  </div>  -->\n</div>\n";
 
 /***/ },
-/* 45 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(46)
-	__vue_script__ = __webpack_require__(48)
+	__webpack_require__(50)
+	__vue_script__ = __webpack_require__(52)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/submitBug.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(49)
+	__vue_template__ = __webpack_require__(53)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14737,16 +14746,16 @@
 	})()}
 
 /***/ },
-/* 46 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(47);
+	var content = __webpack_require__(51);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
+	var update = __webpack_require__(38)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14763,10 +14772,10 @@
 	}
 
 /***/ },
-/* 47 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(32)();
+	exports = module.exports = __webpack_require__(36)();
 	// imports
 	
 	
@@ -14777,7 +14786,7 @@
 
 
 /***/ },
-/* 48 */
+/* 52 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -14907,18 +14916,18 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 49 */
+/* 53 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题类型：</span>\n    <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n    <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n    <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n    <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"a\">A</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他高校</option>\n  </select> \n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  </div>\n    <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞标题：</span>\n    <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞等级：</span>\n    <select v-model=\"bugLevel\">\n      <option value=\"\">--选择漏洞等级--</option>\n      <option value=\"0\">低</option>\n      <option value=\"1\">中</option>\n      <option value=\"2\">高</option>\n    </select>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题描述：</span>\n    <textarea class=\"bug-description\" v-model=\"bugDescription\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">详细说明：</span>\n    <textarea v-model=\"bugDetail\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞证明：</span>\n    <textarea v-model=\"bugProve\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞修复：</span>\n    <textarea v-model=\"bugFix\"></textarea>\n  </div>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\" v-on:click=\"submit\">确 定</button>\n    <button class=\"btn btn-cancel\" v-link=\"{ path: '/BugList' }\">取 消</button>\n  </div>\n</div>\n";
 
 /***/ },
-/* 50 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(51)
-	__vue_template__ = __webpack_require__(53)
+	__webpack_require__(55)
+	__vue_template__ = __webpack_require__(57)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14937,16 +14946,16 @@
 	})()}
 
 /***/ },
-/* 51 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(52);
+	var content = __webpack_require__(56);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(34)(content, {});
+	var update = __webpack_require__(38)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -14963,10 +14972,10 @@
 	}
 
 /***/ },
-/* 52 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(32)();
+	exports = module.exports = __webpack_require__(36)();
 	// imports
 	
 	
@@ -14977,23 +14986,29 @@
 
 
 /***/ },
-/* 53 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "\n<div class=\"company-list\">\n  <a href=\"http://www.tjut.edu.cn/\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(54) + "\" alt=\"天津理工大学\"></a>\n</div>\n";
+	module.exports = "\n<div class=\"company-list\">\n  <a href=\"http://www.tjut.edu.cn/\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(58) + "\" alt=\"天津理工大学\"></a>\n</div>\n";
 
 /***/ },
-/* 54 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "1281ea140e16e39e77c9d4c5229670a6.jpg";
 
 /***/ },
-/* 55 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_template__ = __webpack_require__(56)
+	__webpack_require__(64)
+	__vue_script__ = __webpack_require__(67)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/components/userList.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(60)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15012,22 +15027,22 @@
 	})()}
 
 /***/ },
-/* 56 */
+/* 60 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"userList\">\n  <div class=\"headTitle\">\n    <p>白帽子列表</p>\n  </div>\n  <div class=\"userListTip\">我们将一切对安全极为感兴趣，对事物运行的原理有着天生的好奇心，愿意将技术回归技术，愿意为其他朋友做出贡献的人定义为白帽子，你可以通过注册提交漏洞来成为白帽子中的一员</div>\n  <table class=\"table table-hover userInfoList\">\n    <thead>\n      <tr>\n        <th class=\"userDate\">注册日期</th>\n        <th class=\"userName\">昵称</th>\n        <th class=\"userLevel\">等级</th> \n        <th class=\"submitBugNum\">提交漏洞数</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      <tr>\n        <td class=\"userDate\">2015-12-18</td>\n        <td class=\"userName\"><a href=\"#\">2342342</a></td>\n        <td class=\"userLevel\">ads</td>\n        <td class=\"submitBugNum\">25215</td>\n      </tr>\n      \n    </tbody>\n  </table>\n</div>\n";
+	module.exports = "\n<div class=\"userList\">\n  <table class=\"userInfoList\">\n    <thead>\n      <tr>\n        <th class=\"user-date\">注册日期</th>\n        <th class=\"user-name\">昵称</th>\n        <th class=\"user-level\">等级</th> \n        <th class=\"submit-bugNum\">提交漏洞数</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"item in items\">\n        <td class=\"user-date\">{{item.date}}</td>\n        <td class=\"user-name\">{{item.disp}}</td>\n        <td class=\"user-level\">{{item.level}}</td>\n        <td class=\"submit-bugNum\">{{item.bugNum}}</td>\n      </tr>        \n    </tbody>\n  </table>\n</div>\n";
 
 /***/ },
-/* 57 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(58)
+	__vue_script__ = __webpack_require__(62)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/bugSummary.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(59)
+	__vue_template__ = __webpack_require__(63)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15046,7 +15061,7 @@
 	})()}
 
 /***/ },
-/* 58 */
+/* 62 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15113,10 +15128,172 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 59 */
+/* 63 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div id=\"container\" style=\"min-width:400px;height:400px\"></div>\n";
+
+/***/ },
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(65);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(38)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./userList.vue", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js?sourceMap!./../../node_modules/vue-loader/lib/style-rewriter.js!./../../node_modules/less-loader/index.js!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./userList.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(36)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".userList .userInfoList {\n  word-wrap: break-word;\n  border-collapse: collapse;\n}\n.userList .userInfoList thead {\n  font-size: 18px;\n  color: #555;\n}\n.userList .userInfoList thead th {\n  padding: 8px 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList tbody tr:hover {\n  background-color: #eee;\n}\n.userList .userInfoList tbody td {\n  padding: 5px 10px;\n  font-size: 14px;\n  color: #666;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList .user-date {\n  width: 146px;\n}\n.userList .userInfoList .user-name {\n  width: 300px;\n}\n.userList .userInfoList .user-level {\n  width: 142px;\n}\n.userList .userInfoList .submit-bugNum {\n  width: 142px;\n}\n", "", {"version":3,"sources":["/./src/components/userList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,0BAA0B;CAC3B;AACD;EACE,gBAAgB;EAChB,YAAY;CACb;AACD;EACE,kBAAkB;EAClB,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,uBAAuB;CACxB;AACD;EACE,kBAAkB;EAClB,gBAAgB;EAChB,YAAY;EACZ,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd","file":"userList.vue","sourcesContent":[".userList .userInfoList {\n  word-wrap: break-word;\n  border-collapse: collapse;\n}\n.userList .userInfoList thead {\n  font-size: 18px;\n  color: #555;\n}\n.userList .userInfoList thead th {\n  padding: 8px 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList tbody tr:hover {\n  background-color: #eee;\n}\n.userList .userInfoList tbody td {\n  padding: 5px 10px;\n  font-size: 14px;\n  color: #666;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList .user-date {\n  width: 146px;\n}\n.userList .userInfoList .user-name {\n  width: 300px;\n}\n.userList .userInfoList .user-level {\n  width: 142px;\n}\n.userList .userInfoList .submit-bugNum {\n  width: 142px;\n}\n"],"sourceRoot":"webpack://"}]);
+	
+	// exports
+
+
+/***/ },
+/* 66 */,
+/* 67 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="userList">
+	//     <table class="userInfoList">
+	//       <thead>
+	//         <tr>
+	//           <th class="user-date">注册日期</th>
+	//           <th class="user-name">昵称</th>
+	//           <th class="user-level">等级</th>
+	//           <th class="submit-bugNum">提交漏洞数</th>
+	//         </tr>
+	//       </thead>
+	//       <tbody>
+	//         <tr v-for="item in items">
+	//           <td class="user-date">{{item.date}}</td>
+	//           <td class="user-name">{{item.disp}}</td>
+	//           <td class="user-level">{{item.level}}</td>
+	//           <td class="submit-bugNum">{{item.bugNum}}</td>
+	//         </tr>       
+	//       </tbody>
+	//     </table>
+	//   </div>
+	// </template>
+	// <style lang="less">
+	// @import url("../less/userList.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'userList',
+	  data: function data() {
+	    return {
+	      items: []
+	    };
+	  },
+	
+	  methods: {
+	    sortList: function sortList(sortBy, list) {
+	      return list.sort(function (a, b) {
+	        return a[sortBy] - b[sortBy];
+	      });
+	    },
+	    getUserList: function getUserList() {
+	      //获取列表
+	    }
+	  },
+	  ready: function ready() {}
+	};
+	// </script>
+
+	/* generated by vue-loader */
+
+/***/ },
+/* 68 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template class="bugList">
+	//   <ul class="bug-list">
+	//     <li class="clearfix" v-for="item in items">
+	//       <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item.bugNum}}" href="#">{{item.disp}}</a>
+	//       <span class="goto-buginfo">
+	//         <a v-link="{ name: 'BugInfo', params: {id: item.bugNum}}" href="#">详情<em></em></a>
+	//       </span>
+	//       <span class="data">{{item.date}}</span>
+	//     </li>
+	//   </ul>
+	//   <!-- <nav>
+	//     <ul class="pagination">
+	//       <li>
+	//         <a href="#" aria-label="Previous">
+	//           <span aria-hidden="true">&laquo;</span>
+	//         </a>
+	//       </li>
+	//       <li><a href="#">1</a></li>
+	//       <li><a href="#">2</a></li>
+	//       <li><a href="#">3</a></li>
+	//       <li><a href="#">4</a></li>
+	//       <li><a href="#">5</a></li>
+	//       <li>
+	//         <a href="#" aria-label="Next">
+	//           <span aria-hidden="true">&raquo;</span>
+	//         </a>
+	//       </li>
+	//     </ul>
+	//   </nav> -->
+	// </template>
+	// <style lang="less">
+	// @import url("../less/bugList.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'bugList',
+	  data: function data() {
+	    return {
+	      items: []
+	    };
+	  },
+	
+	  methods: {
+	    getBugList: function getBugList() {
+	      //获取漏洞列表
+	    }
+	  },
+	  ready: function ready() {}
+	};
+	// </script>
+
+	/* generated by vue-loader */
 
 /***/ }
 /******/ ]);
