@@ -12,7 +12,7 @@
       <tbody>
         <tr v-for="item in items">
           <td class="user-date">{{item.date}}</td>
-          <td class="user-name">{{item.disp}}</td>
+          <td class="user-name">{{item.name}}</td>
           <td class="user-level">{{item.level}}</td>
           <td class="submit-bugNum">{{item.bugNum}}</td>
         </tr>        
