@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工单</title>
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
+    <style>
+      td{
+        padding: 3px 30px;
+      }
+      .check{
+        float: right;
+        right: 20px;
+      }
+    </style>
+</head>
+<body id="app">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h4>申请列表</h4>
+            <div v-if="ulist.length">
+              <template v-for="item0 in ulist">
+                <h6 v-text="new Date(item0.date).toLocaleString()"></h6>
+                <b v-text="item0.id"></b> / <b v-text="item0.name"></b> / <b v-text="item0.position"></b> / <b v-text="item0.group"></b>
+                <span class="check"><input v-model="workId[item0._id]" type="checkbox" @click="done(item0._id, $index)">是否完成</span>
+                <table>
+                  <tbody>
+                    <tr v-for="item1 in item0.list">
+                      <!-- <span v-text="$index + 1"></span> -->
+                      <td>
+                        <span v-text="map[item1.id]"></span>
+                      </td>
+                      <td>
+                        <span v-text="item1.num"></span>
+                      </td>
+                      <td>个</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <hr>
+              </template>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/1.0.17/vue.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        ulist: [],
+        slist: [],
+        list: null,
+        order: {},
+        map: {},
+        workId: {}
+      },
+      created: function(){
+        $.post('/list', function(data){
+          vm.list = data
+          for(var i in data){
+            vm.map[data[i]._id] = data[i].name
+          }
+          $.post('/orderAll', {state: false}, function(data){
+            vm.ulist = data
+          })
+          $.post('/orderAll', {state: true}, function(data){
+            vm.slist = data
+          })
+        })
+      },
+      methods: {
+        done: function(id, index){
+          var a = index
+          if(!vm.workId[id]){
+            console.log(id, index)
+            $.post('/workDone', {_id: id}, function(data){
+              console.log(vm.ulist[a])
+              vm.ulist.$remove(vm.ulist[a])
+            })
+          }
+        }
+      }
+    })
+</script>
+</html>

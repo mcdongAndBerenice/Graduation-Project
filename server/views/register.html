@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title><%= title %></title>
+	<link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
+	<style type="text/css">
+	.m15{ margin: 15px;}
+ 	.tc{ text-align: center;font-size: 18px;font-weight: 600;}
+	</style>
+</head>
+<body screen_capture_injected="true">
+	<div class="container">
+	<%- message %>
+		<form id="form" class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post" onsubmit="return false">
+			<fieldset>
+				<legend></legend>
+				<div class="panel panel-default">
+				<div class="panel-heading">
+					<p class="tc">行政物品申请平台-注册</p>
+				</div>
+				<div class="panel-body m15">
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-envelope"></span>
+						</span>
+						<input v-model="userInfo.email" type="text" class="form-control" id="email" name="email" placeholder="请输入邮箱名, 不需要@xiaomi.com" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-user"></span>
+						</span>
+						<input v-model="userInfo.name" type="text" class="form-control" id="name" name="name" placeholder="真实姓名" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-barcode"></span>
+						</span>
+						<input v-model="userInfo.id" type="text" class="form-control" id="id" name="id" placeholder="工号" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-map-marker"></span>
+						</span>
+						<select v-model="userInfo.group" class="form-control" placeholder="请选择组">
+						  <optgroup label="请选择组"></optgroup>
+						  <!-- <option selected>请选择组</option> -->
+						  <option v-for="item in groupList" :value="item.name" v-text="item.name"></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-map-marker"></span>
+						</span>
+						<input v-model="userInfo.position" type="text" class="form-control" id="position" name="position" placeholder="位置 如: E2-D-06" required>
+					</div>
+				</div>
+				<div class="form-group">
+						<button @click="register()" type="submit" class="btn btn-primary btn-block" id="register1">注册</button>
+				</div>
+				<div class="form-group">
+						<a href="/login"><button type="button" class="btn btn-info col-sm-3" id="login1">登录</button></a>
+				</div>
+				</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+	<script src="http://cdn.bootcss.com/vue/1.0.17/vue.min.js"></script>
+<script type="text/javascript">
+var vm = new Vue({
+	el: '#form',
+	data: {
+		userInfo: {
+			email: null,
+			name: null,
+			id: null,
+			position: null,
+			group: null,
+		},
+		groupList: []
+	},
+	methods: {
+		register: function(){
+			if(vm.userInfo.group == '请选择组'){
+				alert('请选择组')
+				return false
+			}
+			console.log('register')
+			var data = {}
+			data.email = vm.userInfo.email
+			data.name = vm.userInfo.name
+			data.position = vm.userInfo.position
+			data.id = vm.userInfo.id
+			data.group = vm.userInfo.group
+			$.ajax({
+				url: '/register',
+				type: 'post',
+				data: data,
+				success: function(data,status){
+					if(status == 'success'){
+						location.href = 'login';
+					}
+				}
+				// ,error: function(data,err){
+				// 		location.href = 'register';
+				// }
+			});
+		}
+	},
+	created: function(){
+	  $.post('/groupList', function(data){
+	    vm.groupList = data
+	  })
+	}
+})
+</script>
+</body>
+</head>
+</html>

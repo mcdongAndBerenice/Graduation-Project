@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
+    <style>
+      td{
+        padding: 10px 30px;
+      }
+    </style>
+</head>
+<body id="app">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h3><%= data.name %> 工号: <%= data.id %> 工位: <%= data.position %>   <a @click="edity">编辑工位</a></h3>
+            <template v-if="edit">工位: <input type="text" v-model="position"><button @click="edits" type="submit" class="btn btn-primary" id="login0">保存</button><span> </span><button @click="editn" type="submit" class="btn btn-primary" id="login0">取消</button></template>
+            <table>
+                <tr v-for="item in list">
+                  <!-- <span v-text="$index + 1"></span> -->
+                  <td>
+                    <span v-text="item.name"></span>
+                  </td>
+                  <td>
+                    <input type="text" v-model="order[item._id]" placeholder="">
+                  </td>
+                  <td>个</td>
+                </tr>
+            </table>
+            <button @click="apply" type="submit" class="btn btn-primary btn-block" id="login0">提交申请</button>
+            <hr/>
+            <div v-if="ulist.length">
+              <h4>已申请列表</h4>
+              <template v-for="item0 in ulist">
+                <h6 v-text="new Date(item0.date).toLocaleString()"></h6>
+                <table>
+                  <tbody>
+                    <tr v-for="item1 in item0.list">
+                      <!-- <span v-text="$index + 1"></span> -->
+                      <td>
+                        <span v-text="map[item1.id]"></span>
+                      </td>
+                      <td>
+                        <span v-text="item1.num"></span>
+                      </td>
+                      <td>个</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <hr>
+              </template>
+            </div>
+            <div v-if="slist.length">
+              <h4>已完成列表</h4>
+              <template v-for="item0 in slist">
+              <h6 v-text="new Date(item0.date).toLocaleString()"></h6>
+                <table>
+                  <tbody>
+                    <tr v-for="item1 in item0.list">
+                      <!-- <span v-text="$index + 1"></span> -->
+                      <td>
+                        <span v-text="map[item1.id]"></span>
+                      </td>
+                      <td>
+                        <span v-text="item1.num"></span>
+                      </td>
+                      <td>个</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <hr>
+              </template>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/1.0.17/vue.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        ulist: [],
+        slist: [],
+        list: null,
+        order: {},
+        map: {},
+        position: '<%= data.position %>',
+        edit: false
+      },
+      created: function(){
+        $.post('/list', function(data){
+          vm.list = data
+          for(var i in data){
+            vm.map[data[i]._id] = data[i].name
+          }
+          $.post('/order', {id : '<%= data.id %>', state: false}, function(data){
+            vm.ulist = data
+          })
+          $.post('/order', {id : '<%= data.id %>', state: true}, function(data){
+            vm.slist = data
+          })
+        })
+      },
+      methods: {
+        apply: function(){
+          var list = []
+          for(var i in vm.order){
+            list.push({'id' : i, 'num' : vm.order[i]})
+          }
+          $.post('/orderApply', {list: list}, function(data){
+            location.href = 'apply';
+          })
+          // console.log(list)
+        },
+        edity: function(){
+          vm.edit = true
+        },
+        editn: function(){
+          vm.edit = false
+        },
+        edits: function(){
+          $.post('/edit', {position: vm.position}, function(data){
+            window.location.reload()
+          })
+        }
+      }
+    })
+</script>
+</html>
