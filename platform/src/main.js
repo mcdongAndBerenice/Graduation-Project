@@ -8,7 +8,8 @@ import SubmitBug from './components/submitBug.vue';
 import CompanyList from './components/companyList.vue';
 import UserList from './components/userList.vue';
 import BugSummary from './components/bugSummary.vue';
-
+import SignUp from './components/signUp.vue';
+import SignIn from './components/signIn.vue';
 // install Router
 Vue.use(Router);
 // install vue-resource which can communicate with the server
@@ -41,6 +42,14 @@ router.map({
   "/CompanyList": {
     component: CompanyList,
     menuIndex: 4
+  },
+  "/SignUp": {
+    component: SignUp,
+    menuIndex: 5
+  },
+  "/SignIn": {
+    component: SignIn,
+    menuIndex: 6
   }
 });
 

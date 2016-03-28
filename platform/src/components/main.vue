@@ -9,9 +9,10 @@
       <li><a v-link="{ path: '/CompanyList' }">高校列表</a></li>
     </ul>
     <div class="user-info">
-      <ul>
-        <li>退出</li>
-      </ul>
+      <span>
+        <a v-link="{ path: '/SignUp' }">登录</a>
+        <a v-link="{ path: '/SignUp' }">注册</a>
+      </span>
     </div>
   </div>
   <div class="content">
@@ -25,7 +26,6 @@
   </div>
 </div>
 </template>
-
 <style lang="less">
 @import url("../less/main.less");
 </style>
