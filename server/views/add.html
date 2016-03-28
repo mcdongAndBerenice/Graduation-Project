@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
+</head>
+<body id="app">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h2>增加物料选项</h2>
+            <form method="post" onsubmit="return false">
+                <input class="col-sm-4" id="thingName">
+                <input class="col-sm-2 col-sm-offset-1 button" type="submit">
+            </form>
+          </div>
+          <div class="col-md-8 col-md-offset-2">
+            <h2>增加组别选项</h2>
+            <form method="post" onsubmit="return false">
+                <input class="col-sm-4" id="groupName">
+                <input class="col-sm-2 col-sm-offset-1 button1" type="submit">
+            </form>
+          </div>
+        </div>
+        <h2>物料列表</h2>
+          <table>
+            <tbody>
+              <tr v-for="item in tlist">
+                <td class="col-sm-4">
+                  <span v-text="item.name"></span>
+                </td>
+                <td class="col-sm-4">
+                  <span class="check"><input type="checkbox" @click="done('t', item.name, $index)">删除</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+        <h2>组别选项列表</h2>
+
+          <table>
+            <tbody>
+              <tr v-for="item in glist">
+                <td class="col-sm-4">
+                  <span v-text="item.name"></span>
+                </td>
+                <td class="col-sm-4">
+                  <span class="check"><input type="checkbox" @click="done('g', item.name, $index)">删除</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+    </div>
+
+</body>
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/1.0.17/vue.min.js"></script>
+<script type="text/javascript">
+    $btn = $('.button').click(function(event){
+        event.preventDefault()
+        console.log($('#thingName').val())
+        $.post('/add', {'name' : $('#thingName').val()}, function(data){
+            $('#thingName').val('')
+            if(data == 'OK'){
+                alert('添加成功')
+                window.location.reload()
+            }else{
+                alert('添加失败')
+                window.location.reload()
+            }
+        })
+    })
+    $btn1 = $('.button1').click(function(event){
+        event.preventDefault()
+        console.log($('#groupName').val())
+        $.post('/addGroup', {'name' : $('#groupName').val()}, function(data){
+            $('#groupName').val('')
+            if(data == 'OK'){
+                alert('添加成功')
+            }else{
+                alert('添加失败')
+            }
+        })
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        glist: [],
+        tlist: [],
+      },
+      created: function(){
+        $.post('/list', function(data){
+          vm.tlist = data
+          console.log(data)
+        })
+        $.post('/groupList', function(data){
+          vm.glist = data
+          console.log(data)
+        })
+      },
+      methods: {
+        done: function(type, name, index){
+            var index = index
+            var type = type
+            $.post('/remove', {name: name, type: type}, function(data){
+                if(type == 't'){
+                    vm.tlist.$remove(vm.tlist[index])
+                }else{
+                    vm.glist.$remove(vm.glist[index])
+                }
+            })
+        }
+      }
+    })
+</script>
+</html>

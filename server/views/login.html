@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title><%= title %></title>
+	<link rel="stylesheet" href="stylesheets/bootstrap.min.css" media="screen">
+	<style type="text/css">
+	.m15{ margin: 15px;}
+ 	.tc{ text-align: center;font-size: 18px;font-weight: 600;}
+	</style>
+</head>
+<body screen_capture_injected="true">
+	<div class="container">
+	<%- message %>
+		<form id="form" class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post" onsubmit="return false">
+			<fieldset>
+				<legend></legend>
+				<div class="panel panel-default">
+				<div class="panel-heading">
+					<p class="tc">行政物品申请平台 - 登录</p>
+				</div>
+				<div class="panel-body m15">
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-envelope"></span>
+						</span>
+						<input v-model="userInfo.email" type="text" class="form-control" id="email" name="email" placeholder="请输入邮箱前缀" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon">
+						<span class="glyphicon glyphicon-barcode"></span>
+						</span>
+						<input v-model="userInfo.id" type="text" class="form-control" id="id" name="id" placeholder="请输入工号" required>
+					</div>
+				</div>
+				<div class="form-group">
+					<button @click="login" type="submit" class="btn btn-primary btn-block" id="login0">登录</button>
+				</div>
+				<div class="form-group">
+					<a href="/register"><button type="button" class="btn btn-info col-sm-3" id="register0">注册</button></a>
+				</div>
+				</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+
+	<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+	<script src="http://cdn.bootcss.com/vue/1.0.17/vue.min.js"></script>
+	<script type="text/javascript">
+	var vm = new Vue({
+		el: '#form',
+		data: {
+			userInfo: {
+				email: null,
+				name: null,
+				id: null,
+				position: null
+			}
+		},
+		methods: {
+			login: function(){
+				console.log('login')
+				var data = {}
+				data.email = vm.userInfo.email
+				// data.name = vm.userInfo.name
+				// data.position = vm.userInfo.position
+				data.id = vm.userInfo.id
+				$.ajax({
+					url: '/login',
+					type: 'post',
+					data: data,
+					success: function(data,status){
+						if(status == 'success'){
+							location.href = 'apply';
+						}
+					},
+					error: function(data,err){
+							location.href = 'login';
+					}
+				});
+			}
+		}
+	})
+	</script>
+</body>
+</head>
+</html>
