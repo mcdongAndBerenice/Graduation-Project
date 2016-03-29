@@ -10,7 +10,7 @@
     </ul>
     <div class="user-info">
       <span>
-        <a v-link="{ path: '/SignUp' }">登录</a>
+        <a v-link="{ path: '/SignIn' }">登录</a>
         <a v-link="{ path: '/SignUp' }">注册</a>
       </span>
     </div>

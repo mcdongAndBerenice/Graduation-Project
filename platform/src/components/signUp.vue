@@ -1,27 +1,25 @@
 <template>
   <div class="sign">
+    <h1>注册漏洞平台帐号</h1>
+    <br>
     <span class="sign-item">
-      <label for="uid">帐 号：</label>
-      <input type="text" id="uid" v-model="uid">
+      <input type="text" id="uid" v-model="uid" placeholder="请输入帐号">
     </span>
     <span class="sign-item">
-      <label for="name">昵 称：</label>
-      <input type="text" id="name" v-model="name">
+      <input type="text" id="name" v-model="name" placeholder="请输入昵称">
     </span>
     <span class="sign-item">
-      <label for="pwd">密 码：</label>
-      <input type="password" id="pwd" v-model="pwd">
+      <input type="password" id="pwd" v-model="pwd" placeholder="请输入密码">
     </span>
     <span class="sign-item">
-      <label for="repwd">确认密码：</label>
-      <input type="password" id="repwd" v-model="repwd">
+      <input type="password" id="repwd" v-model="repwd" placeholder="请确认密码">
     </span>
     <div class="tip"  v-if="pwdError">两次输入的密码不一致哦~</div>
     <!-- <div class="tip">帐号重复了哦~</div> -->
     <span class="sign-item">
       <a class="btn btn-submit" v-on:click="signUp">注 册</a>
-      <a class="btn btn-link" v-link="{ path: '/SignIn' }">登 录</a>
     </span>
+    <a class="link" v-link="{ path: '/SignIn' }">已经有帐号了，前去登录</a>
   </div>
 </template>
 <script>
