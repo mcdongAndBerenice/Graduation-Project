@@ -4,18 +4,5 @@
   </div>
 </template>
 <style lang="less">
-.company-list{
-  .logo{
-    display: inline-block;
-    img{
-      width: 180px;
-    }
-    margin-bottom: 10px;
-    &:not(:nth-child(4n)){ 
-      margin-right: 10px;
-    }
-  }
-    
-}
-
+@import url("../less/companyList.less");
 </style>
