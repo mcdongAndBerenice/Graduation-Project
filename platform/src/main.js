@@ -20,6 +20,7 @@ var router = new Router();
 router.map({
   "/BugList": {
     component: BugList,
+    name: "BugList",
     menuIndex: 0
   },
   "/BugInfo/:id":{
@@ -49,6 +50,7 @@ router.map({
   },
   "/SignIn": {
     component: SignIn,
+    name: "SignIn",
     menuIndex: 6
   }
 });
@@ -61,7 +63,7 @@ router.beforeEach(function(transition) {
 });
 
 router.redirect({
-  '*': '/BugList'
+  '*': '/SignIn'
 })
 
 router.start(Main, '#main');

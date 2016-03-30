@@ -9,10 +9,11 @@
       <li><a v-link="{ path: '/CompanyList' }">高校列表</a></li>
     </ul>
     <div class="user-info">
-      <span>
+      <span class="user-name">{{userName}}</span>
+      <!-- <span>
         <a v-link="{ path: '/SignIn' }">登录</a>
         <a v-link="{ path: '/SignUp' }">注册</a>
-      </span>
+      </span> -->
     </div>
   </div>
   <div class="content">
@@ -29,3 +30,27 @@
 <style lang="less">
 @import url("../less/main.less");
 </style>
+<script>
+  export default{
+    name: 'main',
+    data(){
+      return{
+        userName: GLOBAL.userName
+      }
+    },
+    computed: {
+      userName: function(){
+        return GLOBAL.userName
+      }
+    },
+    ready:function(){
+      if(!GLOBAL.userName){
+        this.$router.go({name:'SignIn'})
+      }else{
+        alert(23)
+        this.userName = GLOBAL.userName
+        alert(this.userName)
+      }
+    }
+  }
+</script>

@@ -41,8 +41,10 @@ export default{
       //获取列表
     }
   },
-  ready:function(){
-
+  ready: function(){
+    if(!GLOBAL.userName){
+      this.$router.go({name:'SignIn'})
+    }
   }
 }
 </script>

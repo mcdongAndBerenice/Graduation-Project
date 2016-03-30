@@ -1,9 +1,9 @@
 <template class="bugList">
   <ul class="bug-list">
     <li class="clearfix" v-for="item in items">
-      <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item.bugNum}}" href="#">{{item.disp}}</a>
+      <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">{{item.title}}</a>
       <span class="goto-buginfo">
-        <a v-link="{ name: 'BugInfo', params: {id: item.bugNum}}" href="#">详情<em></em></a>
+        <a v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">详情<em></em></a>
       </span>
       <span class="data">{{item.date}}</span>
     </li>
@@ -36,16 +36,35 @@
     name: 'bugList',
     data(){
       return{
-        items: []
+        items: [],
+        index: 0
       }
     },
     methods:{
       getBugList:function(){
+        var t = this
         //获取漏洞列表
+        var data = {
+          pageSize: 10,
+          pageIndex: this.index
+        }
+        this.$http({url:'http://10.235.147.5:8080/bugList', method:'POST', data:data})
+        .then(function(response){
+          var data = response.data
+          t.items = data.data
+          for(var x in t.items){
+            var tmp = t.items[x].date.split("T")
+            t.items[x].date = tmp[0]
+          }
+        },function(response){})
+        
       }
     },
     ready:function(){
-      
+      if(!GLOBAL.userName){
+        this.$router.go({name:'SignIn'})
+      }
+      this.getBugList()
     }
   }
 </script>

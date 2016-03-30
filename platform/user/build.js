@@ -120,6 +120,7 @@
 	router.map({
 	  "/BugList": {
 	    component: _bugList2.default,
+	    name: "BugList",
 	    menuIndex: 0
 	  },
 	  "/BugInfo/:id": {
@@ -149,6 +150,7 @@
 	  },
 	  "/SignIn": {
 	    component: _signIn2.default,
+	    name: "SignIn",
 	    menuIndex: 6
 	  }
 	});
@@ -161,7 +163,7 @@
 	});
 	
 	router.redirect({
-	  '*': '/BugList'
+	  '*': '/SignIn'
 	});
 	
 	router.start(_main2.default, '#main');
@@ -14236,6 +14238,11 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(37)
+	__vue_script__ = __webpack_require__(81)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/components/main.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(42)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -14289,7 +14296,7 @@
 	
 	
 	// module
-	exports.push([module.id, "input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(" + __webpack_require__(40) + ");\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n", "", {"version":3,"sources":["/./src/components/main.vue"],"names":[],"mappings":"AAAA;;;;;;EAME,UAAU;EACV,WAAW;EACX,iBAAiB;CAClB;AACD;;EAEE,gDAAqC;EACrC,sBAAsB;EACtB,UAAU;EACV,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,0BAA0B;EAC1B,kBAAkB;CACnB;AACD;EACE,gBAAgB;CACjB;AACD;;;;;EAKE,0BAA0B;EAC1B,sBAAsB;CACvB;AACD;EACE,eAAe;CAChB;AACD;EACE,aAAa;EACb,eAAe;EACf,UAAU;EACV,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,kBAAkB;CACnB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,YAAY;EACZ,UAAU;CACX;AACD;EACE,iBAAiB;EACjB,mBAAmB;EACnB,sBAAsB;EACtB,cAAc;EACd,cAAc;EACd,kBAAkB;EAClB,uBAAuB;CACxB;AACD;EACE,mBAAmB;EACnB,OAAO;EACP,QAAQ;EACR,0BAA0B;EAC1B,sBAAsB;EACtB,aAAa;EACb,WAAW;CACZ;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,iCAAiC;EACjC,aAAa;EACb,WAAW;EACX,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,UAAU;EACV,YAAY;EACZ,aAAa;CACd;AACD;EACE,gBAAgB;EAChB,aAAa;EACb,kBAAkB;EAClB,aAAa;CACd;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,0BAA0B;EAC1B,eAAe;EACf,+BAA+B;EAC/B,wBAAwB;CACzB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,eAAe;EACf,cAAc;CACf;AACD;EACE,cAAc;CACf;AACD;EACE,YAAY;EACZ,0BAA0B;EAC1B,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,SAAS;CACV;AACD;EACE,mBAAmB;CACpB;AACD;;EAEE,aAAa;EACb,iBAAiB;EACjB,UAAU;EACV,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,aAAa;CACd","file":"main.vue","sourcesContent":["input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(../img/bg.png);\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(" + __webpack_require__(40) + ");\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info .user-name {\n  float: none;\n  color: #c2c2c4;\n  font-size: 14px;\n  margin-left: 30px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n", "", {"version":3,"sources":["/./src/components/main.vue"],"names":[],"mappings":"AAAA;;;;;;EAME,UAAU;EACV,WAAW;EACX,iBAAiB;CAClB;AACD;;EAEE,gDAAqC;EACrC,sBAAsB;EACtB,UAAU;EACV,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,0BAA0B;EAC1B,kBAAkB;CACnB;AACD;EACE,gBAAgB;CACjB;AACD;;;;;EAKE,0BAA0B;EAC1B,sBAAsB;CACvB;AACD;EACE,eAAe;CAChB;AACD;EACE,aAAa;EACb,eAAe;EACf,UAAU;EACV,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,kBAAkB;CACnB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,YAAY;EACZ,UAAU;CACX;AACD;EACE,iBAAiB;EACjB,mBAAmB;EACnB,sBAAsB;EACtB,cAAc;EACd,cAAc;EACd,kBAAkB;EAClB,uBAAuB;CACxB;AACD;EACE,mBAAmB;EACnB,OAAO;EACP,QAAQ;EACR,0BAA0B;EAC1B,sBAAsB;EACtB,aAAa;EACb,WAAW;CACZ;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,iCAAiC;EACjC,aAAa;EACb,WAAW;EACX,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,UAAU;EACV,YAAY;EACZ,aAAa;CACd;AACD;EACE,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,aAAa;EACb,kBAAkB;EAClB,aAAa;CACd;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,0BAA0B;EAC1B,eAAe;EACf,+BAA+B;EAC/B,wBAAwB;CACzB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,eAAe;EACf,cAAc;CACf;AACD;EACE,cAAc;CACf;AACD;EACE,YAAY;EACZ,0BAA0B;EAC1B,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,SAAS;CACV;AACD;EACE,mBAAmB;CACpB;AACD;;EAEE,aAAa;EACb,iBAAiB;EACjB,UAAU;EACV,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,aAAa;CACd","file":"main.vue","sourcesContent":["input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(../img/bg.png);\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info .user-name {\n  float: none;\n  color: #c2c2c4;\n  font-size: 14px;\n  margin-left: 30px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -14582,7 +14589,7 @@
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">高校列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <span>\r\n        <a v-link=\"{ path: '/SignIn' }\">登录</a>\r\n        <a v-link=\"{ path: '/SignUp' }\">注册</a>\r\n      </span>\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">高校列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <span class=\"user-name\">{{userName}}</span>\r\n      <!-- <span>\r\n        <a v-link=\"{ path: '/SignIn' }\">登录</a>\r\n        <a v-link=\"{ path: '/SignUp' }\">注册</a>\r\n      </span> -->\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 43 */
@@ -14671,9 +14678,9 @@
 	// <template class="bugList">
 	//   <ul class="bug-list">
 	//     <li class="clearfix" v-for="item in items">
-	//       <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item.bugNum}}" href="#">{{item.disp}}</a>
+	//       <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">{{item.title}}</a>
 	//       <span class="goto-buginfo">
-	//         <a v-link="{ name: 'BugInfo', params: {id: item.bugNum}}" href="#">详情<em></em></a>
+	//         <a v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">详情<em></em></a>
 	//       </span>
 	//       <span class="data">{{item.date}}</span>
 	//     </li>
@@ -14706,16 +14713,35 @@
 	  name: 'bugList',
 	  data: function data() {
 	    return {
-	      items: []
+	      items: [],
+	      index: 0
 	    };
 	  },
 	
 	  methods: {
 	    getBugList: function getBugList() {
+	      var t = this;
 	      //获取漏洞列表
+	      var data = {
+	        pageSize: 10,
+	        pageIndex: this.index
+	      };
+	      this.$http({ url: 'http://10.235.147.5:8080/bugList', method: 'POST', data: data }).then(function (response) {
+	        var data = response.data;
+	        t.items = data.data;
+	        for (var x in t.items) {
+	          var tmp = t.items[x].date.split("T");
+	          t.items[x].date = tmp[0];
+	        }
+	      }, function (response) {});
 	    }
 	  },
-	  ready: function ready() {}
+	  ready: function ready() {
+	    if (!GLOBAL.userName) {
+	      this.$router.go({ name: 'SignIn' });
+	    }
+	    this.getBugList();
+	  }
 	};
 	// </script>
 
@@ -14725,7 +14751,7 @@
 /* 48 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"bug-list\">\n  <li class=\"clearfix\" v-for=\"item in items\">\n    <a class=\"buglist-pull-left\" v-link=\"{ name: 'BugInfo', params: {id: item.bugNum}}\" href=\"#\">{{item.disp}}</a>\n    <span class=\"goto-buginfo\">\n      <a v-link=\"{ name: 'BugInfo', params: {id: item.bugNum}}\" href=\"#\">详情<em></em></a>\n    </span>\n    <span class=\"data\">{{item.date}}</span>\n  </li>\n</ul>\n<!-- <nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav> -->\n";
+	module.exports = "\n<ul class=\"bug-list\">\n  <li class=\"clearfix\" v-for=\"item in items\">\n    <a class=\"buglist-pull-left\" v-link=\"{ name: 'BugInfo', params: {id: item.title}}\" href=\"#\">{{item.title}}</a>\n    <span class=\"goto-buginfo\">\n      <a v-link=\"{ name: 'BugInfo', params: {id: item.title}}\" href=\"#\">详情<em></em></a>\n    </span>\n    <span class=\"data\">{{item.date}}</span>\n  </li>\n</ul>\n<!-- <nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav> -->\n";
 
 /***/ },
 /* 49 */
@@ -14888,7 +14914,7 @@
 	//     <span class="tagTitle">问题高校：</span>
 	//     <select v-model="schoolName">
 	//       <option value="">--选择问题高校--</option>
-	//       <option value="a">A</option>
+	//       <option value="a">天津理工大学</option>
 	//       <option value="b">B</option>
 	//       <option value="c">C</option>
 	//       <option value="other">其他高校</option>
@@ -14947,6 +14973,7 @@
 	  name: 'submitBugs',
 	  data: function data() {
 	    return {
+	      submitType: "",
 	      schoolName: "",
 	      bugType: "",
 	      bugName: "",
@@ -14963,29 +14990,41 @@
 	  },
 	  methods: {
 	    submit: function submit() {
-	      alert("submit");
+	      this.send();
 	    },
 	    send: function send() {
 	      var t = this;
-	      var date = new Date();
 	      var data = {
-	        schoolName: t.schoolName,
-	        type: t.bugType,
-	        name: t.bugName,
+	        uid: GLOBAL.userId,
+	        type: t.submitType,
+	        school: t.schoolName,
+	        bugType: t.bugType,
+	        title: t.bugName,
 	        level: t.bugLevel,
-	        description: t.bugDescription,
-	        detail: t.bugDetail,
-	        prove: t.bugProve,
-	        fix: t.bugFix,
-	        date: date
+	        miaoshu: t.bugDescription,
+	        shuoming: t.bugDetail,
+	        zhengming: t.bugProve,
+	        xiufu: t.bugFix
 	      };
 	      this.$http({
-	        url: '',
+	        url: 'http://10.235.147.5:8080/addBug',
 	        method: 'POST',
-	        params: data
-	      }).then(function (json) {
+	        data: data
+	      }).then(function (response) {
 	        //成功
-	      });
+	        var data = response.data;
+	        if (data.error == 1) {
+	          alert(data.content);
+	        } else {
+	          alert(data.content);
+	          t.$router.go({ name: 'BugList' });
+	        }
+	      }, function (response) {});
+	    }
+	  },
+	  ready: function ready() {
+	    if (!GLOBAL.userName) {
+	      this.$router.go({ name: 'SignIn' });
 	    }
 	  }
 	};
@@ -15000,7 +15039,7 @@
 /* 57 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题类型：</span>\n    <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n    <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n    <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n    <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"a\">A</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他高校</option>\n  </select> \n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  </div>\n    <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞标题：</span>\n    <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞等级：</span>\n    <select v-model=\"bugLevel\">\n      <option value=\"\">--选择漏洞等级--</option>\n      <option value=\"0\">低</option>\n      <option value=\"1\">中</option>\n      <option value=\"2\">高</option>\n    </select>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题描述：</span>\n    <textarea class=\"bug-description\" v-model=\"bugDescription\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">详细说明：</span>\n    <textarea v-model=\"bugDetail\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞证明：</span>\n    <textarea v-model=\"bugProve\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞修复：</span>\n    <textarea v-model=\"bugFix\"></textarea>\n  </div>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\" v-on:click=\"submit\">确 定</button>\n    <button class=\"btn btn-cancel\" v-link=\"{ path: '/BugList' }\">取 消</button>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题类型：</span>\n    <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n    <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n    <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n    <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"a\">天津理工大学</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他高校</option>\n  </select> \n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  </div>\n    <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞标题：</span>\n    <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞等级：</span>\n    <select v-model=\"bugLevel\">\n      <option value=\"\">--选择漏洞等级--</option>\n      <option value=\"0\">低</option>\n      <option value=\"1\">中</option>\n      <option value=\"2\">高</option>\n    </select>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题描述：</span>\n    <textarea class=\"bug-description\" v-model=\"bugDescription\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">详细说明：</span>\n    <textarea v-model=\"bugDetail\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞证明：</span>\n    <textarea v-model=\"bugProve\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞修复：</span>\n    <textarea v-model=\"bugFix\"></textarea>\n  </div>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\" v-on:click=\"submit\">确 定</button>\n    <button class=\"btn btn-cancel\" v-link=\"{ path: '/BugList' }\">取 消</button>\n  </div>\n</div>\n";
 
 /***/ },
 /* 58 */
@@ -15008,6 +15047,11 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(59)
+	__vue_script__ = __webpack_require__(82)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/components/companyList.vue: named exports in *.vue files are ignored.")}
 	__vue_template__ = __webpack_require__(61)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
@@ -15200,7 +15244,11 @@
 	      //获取列表
 	    }
 	  },
-	  ready: function ready() {}
+	  ready: function ready() {
+	    if (!GLOBAL.userName) {
+	      this.$router.go({ name: 'SignIn' });
+	    }
+	  }
 	};
 	// </script>
 
@@ -15255,6 +15303,9 @@
 	// <script type="text/javascript">
 	exports.default = {
 	    ready: function ready() {
+	        if (!GLOBAL.userName) {
+	            this.$router.go({ name: 'SignIn' });
+	        }
 	        $('#container').highcharts({
 	            title: {
 	                text: 'Monthly Average Temperature',
@@ -15377,7 +15428,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n", "", {"version":3,"sources":["/./src/components/signUp.vue"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,aAAa;EACb,cAAc;EACd,kBAAkB;EAClB,gBAAgB;CACjB;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,gBAAgB;CACjB;AACD;EACE,aAAa;EACb,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;EAC1B,YAAY;CACb;AACD;EACE,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,mBAAmB;EACnB,eAAe;CAChB","file":"signUp.vue","sourcesContent":[".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  line-height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n", "", {"version":3,"sources":["/./src/components/signUp.vue"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,aAAa;EACb,cAAc;EACd,kBAAkB;EAClB,gBAAgB;CACjB;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,gBAAgB;CACjB;AACD;EACE,aAAa;EACb,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,0BAA0B;EAC1B,YAAY;CACb;AACD;EACE,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,mBAAmB;EACnB,eAAe;CAChB","file":"signUp.vue","sourcesContent":[".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  line-height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -15405,14 +15456,14 @@
 	//       <input type="password" id="pwd" v-model="pwd" placeholder="请输入密码">
 	//     </span>
 	//     <span class="sign-item">
-	//       <input type="password" id="repwd" v-model="repwd" placeholder="请确认密码">
+	//       <input type="password" id="repwd" v-model="repwd" placeholder="请确认密码" debounce="500">
 	//     </span>
 	//     <div class="tip"  v-if="pwdError">两次输入的密码不一致哦~</div>
 	//     <!-- <div class="tip">帐号重复了哦~</div> -->
 	//     <span class="sign-item">
 	//       <a class="btn btn-submit" v-on:click="signUp">注 册</a>
 	//     </span>
-	//     <a class="link" v-link="{ path: '/SignIn' }">已经有帐号了，前去登录</a>
+	//     <a class="link" v-link="{ path: '/SignIn' }">已经有帐号了，前去登录 ></a>
 	//   </div>
 	// </template>
 	// <script>
@@ -15432,10 +15483,7 @@
 	  methods: {
 	    signUp: function signUp() {
 	      if (this.pwd != this.repwd) {
-	        this.pwdError = 1;
 	        return;
-	      } else {
-	        this.pwdError = 0;
 	      }
 	      var t = this;
 	      var data = {
@@ -15443,11 +15491,10 @@
 	        name: t.name,
 	        pwd: t.pwd
 	      };
-	      console.log(data);
 	      this.$http({ url: 'http://10.235.147.5:8080/register', method: 'POST', data: data }).then(function (response) {
 	        var data = response.data;
-	        if (data.status == 0) {
-	          console.log(data.content);
+	        if (data.error == 0) {
+	          this.$router.go({ name: "SignIn" });
 	        } else {
 	          alert(data.content);
 	        }
@@ -15460,6 +15507,8 @@
 	    this.$watch('repwd', function (val) {
 	      if (this.pwd == val) {
 	        this.pwdError = 0;
+	      } else {
+	        this.pwdError = 1;
 	      }
 	    });
 	  }
@@ -15475,7 +15524,7 @@
 /* 75 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"sign\">\n  <h1>注册漏洞平台帐号</h1>\n  <br>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"uid\" v-model=\"uid\" placeholder=\"请输入帐号\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"name\" v-model=\"name\" placeholder=\"请输入昵称\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"pwd\" v-model=\"pwd\" placeholder=\"请输入密码\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"repwd\" v-model=\"repwd\" placeholder=\"请确认密码\">\n  </span>\n  <div class=\"tip\"  v-if=\"pwdError\">两次输入的密码不一致哦~</div>\n  <!-- <div class=\"tip\">帐号重复了哦~</div> -->\n  <span class=\"sign-item\">\n    <a class=\"btn btn-submit\" v-on:click=\"signUp\">注 册</a>\n  </span>\n  <a class=\"link\" v-link=\"{ path: '/SignIn' }\">已经有帐号了，前去登录</a>\n</div>\n";
+	module.exports = "\n<div class=\"sign\">\n  <h1>注册漏洞平台帐号</h1>\n  <br>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"uid\" v-model=\"uid\" placeholder=\"请输入帐号\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"name\" v-model=\"name\" placeholder=\"请输入昵称\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"pwd\" v-model=\"pwd\" placeholder=\"请输入密码\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"repwd\" v-model=\"repwd\" placeholder=\"请确认密码\" debounce=\"500\">\n  </span>\n  <div class=\"tip\"  v-if=\"pwdError\">两次输入的密码不一致哦~</div>\n  <!-- <div class=\"tip\">帐号重复了哦~</div> -->\n  <span class=\"sign-item\">\n    <a class=\"btn btn-submit\" v-on:click=\"signUp\">注 册</a>\n  </span>\n  <a class=\"link\" v-link=\"{ path: '/SignIn' }\">已经有帐号了，前去登录 ></a>\n</div>\n";
 
 /***/ },
 /* 76 */
@@ -15483,7 +15532,12 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(77)
-	__vue_template__ = __webpack_require__(79)
+	__vue_script__ = __webpack_require__(79)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/components/signIn.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(80)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15536,7 +15590,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n", "", {"version":3,"sources":["/./src/components/signIn.vue"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,aAAa;EACb,cAAc;EACd,kBAAkB;EAClB,gBAAgB;CACjB;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,gBAAgB;CACjB;AACD;EACE,aAAa;EACb,aAAa;EACb,0BAA0B;EAC1B,0BAA0B;EAC1B,YAAY;CACb;AACD;EACE,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,mBAAmB;EACnB,eAAe;CAChB","file":"signIn.vue","sourcesContent":[".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  line-height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n", "", {"version":3,"sources":["/./src/components/signIn.vue"],"names":[],"mappings":"AAAA;EACE,uBAAuB;EACvB,aAAa;EACb,cAAc;EACd,kBAAkB;EAClB,gBAAgB;CACjB;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,gBAAgB;CACjB;AACD;EACE,aAAa;EACb,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,0BAA0B;EAC1B,YAAY;CACb;AACD;EACE,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,mBAAmB;EACnB,eAAe;CAChB","file":"signIn.vue","sourcesContent":[".sign {\n  border: 1px solid #eee;\n  width: 300px;\n  padding: 50px;\n  margin: 60px auto;\n  font-size: 18px;\n}\n.sign .sign-item {\n  display: block;\n  text-align: center;\n  margin-bottom: 30px;\n}\n.sign .sign-item label {\n  display: inline-block;\n  width: 100px;\n}\n.sign .sign-item input {\n  height: 25px;\n  width: 250px;\n  padding: 3px 5px;\n  font-size: 16px;\n}\n.sign .sign-item .btn-submit {\n  width: 250px;\n  height: 25px;\n  line-height: 25px;\n  background-color: #39B881;\n  border: 1px solid #39B881;\n  color: #fff;\n}\n.sign .link {\n  font-size: 14px;\n  margin-left: 10px;\n}\n.sign .tip {\n  text-align: center;\n  margin: 20px 0;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -15545,7 +15599,178 @@
 /* 79 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"sign\">\n  <h1>漏洞预警平台登录</h1>\n  <br>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"logInfo\" placeholder=\"请输入帐号\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"pwd\" placeholder=\"请输入密码\">\n  </span>\n  <span class=\"sign-item\">\n    <a class=\"btn btn-submit\">登 录</a>\n  </span>\n  <br>\n  <a class=\"link\" v-link=\"{ path: '/SignUp' }\">没有帐号，前去注册</a>\n</div>\n";
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="sign">
+	//     <h1>漏洞预警平台登录</h1>
+	//     <br>
+	//     <span class="sign-item">
+	//       <input type="text" id="logInfo" placeholder="请输入帐号" v-model="uid" >
+	//     </span>
+	//     <span class="sign-item">
+	//       <input type="password" id="pwd" placeholder="请输入密码" v-model="pwd">
+	//     </span>
+	//     <span class="sign-item">
+	//       <a class="btn btn-submit" v-on:click="signIn">登 录</a>
+	//     </span>
+	//     <br>
+	//     <a class="link" v-link="{ path: '/SignUp' }">没有帐号，前去注册 ></a>
+	//   </div>
+	// </template>
+	// <style lang="less">
+	// @import url("../less/sign.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'SingIn',
+	  data: function data() {
+	    return {
+	      uid: "",
+	      pwd: ""
+	    };
+	  },
+	
+	  methods: {
+	    signIn: function signIn() {
+	      var t = this;
+	      if (t.uid && t.pwd) {
+	        var data = {
+	          uid: t.uid,
+	          pwd: t.pwd
+	        };
+	        this.$http({ url: 'http://10.235.147.5:8080/login', method: 'POST', data: data }).then(function (response) {
+	          var data = response.data;
+	          if (data.error != 0) {
+	            alert(data.content);
+	          } else {
+	            GLOBAL.userId = data.data.uid;
+	            GLOBAL.userName = data.data.name;
+	            this.$router.go({ name: "BugList" });
+	          }
+	        }, function (response) {});
+	      } else {
+	        alert("请完整填写信息");
+	      }
+	    }
+	  },
+	  ready: function ready() {}
+	};
+	// </script>
+
+	/* generated by vue-loader */
+
+/***/ },
+/* 80 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"sign\">\n  <h1>漏洞预警平台登录</h1>\n  <br>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"logInfo\" placeholder=\"请输入帐号\" v-model=\"uid\" >\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"pwd\" placeholder=\"请输入密码\" v-model=\"pwd\">\n  </span>\n  <span class=\"sign-item\">\n    <a class=\"btn btn-submit\" v-on:click=\"signIn\">登 录</a>\n  </span>\n  <br>\n  <a class=\"link\" v-link=\"{ path: '/SignUp' }\">没有帐号，前去注册 ></a>\n</div>\n";
+
+/***/ },
+/* 81 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	// <div class="container">
+	//   <div class="menu">
+	//     <ul class="menu-list" id="menu">
+	//       <li class="active"><a v-link="{ path: '/BugList' }">漏洞列表</a></li>
+	//       <li><a v-link="{ path: '/SubmitBug' }">提交漏洞</a></li>
+	//       <li><a v-link="{ path: '/BugSummary' }">漏洞统计</a></li>
+	//       <li><a v-link="{ path: '/UserList' }">白帽子列表</a></li>
+	//       <li><a v-link="{ path: '/CompanyList' }">高校列表</a></li>
+	//     </ul>
+	//     <div class="user-info">
+	//       <span class="user-name">{{userName}}</span>
+	//       <!-- <span>
+	//         <a v-link="{ path: '/SignIn' }">登录</a>
+	//         <a v-link="{ path: '/SignUp' }">注册</a>
+	//       </span> -->
+	//     </div>
+	//   </div>
+	//   <div class="content">
+	//     <div class="content-float">
+	//       <router-view
+	//         class="view"
+	//         transition
+	//         transition-mode="out-in">
+	//       </router-view>
+	//     </div>
+	//   </div>
+	// </div>
+	// </template>
+	// <style lang="less">
+	// @import url("../less/main.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'main',
+	  data: function data() {
+	    return {
+	      userName: GLOBAL.userName
+	    };
+	  },
+	
+	  computed: {
+	    userName: function userName() {
+	      return GLOBAL.userName;
+	    }
+	  },
+	  ready: function ready() {
+	    if (!GLOBAL.userName) {
+	      this.$router.go({ name: 'SignIn' });
+	    } else {
+	      alert(23);
+	      this.userName = GLOBAL.userName;
+	      alert(this.userName);
+	    }
+	  }
+	};
+	// </script>
+
+	/* generated by vue-loader */
+
+/***/ },
+/* 82 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="company-list">
+	//     <a href="http://www.tjut.edu.cn/" target="view_window" class="logo"><img src="../img/tjut.jpg" alt="天津理工大学"></a>
+	//   </div>
+	// </template>
+	// <style lang="less">
+	// @import url("../less/companyList.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'CompanyList',
+	  data: function data() {
+	    return {};
+	  },
+	
+	  ready: function ready() {
+	    if (!GLOBAL.userName) {
+	      this.$router.go({ name: 'SignIn' });
+	    }
+	  }
+	};
+	// </script>
+
+	/* generated by vue-loader */
 
 /***/ }
 /******/ ]);

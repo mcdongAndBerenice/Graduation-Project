@@ -11,7 +11,7 @@
     <span class="tagTitle">问题高校：</span>
     <select v-model="schoolName">
       <option value="">--选择问题高校--</option>
-      <option value="a">A</option>
+      <option value="a">天津理工大学</option>
       <option value="b">B</option>
       <option value="c">C</option>
       <option value="other">其他高校</option>
@@ -70,6 +70,7 @@ export default{
   name: 'submitBugs',
   data () {
     return {
+      submitType: "",
       schoolName: "",
       bugType: "",
       bugName: "",
@@ -85,29 +86,41 @@ export default{
   },
   methods : {
     submit: function(){
-      alert("submit")
+      this.send()
     },
     send: function(){
       var t = this
-      var date = new Date()
       var data = {
-        schoolName: t.schoolName,
-        type: t.bugType,
-        name: t.bugName,
+        uid: GLOBAL.userId,
+        type: t.submitType,
+        school: t.schoolName,
+        bugType: t.bugType,
+        title: t.bugName,
         level: t.bugLevel,
-        description: t.bugDescription,
-        detail: t.bugDetail,
-        prove: t.bugProve,
-        fix: t.bugFix,
-        date: date
+        miaoshu: t.bugDescription,
+        shuoming: t.bugDetail,
+        zhengming: t.bugProve,
+        xiufu: t.bugFix
       }
       this.$http({
-        url : '',
+        url : 'http://10.235.147.5:8080/addBug',
         method : 'POST',
-        params : data
-      }).then(function(json){
+        data : data
+      }).then(function(response){
         //成功
-      })
+        var data = response.data
+        if(data.error == 1){
+          alert(data.content)
+        }else{
+          alert(data.content)
+          t.$router.go({name:'BugList'})
+        }
+      },function(response){})
+    }
+  },
+  ready: function(){
+    if(!GLOBAL.userName){
+      this.$router.go({name:'SignIn'})
     }
   }
 }

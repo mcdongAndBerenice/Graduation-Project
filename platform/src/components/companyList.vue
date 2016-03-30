@@ -6,3 +6,17 @@
 <style lang="less">
 @import url("../less/companyList.less");
 </style>
+<script>
+export default{
+  name: 'CompanyList',
+  data(){
+    return{
+    }
+  },
+  ready: function(){
+    if(!GLOBAL.userName){
+      this.$router.go({name:'SignIn'})
+    }
+  }
+}
+</script>
