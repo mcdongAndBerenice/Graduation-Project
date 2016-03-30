@@ -191,38 +191,26 @@ router.route("/orderApply").post(function(req, res) {
 	});
 })
 
-/* GET login page. */
-router.route("/login").get(function(req, res) { // 到达此路径则渲染login文件，并传出title值供 login.html使用
-	res.render("login", {
-		title: '用户登录'
-	});
-}).post(function(req, res) { // 从此路径检测到post方式则进行post数据的处理操作
-	//get User info
-	//这里的User就是从model中获取user对象，通过global.dbHandel全局方法（这个方法在app.js中已经实现)
+router.route("/login").post(function(req, res) {
 	var User = global.dbHandel.getModel('user');
-	var postData = req.body; //获取post上来的 data数据中 uname的值
+	var postData = req.body;
 	User.findOne({
-		email: postData.email
-	}, function(err, doc) { //通过此model以用户名的条件 查询数据库中的匹配信息
-		if (err) { //错误就返回给原post处（login.html) 状态码为500的错误
-			res.send(500);
-			console.log(err);
-		} else if (!doc) { //查询不到用户名匹配信息，则用户名不存在
-			req.session.error = '用户名不存在';
-			console.log('用户名不存在')
-			// res.send(404); //	状态码返回404
-			//	res.redirect("/login");
+		uid: postData.uid
+	}, function(err, doc) {
+		if (err) {
+			res.json({error: 2, content: '网络异常错误!'})
+			console.log('登录post接口网络异常错误!', err);
+		} else if (!doc) {
+			res.json({error: 1, content: '用户名不存在'})
+			console.log('登录post接口用户名不存在!', err);
 		} else {
-			if (req.body.id != doc.id) { //查询到匹配用户名的信息，但相应的password属性不匹配
-				req.session.error = "信息错误";
-				res.send(404);
-				//	res.redirect("/login");
-			} else { //信息匹配成功，则将此对象（匹配到的user) 赋给session.user  并返回成功
+			if (req.body.pwd != doc.pwd) {
+				res.json({error: 3, content: '密码错误'})
+				console.log('登录post密码错误!', err);
+			} else {
 				req.session.user = doc;
-				// req.cookies.user = doc;
-				res.cookie('data', doc)
-				res.send(200);
-				//	res.redirect("/home");
+				res.cookie('user', doc)
+				res.json({error: 0, content: '登录成功', data: {name: doc.name, uid: doc.uid}})
 			}
 		}
 	});
@@ -286,8 +274,8 @@ router.route("/register").post(function(req, res) {
 					// req.session.error = '用户名创建失败！';
 					// res.send(500);
 				} else {
-					res.json({error: 1, content: '用户名创建失败！'})
-					req.session.user = doc
+					res.json({error: 0, content: '用户名创建成功！', data: {name: postData.name, uid: postData.uid}})
+					// req.session.user = doc
 					// req.session.error = '用户名创建成功！';
 					// res.send(200);
 				}
@@ -296,7 +284,35 @@ router.route("/register").post(function(req, res) {
 	});
 });
 
+router.route("/addBug").post(function(req, res) {
+	var bugList = global.dbHandel.getModel('bugList');
+	var postData = req.body
+	console.log(postData)
+	bugList.create(postData, function(err, doc) {
+		if (err) {
+			res.json({error: 1, content: 'bug创建失败！'})
+			console.log('用户名创建失败！', err);
+		} else {
+			res.json({error: 0, content: 'bug创建成功！'})
+		}
+	})
+	console.log('ready==============================')
+})
 
+router.route("/bugList").post(function(req, res) {
+	var pageSize = req.body.pageSize || 10
+		,pageIndex = req.body.pageIndex || 0
+	var bugList = global.dbHandel.getModel('bugList');
+	console.log(req.body)
+	bugList.find({}, function(err, doc) {
+		if (err) {
+			res.json({error: 1, content: 'bug列表查询失败！'})
+			console.log('bug列表查询失败！', err);
+		} else {
+			res.json({error: 0, content: 'bug列表读取成功！', data : doc.slice(pageIndex*pageSize, (pageIndex + 1)*pageSize)})
+		}
+	})
+})
 
 /* GET home page. */
 router.get("/home", function(req, res) {

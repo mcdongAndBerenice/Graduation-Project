@@ -14,6 +14,19 @@ module.exports = {
         list:{type:Array, required:true},
         state:{type:Boolean,default: false}
     },
+    bugList:{
+        uid:{type:String, required:true},
+        type:{type:String,required:true},
+        school:{type:String,required:true},
+        bugType:{type:String,required:true},
+        title:{type:String,required:true},
+        level:{type:String,required:true},
+        miaoshu:{type:String,required:true},
+        shuoming:{type:String,required:true},
+        zhengming:{type:String,required:true},
+        xiufu:{type:String,required:true},
+        date:{type:Date, default:Date.now},
+    },
     thing:{
         name:{type:String,required:true}
     },

@@ -64,6 +64,7 @@ app.use("/workList", routes)
 app.use("/workDone", routes)
 app.use("/remove", routes)
 app.use("/edit", routes)
+app.use("/addBug", routes)
 
 
 // catch 404 and forward to error handler
