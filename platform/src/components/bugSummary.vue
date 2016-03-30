@@ -4,6 +4,9 @@
 <script type="text/javascript">
 export default{
   ready : function(){
+    if(!GLOBAL.userName){
+      this.$router.go({name:'SignIn'})
+    }
     $('#container').highcharts({
         title: {
             text: 'Monthly Average Temperature',
