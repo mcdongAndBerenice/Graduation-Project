@@ -11,9 +11,7 @@
     <span class="tagTitle">问题高校：</span>
     <select v-model="schoolName">
       <option value="">--选择问题高校--</option>
-      <option value="a">天津理工大学</option>
-      <option value="b">B</option>
-      <option value="c">C</option>
+      <option value="天津理工大学">天津理工大学</option>
       <option value="other">其他高校</option>
     </select> 
     </div>
@@ -21,13 +19,13 @@
     <span class="tagTitle">漏洞类型：</span>
     <select v-model="bugType">
       <option value="">--选择漏洞大类--</option>
-      <option value="6">网络设备/硬件设施</option>
-      <option value="7">操作系统/系统服务</option>
-      <option value="8">基础组件/开发框架</option>
-      <option value="9">建站软件/web应用</option>
-      <option value="10">常用软件/客户端应用</option>
-      <option value="11">入侵事件/安全情报</option>
-      <option value="0">其他类型</option>
+      <option value="网络设备/硬件设施">网络设备/硬件设施</option>
+      <option value="操作系统/系统服务">操作系统/系统服务</option>
+      <option value="基础组件/开发框架">基础组件/开发框架</option>
+      <option value="建站软件/web应用">建站软件/web应用</option>
+      <option value="常用软件/客户端应用">常用软件/客户端应用</option>
+      <option value="入侵事件/安全情报">入侵事件/安全情报</option>
+      <option value="其他类型">其他类型</option>
     </select>
     </div>
       <div class="submit-item">
@@ -38,9 +36,9 @@
       <span class="tagTitle">漏洞等级：</span>
       <select v-model="bugLevel">
         <option value="">--选择漏洞等级--</option>
-        <option value="0">低</option>
-        <option value="1">中</option>
-        <option value="2">高</option>
+        <option value="低">低</option>
+        <option value="中">中</option>
+        <option value="高">高</option>
       </select>
     </div>
     <div class="submit-item">
