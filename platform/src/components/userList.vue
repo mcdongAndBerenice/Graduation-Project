@@ -3,10 +3,10 @@
     <table class="userInfoList">
       <thead>
         <tr>
-          <th class="user-date">注册日期</th>
-          <th class="user-name">昵称</th>
-          <th class="user-level">等级</th> 
-          <th class="submit-bugNum">提交漏洞数</th>
+          <th v-on:click="userSort('data')" class="user-date">注册日期<span class="sortTag">v</span></th>
+          <th v-on:click="userSort('name')" class="user-name">昵称<span class="sortTag">v</span></th>
+          <th v-on:click="userSort('level')" class="user-level">等级<span class="sortTag">v</span></th> 
+          <th v-on:click="userSort('bugNum')" class="submit-bugNum">提交漏洞数<span class="sortTag">v</span></th>
         </tr>
       </thead>
       <tbody>
@@ -39,6 +39,9 @@ export default{
     },
     getUserList:function(){
       //获取列表
+    },
+    userSort:function(tag){
+      this.sortList(tag, this.items)
     }
   },
   ready: function(){

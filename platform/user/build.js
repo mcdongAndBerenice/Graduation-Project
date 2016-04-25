@@ -15287,7 +15287,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".userList .userInfoList {\n  word-wrap: break-word;\n  border-collapse: collapse;\n}\n.userList .userInfoList thead {\n  font-size: 18px;\n  color: #555;\n}\n.userList .userInfoList thead th {\n  padding: 8px 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList tbody tr:hover {\n  background-color: #eee;\n}\n.userList .userInfoList tbody td {\n  padding: 5px 10px;\n  font-size: 14px;\n  color: #666;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList .user-date {\n  width: 146px;\n}\n.userList .userInfoList .user-name {\n  width: 300px;\n}\n.userList .userInfoList .user-level {\n  width: 142px;\n}\n.userList .userInfoList .submit-bugNum {\n  width: 142px;\n}\n", "", {"version":3,"sources":["/./src/components/userList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,0BAA0B;CAC3B;AACD;EACE,gBAAgB;EAChB,YAAY;CACb;AACD;EACE,kBAAkB;EAClB,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,uBAAuB;CACxB;AACD;EACE,kBAAkB;EAClB,gBAAgB;EAChB,YAAY;EACZ,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd","file":"userList.vue","sourcesContent":[".userList .userInfoList {\n  word-wrap: break-word;\n  border-collapse: collapse;\n}\n.userList .userInfoList thead {\n  font-size: 18px;\n  color: #555;\n}\n.userList .userInfoList thead th {\n  padding: 8px 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList tbody tr:hover {\n  background-color: #eee;\n}\n.userList .userInfoList tbody td {\n  padding: 5px 10px;\n  font-size: 14px;\n  color: #666;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList .user-date {\n  width: 146px;\n}\n.userList .userInfoList .user-name {\n  width: 300px;\n}\n.userList .userInfoList .user-level {\n  width: 142px;\n}\n.userList .userInfoList .submit-bugNum {\n  width: 142px;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".userList .userInfoList {\n  word-wrap: break-word;\n  border-collapse: collapse;\n}\n.userList .userInfoList thead {\n  font-size: 18px;\n  color: #555;\n}\n.userList .userInfoList thead th {\n  padding: 8px 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList thead th .sortTag {\n  font-weight: normal;\n  font-size: 14px;\n  color: #bbb;\n  margin-left: 10px;\n  cursor: pointer;\n}\n.userList .userInfoList tbody tr:hover {\n  background-color: #eee;\n}\n.userList .userInfoList tbody td {\n  padding: 5px 10px;\n  font-size: 14px;\n  color: #666;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList .user-date {\n  width: 146px;\n}\n.userList .userInfoList .user-name {\n  width: 300px;\n}\n.userList .userInfoList .user-level {\n  width: 142px;\n}\n.userList .userInfoList .submit-bugNum {\n  width: 142px;\n}\n", "", {"version":3,"sources":["/./src/components/userList.vue"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,0BAA0B;CAC3B;AACD;EACE,gBAAgB;EAChB,YAAY;CACb;AACD;EACE,kBAAkB;EAClB,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,oBAAoB;EACpB,gBAAgB;EAChB,YAAY;EACZ,kBAAkB;EAClB,gBAAgB;CACjB;AACD;EACE,uBAAuB;CACxB;AACD;EACE,kBAAkB;EAClB,gBAAgB;EAChB,YAAY;EACZ,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd;AACD;EACE,aAAa;CACd","file":"userList.vue","sourcesContent":[".userList .userInfoList {\n  word-wrap: break-word;\n  border-collapse: collapse;\n}\n.userList .userInfoList thead {\n  font-size: 18px;\n  color: #555;\n}\n.userList .userInfoList thead th {\n  padding: 8px 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList thead th .sortTag {\n  font-weight: normal;\n  font-size: 14px;\n  color: #bbb;\n  margin-left: 10px;\n  cursor: pointer;\n}\n.userList .userInfoList tbody tr:hover {\n  background-color: #eee;\n}\n.userList .userInfoList tbody td {\n  padding: 5px 10px;\n  font-size: 14px;\n  color: #666;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.userList .userInfoList .user-date {\n  width: 146px;\n}\n.userList .userInfoList .user-name {\n  width: 300px;\n}\n.userList .userInfoList .user-level {\n  width: 142px;\n}\n.userList .userInfoList .submit-bugNum {\n  width: 142px;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -15306,10 +15306,10 @@
 	//     <table class="userInfoList">
 	//       <thead>
 	//         <tr>
-	//           <th class="user-date">注册日期</th>
-	//           <th class="user-name">昵称</th>
-	//           <th class="user-level">等级</th>
-	//           <th class="submit-bugNum">提交漏洞数</th>
+	//           <th v-on:click="userSort('data')" class="user-date">注册日期<span class="sortTag">v</span></th>
+	//           <th v-on:click="userSort('name')" class="user-name">昵称<span class="sortTag">v</span></th>
+	//           <th v-on:click="userSort('level')" class="user-level">等级<span class="sortTag">v</span></th>
+	//           <th v-on:click="userSort('bugNum')" class="submit-bugNum">提交漏洞数<span class="sortTag">v</span></th>
 	//         </tr>
 	//       </thead>
 	//       <tbody>
@@ -15343,6 +15343,9 @@
 	    },
 	    getUserList: function getUserList() {
 	      //获取列表
+	    },
+	    userSort: function userSort(tag) {
+	      this.sortList(tag, this.items);
 	    }
 	  },
 	  ready: function ready() {
@@ -15359,7 +15362,7 @@
 /* 69 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"userList\">\n  <table class=\"userInfoList\">\n    <thead>\n      <tr>\n        <th class=\"user-date\">注册日期</th>\n        <th class=\"user-name\">昵称</th>\n        <th class=\"user-level\">等级</th> \n        <th class=\"submit-bugNum\">提交漏洞数</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"item in items\">\n        <td class=\"user-date\">{{item.date}}</td>\n        <td class=\"user-name\">{{item.name}}</td>\n        <td class=\"user-level\">{{item.level}}</td>\n        <td class=\"submit-bugNum\">{{item.bugNum}}</td>\n      </tr>        \n    </tbody>\n  </table>\n</div>\n";
+	module.exports = "\n<div class=\"userList\">\n  <table class=\"userInfoList\">\n    <thead>\n      <tr>\n        <th v-on:click=\"userSort('data')\" class=\"user-date\">注册日期<span class=\"sortTag\">v</span></th>\n        <th v-on:click=\"userSort('name')\" class=\"user-name\">昵称<span class=\"sortTag\">v</span></th>\n        <th v-on:click=\"userSort('level')\" class=\"user-level\">等级<span class=\"sortTag\">v</span></th> \n        <th v-on:click=\"userSort('bugNum')\" class=\"submit-bugNum\">提交漏洞数<span class=\"sortTag\">v</span></th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"item in items\">\n        <td class=\"user-date\">{{item.date}}</td>\n        <td class=\"user-name\">{{item.name}}</td>\n        <td class=\"user-level\">{{item.level}}</td>\n        <td class=\"submit-bugNum\">{{item.bugNum}}</td>\n      </tr>        \n    </tbody>\n  </table>\n</div>\n";
 
 /***/ },
 /* 70 */
