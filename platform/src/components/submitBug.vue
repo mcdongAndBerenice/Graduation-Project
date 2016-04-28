@@ -12,8 +12,11 @@
     <select v-model="schoolName">
       <option value="">--选择问题高校--</option>
       <option value="天津理工大学">天津理工大学</option>
+<<<<<<< HEAD
       <option value="b">B</option>
       <option value="c">C</option>
+=======
+>>>>>>> c95cd5ef73f5fcb91b06b2cfbb5c68132867499b
       <option value="other">其他高校</option>
     </select>
     </div>

@@ -3,10 +3,17 @@
     <table class="userInfoList">
       <thead>
         <tr>
+<<<<<<< HEAD
           <th class="user-date">注册日期</th>
           <th class="user-name">昵称</th>
           <th class="user-level">等级</th>
           <th class="submit-bugNum">提交漏洞数</th>
+=======
+          <th v-on:click="userSort('data')" class="user-date">注册日期<span class="sortTag">v</span></th>
+          <th v-on:click="userSort('name')" class="user-name">昵称<span class="sortTag">v</span></th>
+          <th v-on:click="userSort('level')" class="user-level">等级<span class="sortTag">v</span></th> 
+          <th v-on:click="userSort('bugNum')" class="submit-bugNum">提交漏洞数<span class="sortTag">v</span></th>
+>>>>>>> c95cd5ef73f5fcb91b06b2cfbb5c68132867499b
         </tr>
       </thead>
       <tbody>
@@ -38,6 +45,7 @@ export default{
       })
     },
     getUserList:function(){
+<<<<<<< HEAD
       var t = this
       this.$http({url:'/post/useList', method:'POST'})
       .then(function(response){
@@ -54,6 +62,12 @@ export default{
       },function(response){
         //回调
       })
+=======
+      //获取列表
+    },
+    userSort:function(tag){
+      this.sortList(tag, this.items)
+>>>>>>> c95cd5ef73f5fcb91b06b2cfbb5c68132867499b
     }
   },
   ready: function(){
