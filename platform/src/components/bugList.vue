@@ -1,9 +1,9 @@
 <template class="bugList">
   <ul class="bug-list">
     <li class="clearfix" v-for="item in items">
-      <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">{{item.title}}</a>
+      <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item._id}}" href="#">{{item.title}}</a>
       <span class="goto-buginfo">
-        <a v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">详情<em></em></a>
+        <a v-link="{ name: 'BugInfo', params: {id: item._id}}" href="#">详情<em></em></a>
       </span>
       <span class="data">{{item.date}}</span>
     </li>
@@ -48,7 +48,7 @@
           pageSize: 10,
           pageIndex: this.index
         }
-        this.$http({url:'http://10.235.147.5:8080/bugList', method:'POST', data:data})
+        this.$http({url:'/post/bugList', method:'POST', data:data})
         .then(function(response){
           var data = response.data
           t.items = data.data
@@ -57,7 +57,7 @@
             t.items[x].date = tmp[0]
           }
         },function(response){})
-        
+
       }
     },
     ready:function(){

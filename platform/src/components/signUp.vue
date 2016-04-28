@@ -46,7 +46,7 @@ export default {
         name: t.name,
         pwd: t.pwd
       }
-      this.$http({url:'http://10.235.147.5:8080/register', method:'POST', data:data})
+      this.$http({url:'/post/register', method:'POST', data:data})
       .then(function(response){
         var data = response.data
         if(data.error == 0){

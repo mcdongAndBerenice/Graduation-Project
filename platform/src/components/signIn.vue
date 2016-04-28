@@ -35,7 +35,7 @@
             uid: t.uid,
             pwd: t.pwd
           }
-          this.$http({url:'http://10.235.147.5:8080/login', method:'POST', data:data})
+          this.$http({url:'/post/login', method:'POST', data:data})
           .then(function(response){
             var data = response.data
             if(data.error != 0){
@@ -46,7 +46,7 @@
               this.$router.go({name: "BugList"})
             }
           },function(response){})
-           
+
         }else{
           alert("请完整填写信息")
         }

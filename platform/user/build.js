@@ -76,35 +76,35 @@
 	
 	var _main2 = _interopRequireDefault(_main);
 	
-	var _bugList = __webpack_require__(43);
+	var _bugList = __webpack_require__(44);
 	
 	var _bugList2 = _interopRequireDefault(_bugList);
 	
-	var _bugInfo = __webpack_require__(49);
+	var _bugInfo = __webpack_require__(50);
 	
 	var _bugInfo2 = _interopRequireDefault(_bugInfo);
 	
-	var _submitBug = __webpack_require__(53);
+	var _submitBug = __webpack_require__(55);
 	
 	var _submitBug2 = _interopRequireDefault(_submitBug);
 	
-	var _companyList = __webpack_require__(58);
+	var _companyList = __webpack_require__(60);
 	
 	var _companyList2 = _interopRequireDefault(_companyList);
 	
-	var _userList = __webpack_require__(63);
+	var _userList = __webpack_require__(66);
 	
 	var _userList2 = _interopRequireDefault(_userList);
 	
-	var _bugSummary = __webpack_require__(68);
+	var _bugSummary = __webpack_require__(71);
 	
 	var _bugSummary2 = _interopRequireDefault(_bugSummary);
 	
-	var _signUp = __webpack_require__(71);
+	var _signUp = __webpack_require__(74);
 	
 	var _signUp2 = _interopRequireDefault(_signUp);
 	
-	var _signIn = __webpack_require__(76);
+	var _signIn = __webpack_require__(79);
 	
 	var _signIn2 = _interopRequireDefault(_signIn);
 	
@@ -173,7 +173,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global, process) {/*!
-	 * Vue.js v1.0.17
+	 * Vue.js v1.0.20
 	 * (c) 2016 Evan You
 	 * Released under the MIT License.
 	 */
@@ -459,7 +459,7 @@
 	var isArray = Array.isArray;
 	
 	/**
-	 * Define a non-enumerable property
+	 * Define a property.
 	 *
 	 * @param {Object} obj
 	 * @param {String} key
@@ -818,7 +818,7 @@
 	 *   ]
 	 * }
 	 *
-	 * @param {String} str
+	 * @param {String} s
 	 * @return {Object}
 	 */
 	
@@ -1078,6 +1078,13 @@
 	   */
 	
 	  warnExpressionErrors: true,
+	
+	  /**
+	   * Whether to allow devtools inspection.
+	   * Disabled by default in production builds.
+	   */
+	
+	  devtools: process.env.NODE_ENV !== 'production',
 	
 	  /**
 	   * Internal flag to indicate the delimiters have been
@@ -1417,6 +1424,22 @@
 	}
 	
 	/**
+	 * For IE9 compat: when both class and :class are present
+	 * getAttribute('class') returns wrong value...
+	 *
+	 * @param {Element} el
+	 * @return {String}
+	 */
+	
+	function getClass(el) {
+	  var classname = el.className;
+	  if (typeof classname === 'object') {
+	    classname = classname.baseVal || '';
+	  }
+	  return classname;
+	}
+	
+	/**
 	 * In IE9, setAttribute('class') will result in empty class
 	 * if the element also has the :class attribute; However in
 	 * PhantomJS, setting `className` does not work on SVG elements...
@@ -1446,7 +1469,7 @@
 	  if (el.classList) {
 	    el.classList.add(cls);
 	  } else {
-	    var cur = ' ' + (el.getAttribute('class') || '') + ' ';
+	    var cur = ' ' + getClass(el) + ' ';
 	    if (cur.indexOf(' ' + cls + ' ') < 0) {
 	      setClass(el, (cur + cls).trim());
 	    }
@@ -1464,7 +1487,7 @@
 	  if (el.classList) {
 	    el.classList.remove(cls);
 	  } else {
-	    var cur = ' ' + (el.getAttribute('class') || '') + ' ';
+	    var cur = ' ' + getClass(el) + ' ';
 	    var tar = ' ' + cls + ' ';
 	    while (cur.indexOf(tar) >= 0) {
 	      cur = cur.replace(tar, ' ');
@@ -1663,8 +1686,8 @@
 	  }
 	}
 	
-	var commonTagRE = /^(div|p|span|img|a|b|i|br|ul|ol|li|h1|h2|h3|h4|h5|h6|code|pre|table|th|td|tr|form|label|input|select|option|nav|article|section|header|footer)$/;
-	var reservedTagRE = /^(slot|partial|component)$/;
+	var commonTagRE = /^(div|p|span|img|a|b|i|br|ul|ol|li|h1|h2|h3|h4|h5|h6|code|pre|table|th|td|tr|form|label|input|select|option|nav|article|section|header|footer)$/i;
+	var reservedTagRE = /^(slot|partial|component)$/i;
 	
 	var isUnknownElement = undefined;
 	if (process.env.NODE_ENV !== 'production') {
@@ -1733,100 +1756,6 @@
 	      return { id: exp, dynamic: true };
 	    }
 	  }
-	}
-	
-	/**
-	 * Set a prop's initial value on a vm and its data object.
-	 *
-	 * @param {Vue} vm
-	 * @param {Object} prop
-	 * @param {*} value
-	 */
-	
-	function initProp(vm, prop, value) {
-	  var key = prop.path;
-	  value = coerceProp(prop, value);
-	  vm[key] = vm._data[key] = assertProp(prop, value) ? value : undefined;
-	}
-	
-	/**
-	 * Assert whether a prop is valid.
-	 *
-	 * @param {Object} prop
-	 * @param {*} value
-	 */
-	
-	function assertProp(prop, value) {
-	  if (!prop.options.required && ( // non-required
-	  prop.raw === null || // abscent
-	  value == null) // null or undefined
-	  ) {
-	      return true;
-	    }
-	  var options = prop.options;
-	  var type = options.type;
-	  var valid = true;
-	  var expectedType;
-	  if (type) {
-	    if (type === String) {
-	      expectedType = 'string';
-	      valid = typeof value === expectedType;
-	    } else if (type === Number) {
-	      expectedType = 'number';
-	      valid = typeof value === 'number';
-	    } else if (type === Boolean) {
-	      expectedType = 'boolean';
-	      valid = typeof value === 'boolean';
-	    } else if (type === Function) {
-	      expectedType = 'function';
-	      valid = typeof value === 'function';
-	    } else if (type === Object) {
-	      expectedType = 'object';
-	      valid = isPlainObject(value);
-	    } else if (type === Array) {
-	      expectedType = 'array';
-	      valid = isArray(value);
-	    } else {
-	      valid = value instanceof type;
-	    }
-	  }
-	  if (!valid) {
-	    process.env.NODE_ENV !== 'production' && warn('Invalid prop: type check failed for ' + prop.path + '="' + prop.raw + '".' + ' Expected ' + formatType(expectedType) + ', got ' + formatValue(value) + '.');
-	    return false;
-	  }
-	  var validator = options.validator;
-	  if (validator) {
-	    if (!validator(value)) {
-	      process.env.NODE_ENV !== 'production' && warn('Invalid prop: custom validator check failed for ' + prop.path + '="' + prop.raw + '"');
-	      return false;
-	    }
-	  }
-	  return true;
-	}
-	
-	/**
-	 * Force parsing value with coerce option.
-	 *
-	 * @param {*} value
-	 * @param {Object} options
-	 * @return {*}
-	 */
-	
-	function coerceProp(prop, value) {
-	  var coerce = prop.options.coerce;
-	  if (!coerce) {
-	    return value;
-	  }
-	  // coerce is a function
-	  return coerce(value);
-	}
-	
-	function formatType(val) {
-	  return val ? val.charAt(0).toUpperCase() + val.slice(1) : 'custom type';
-	}
-	
-	function formatValue(val) {
-	  return Object.prototype.toString.call(val).slice(8, -1);
 	}
 	
 	/**
@@ -2288,6 +2217,24 @@
 	var arrayKeys = Object.getOwnPropertyNames(arrayMethods);
 	
 	/**
+	 * By default, when a reactive property is set, the new value is
+	 * also converted to become reactive. However in certain cases, e.g.
+	 * v-for scope alias and props, we don't want to force conversion
+	 * because the value may be a nested value under a frozen data structure.
+	 *
+	 * So whenever we want to set a reactive property without forcing
+	 * conversion on the new value, we wrap that call inside this function.
+	 */
+	
+	var shouldConvert = true;
+	
+	function withoutConversion(fn) {
+	  shouldConvert = false;
+	  fn();
+	  shouldConvert = true;
+	}
+	
+	/**
 	 * Observer class that are attached to each observed
 	 * object. Once attached, the observer converts target
 	 * object's property keys into getter/setters that
@@ -2382,7 +2329,7 @@
 	 * the prototype chain using __proto__
 	 *
 	 * @param {Object|Array} target
-	 * @param {Object} proto
+	 * @param {Object} src
 	 */
 	
 	function protoAugment(target, src) {
@@ -2424,7 +2371,7 @@
 	  var ob;
 	  if (hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
 	    ob = value.__ob__;
-	  } else if ((isArray(value) || isPlainObject(value)) && Object.isExtensible(value) && !value._isVue) {
+	  } else if (shouldConvert && (isArray(value) || isPlainObject(value)) && Object.isExtensible(value) && !value._isVue) {
 	    ob = new Observer(value);
 	  }
 	  if (ob && vm) {
@@ -2554,9 +2501,6 @@
 		resolveAsset: resolveAsset,
 		assertAsset: assertAsset,
 		checkComponentAttr: checkComponentAttr,
-		initProp: initProp,
-		assertProp: assertProp,
-		coerceProp: coerceProp,
 		commonTagRE: commonTagRE,
 		reservedTagRE: reservedTagRE,
 		get warn () { return warn; }
@@ -2635,13 +2579,6 @@
 	      this.$parent.$children.push(this);
 	    }
 	
-	    // save raw constructor data before merge
-	    // so that we know which properties are provided at
-	    // instantiation.
-	    if (process.env.NODE_ENV !== 'production') {
-	      this._runtimeData = options.data;
-	    }
-	
 	    // merge options.
 	    options = this.$options = mergeOptions(this.constructor.options, options, this);
 	
@@ -2651,6 +2588,11 @@
 	    // initialize data as empty object.
 	    // it will be filled up in _initScope().
 	    this._data = {};
+	
+	    // save raw constructor data before merge
+	    // so that we know which properties are provided at
+	    // instantiation.
+	    this._runtimeData = options.data;
 	
 	    // call init hook
 	    this._callHook('init');
@@ -3009,7 +2951,7 @@
 	var allowedKeywordsRE = new RegExp('^(' + allowedKeywords.replace(/,/g, '\\b|') + '\\b)');
 	
 	// keywords that don't make sense inside expressions
-	var improperKeywords = 'break,case,class,catch,const,continue,debugger,default,' + 'delete,do,else,export,extends,finally,for,function,if,' + 'import,in,instanceof,let,return,super,switch,throw,try,' + 'var,while,with,yield,enum,await,implements,package,' + 'proctected,static,interface,private,public';
+	var improperKeywords = 'break,case,class,catch,const,continue,debugger,default,' + 'delete,do,else,export,extends,finally,for,function,if,' + 'import,in,instanceof,let,return,super,switch,throw,try,' + 'var,while,with,yield,enum,await,implements,package,' + 'protected,static,interface,private,public';
 	var improperKeywordsRE = new RegExp('^(' + improperKeywords.replace(/,/g, '\\b|') + '\\b)');
 	
 	var wsRE = /\s/g;
@@ -3200,6 +3142,8 @@
 	// before user watchers so that when user watchers are
 	// triggered, the DOM would have already been in updated
 	// state.
+	
+	var queueIndex;
 	var queue = [];
 	var userQueue = [];
 	var has = {};
@@ -3229,7 +3173,7 @@
 	  runBatcherQueue(userQueue);
 	  // dev tool hook
 	  /* istanbul ignore if */
-	  if (devtools) {
+	  if (devtools && config.devtools) {
 	    devtools.emit('flush');
 	  }
 	  resetBatcherState();
@@ -3244,8 +3188,8 @@
 	function runBatcherQueue(queue) {
 	  // do not cache length because more watchers might be pushed
 	  // as we run existing watchers
-	  for (var i = 0; i < queue.length; i++) {
-	    var watcher = queue[i];
+	  for (queueIndex = 0; queueIndex < queue.length; queueIndex++) {
+	    var watcher = queue[queueIndex];
 	    var id = watcher.id;
 	    has[id] = null;
 	    watcher.run();
@@ -3274,20 +3218,20 @@
 	function pushWatcher(watcher) {
 	  var id = watcher.id;
 	  if (has[id] == null) {
-	    // if an internal watcher is pushed, but the internal
-	    // queue is already depleted, we run it immediately.
 	    if (internalQueueDepleted && !watcher.user) {
-	      watcher.run();
-	      return;
-	    }
-	    // push watcher into appropriate queue
-	    var q = watcher.user ? userQueue : queue;
-	    has[id] = q.length;
-	    q.push(watcher);
-	    // queue the flush
-	    if (!waiting) {
-	      waiting = true;
-	      nextTick(flushBatcherQueue);
+	      // an internal watcher triggered by a user watcher...
+	      // let's run it immediately after current user watcher is done.
+	      userQueue.splice(queueIndex + 1, 0, watcher);
+	    } else {
+	      // push watcher into appropriate queue
+	      var q = watcher.user ? userQueue : queue;
+	      has[id] = q.length;
+	      q.push(watcher);
+	      // queue the flush
+	      if (!waiting) {
+	        waiting = true;
+	        nextTick(flushBatcherQueue);
+	      }
 	    }
 	  }
 	}
@@ -3300,7 +3244,7 @@
 	 * This is used for both the $watch() api and directives.
 	 *
 	 * @param {Vue} vm
-	 * @param {String} expression
+	 * @param {String|Function} expOrFn
 	 * @param {Function} cb
 	 * @param {Object} options
 	 *                 - {Array} filters
@@ -3321,13 +3265,15 @@
 	  var isFn = typeof expOrFn === 'function';
 	  this.vm = vm;
 	  vm._watchers.push(this);
-	  this.expression = isFn ? expOrFn.toString() : expOrFn;
+	  this.expression = expOrFn;
 	  this.cb = cb;
 	  this.id = ++uid$2; // uid for batching
 	  this.active = true;
 	  this.dirty = this.lazy; // for lazy watchers
-	  this.deps = Object.create(null);
-	  this.newDeps = null;
+	  this.deps = [];
+	  this.newDeps = [];
+	  this.depIds = Object.create(null);
+	  this.newDepIds = null;
 	  this.prevError = null; // for async error stacks
 	  // parse expression for getter/setter
 	  if (isFn) {
@@ -3343,23 +3289,6 @@
 	  // watchers during vm._digest()
 	  this.queued = this.shallow = false;
 	}
-	
-	/**
-	 * Add a dependency to this directive.
-	 *
-	 * @param {Dep} dep
-	 */
-	
-	Watcher.prototype.addDep = function (dep) {
-	  var id = dep.id;
-	  if (!this.newDeps[id]) {
-	    this.newDeps[id] = dep;
-	    if (!this.deps[id]) {
-	      this.deps[id] = dep;
-	      dep.addSub(this);
-	    }
-	  }
-	};
 	
 	/**
 	 * Evaluate the getter, and re-collect dependencies.
@@ -3436,7 +3365,25 @@
 	
 	Watcher.prototype.beforeGet = function () {
 	  Dep.target = this;
-	  this.newDeps = Object.create(null);
+	  this.newDepIds = Object.create(null);
+	  this.newDeps.length = 0;
+	};
+	
+	/**
+	 * Add a dependency to this directive.
+	 *
+	 * @param {Dep} dep
+	 */
+	
+	Watcher.prototype.addDep = function (dep) {
+	  var id = dep.id;
+	  if (!this.newDepIds[id]) {
+	    this.newDepIds[id] = true;
+	    this.newDeps.push(dep);
+	    if (!this.depIds[id]) {
+	      dep.addSub(this);
+	    }
+	  }
 	};
 	
 	/**
@@ -3445,15 +3392,17 @@
 	
 	Watcher.prototype.afterGet = function () {
 	  Dep.target = null;
-	  var ids = Object.keys(this.deps);
-	  var i = ids.length;
+	  var i = this.deps.length;
 	  while (i--) {
-	    var id = ids[i];
-	    if (!this.newDeps[id]) {
-	      this.deps[id].removeSub(this);
+	    var dep = this.deps[i];
+	    if (!this.newDepIds[dep.id]) {
+	      dep.removeSub(this);
 	    }
 	  }
+	  this.depIds = this.newDepIds;
+	  var tmp = this.deps;
 	  this.deps = this.newDeps;
+	  this.newDeps = tmp;
 	};
 	
 	/**
@@ -3541,10 +3490,9 @@
 	 */
 	
 	Watcher.prototype.depend = function () {
-	  var depIds = Object.keys(this.deps);
-	  var i = depIds.length;
+	  var i = this.deps.length;
 	  while (i--) {
-	    this.deps[depIds[i]].depend();
+	    this.deps[i].depend();
 	  }
 	};
 	
@@ -3561,10 +3509,9 @@
 	    if (!this.vm._isBeingDestroyed && !this.vm._vForRemoving) {
 	      this.vm._watchers.$remove(this);
 	    }
-	    var depIds = Object.keys(this.deps);
-	    var i = depIds.length;
+	    var i = this.deps.length;
 	    while (i--) {
-	      this.deps[depIds[i]].removeSub(this);
+	      this.deps[i].removeSub(this);
 	    }
 	    this.active = false;
 	    this.vm = this.cb = this.value = null;
@@ -3632,7 +3579,7 @@
 	  return isTemplate(node) && isFragment(node.content);
 	}
 	
-	var tagRE$1 = /<([\w:]+)/;
+	var tagRE$1 = /<([\w:-]+)/;
 	var entityRE = /&#?\w+?;/;
 	
 	/**
@@ -3754,6 +3701,7 @@
 	 */
 	
 	function cloneNode(node) {
+	  /* istanbul ignore if */
 	  if (!node.querySelectorAll) {
 	    return node.cloneNode();
 	  }
@@ -3898,6 +3846,7 @@
 	 * @param {DocumentFragment} frag
 	 * @param {Vue} [host]
 	 * @param {Object} [scope]
+	 * @param {Fragment} [parentFrag]
 	 */
 	function Fragment(linker, vm, frag, host, scope, parentFrag) {
 	  this.children = [];
@@ -4063,7 +4012,7 @@
 	 */
 	
 	function attach(child) {
-	  if (!child._isAttached) {
+	  if (!child._isAttached && inDoc(child.$el)) {
 	    child._callHook('attached');
 	  }
 	}
@@ -4075,7 +4024,7 @@
 	 */
 	
 	function detach(child) {
-	  if (child._isAttached) {
+	  if (child._isAttached && !inDoc(child.$el)) {
 	    child._callHook('detached');
 	  }
 	}
@@ -4145,6 +4094,7 @@
 	var vFor = {
 	
 	  priority: FOR,
+	  terminal: true,
 	
 	  params: ['track-by', 'stagger', 'enter-stagger', 'leave-stagger'],
 	
@@ -4254,7 +4204,9 @@
 	        // update data for track-by, object repeat &
 	        // primitive values.
 	        if (trackByKey || convertedFromObject || primitive) {
-	          frag.scope[alias] = value;
+	          withoutConversion(function () {
+	            frag.scope[alias] = value;
+	          });
 	        }
 	      } else {
 	        // new isntance
@@ -4344,7 +4296,11 @@
 	    // for two-way binding on alias
 	    scope.$forContext = this;
 	    // define scope properties
-	    defineReactive(scope, alias, value);
+	    // important: define the scope alias without forced conversion
+	    // so that frozen data structures remain non-reactive.
+	    withoutConversion(function () {
+	      defineReactive(scope, alias, value);
+	    });
 	    defineReactive(scope, '$index', index);
 	    if (key) {
 	      defineReactive(scope, '$key', key);
@@ -4720,6 +4676,7 @@
 	var vIf = {
 	
 	  priority: IF,
+	  terminal: true,
 	
 	  bind: function bind() {
 	    var el = this.el;
@@ -4728,12 +4685,11 @@
 	      var next = el.nextElementSibling;
 	      if (next && getAttr(next, 'v-else') !== null) {
 	        remove(next);
-	        this.elseFactory = new FragmentFactory(next._context || this.vm, next);
+	        this.elseEl = next;
 	      }
 	      // check main block
 	      this.anchor = createAnchor('v-if');
 	      replace(el, this.anchor);
-	      this.factory = new FragmentFactory(this.vm, el);
 	    } else {
 	      process.env.NODE_ENV !== 'production' && warn('v-if="' + this.expression + '" cannot be ' + 'used on an instance root element.');
 	      this.invalid = true;
@@ -4756,6 +4712,10 @@
 	      this.elseFrag.remove();
 	      this.elseFrag = null;
 	    }
+	    // lazy init factory
+	    if (!this.factory) {
+	      this.factory = new FragmentFactory(this.vm, this.el);
+	    }
 	    this.frag = this.factory.create(this._host, this._scope, this._frag);
 	    this.frag.before(this.anchor);
 	  },
@@ -4765,7 +4725,10 @@
 	      this.frag.remove();
 	      this.frag = null;
 	    }
-	    if (this.elseFactory && !this.elseFrag) {
+	    if (this.elseEl && !this.elseFrag) {
+	      if (!this.elseFactory) {
+	        this.elseFactory = new FragmentFactory(this.elseEl._context || this.vm, this.elseEl);
+	      }
 	      this.elseFrag = this.elseFactory.create(this._host, this._scope, this._frag);
 	      this.elseFrag.before(this.anchor);
 	    }
@@ -4854,6 +4817,10 @@
 	      });
 	      this.on('blur', function () {
 	        self.focused = false;
+	        // do not sync value after fragment removal (#2017)
+	        if (!self._frag || self._frag.inserted) {
+	          self.rawListener();
+	        }
 	      });
 	    }
 	
@@ -5301,7 +5268,7 @@
 	    }
 	    // key filter
 	    var keys = Object.keys(this.modifiers).filter(function (key) {
-	      return key !== 'stop' && key !== 'prevent';
+	      return key !== 'stop' && key !== 'prevent' && key !== 'self';
 	    });
 	    if (keys.length) {
 	      handler = keyFilter(handler, keys);
@@ -5635,22 +5602,18 @@
 	
 	  handleObject: function handleObject(value) {
 	    this.cleanup(value);
-	    var keys = this.prevKeys = Object.keys(value);
-	    for (var i = 0, l = keys.length; i < l; i++) {
-	      var key = keys[i];
-	      if (value[key]) {
-	        addClass(this.el, key);
-	      } else {
-	        removeClass(this.el, key);
-	      }
-	    }
+	    this.prevKeys = Object.keys(value);
+	    setObjectClasses(this.el, value);
 	  },
 	
 	  handleArray: function handleArray(value) {
 	    this.cleanup(value);
 	    for (var i = 0, l = value.length; i < l; i++) {
-	      if (value[i]) {
-	        addClass(this.el, value[i]);
+	      var val = value[i];
+	      if (val && isPlainObject(val)) {
+	        setObjectClasses(this.el, val);
+	      } else if (val && typeof val === 'string') {
+	        addClass(this.el, val);
 	      }
 	    }
 	    this.prevKeys = value.slice();
@@ -5661,13 +5624,29 @@
 	      var i = this.prevKeys.length;
 	      while (i--) {
 	        var key = this.prevKeys[i];
-	        if (key && (!value || !contains(value, key))) {
+	        if (!key) continue;
+	        if (isPlainObject(key)) {
+	          var keys = Object.keys(key);
+	          for (var k = 0; k < keys.length; k++) {
+	            removeClass(this.el, keys[k]);
+	          }
+	        } else {
 	          removeClass(this.el, key);
 	        }
 	      }
 	    }
 	  }
 	};
+	
+	function setObjectClasses(el, obj) {
+	  var keys = Object.keys(obj);
+	  for (var i = 0, l = keys.length; i < l; i++) {
+	    var key = keys[i];
+	    if (obj[key]) {
+	      addClass(el, key);
+	    }
+	  }
+	}
 	
 	function stringToObject(value) {
 	  var res = {};
@@ -5677,10 +5656,6 @@
 	    res[keys[i]] = true;
 	  }
 	  return res;
-	}
-	
-	function contains(value, key) {
-	  return isArray(value) ? value.indexOf(key) > -1 : hasOwn(value, key);
 	}
 	
 	var component = {
@@ -5779,16 +5754,19 @@
 	  /**
 	   * Resolve the component constructor to use when creating
 	   * the child vm.
+	   *
+	   * @param {String|Function} value
+	   * @param {Function} cb
 	   */
 	
-	  resolveComponent: function resolveComponent(id, cb) {
+	  resolveComponent: function resolveComponent(value, cb) {
 	    var self = this;
 	    this.pendingComponentCb = cancellable(function (Component) {
-	      self.ComponentName = Component.options.name || id;
+	      self.ComponentName = Component.options.name || (typeof value === 'string' ? value : null);
 	      self.Component = Component;
 	      cb();
 	    });
-	    this.vm._resolveComponent(id, this.pendingComponentCb);
+	    this.vm._resolveComponent(value, this.pendingComponentCb);
 	  },
 	
 	  /**
@@ -5920,13 +5898,16 @@
 	
 	  unbuild: function unbuild(defer) {
 	    if (this.waitingFor) {
-	      this.waitingFor.$destroy();
+	      if (!this.keepAlive) {
+	        this.waitingFor.$destroy();
+	      }
 	      this.waitingFor = null;
 	    }
 	    var child = this.childVM;
 	    if (!child || this.keepAlive) {
 	      if (child) {
 	        // remove ref
+	        child._inactive = true;
 	        child._updateRef(true);
 	      }
 	      return;
@@ -5979,10 +5960,8 @@
 	    var self = this;
 	    var current = this.childVM;
 	    // for devtool inspection
-	    if (process.env.NODE_ENV !== 'production') {
-	      if (current) current._inactive = true;
-	      target._inactive = false;
-	    }
+	    if (current) current._inactive = true;
+	    target._inactive = false;
 	    this.childVM = target;
 	    switch (self.params.transitionMode) {
 	      case 'in-out':
@@ -6040,6 +6019,288 @@
 	  }
 	}
 	
+	var propBindingModes = config._propBindingModes;
+	var empty = {};
+	
+	// regexes
+	var identRE$1 = /^[$_a-zA-Z]+[\w$]*$/;
+	var settablePathRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\[[^\[\]]+\])*$/;
+	
+	/**
+	 * Compile props on a root element and return
+	 * a props link function.
+	 *
+	 * @param {Element|DocumentFragment} el
+	 * @param {Array} propOptions
+	 * @return {Function} propsLinkFn
+	 */
+	
+	function compileProps(el, propOptions) {
+	  var props = [];
+	  var names = Object.keys(propOptions);
+	  var i = names.length;
+	  var options, name, attr, value, path, parsed, prop;
+	  while (i--) {
+	    name = names[i];
+	    options = propOptions[name] || empty;
+	
+	    if (process.env.NODE_ENV !== 'production' && name === '$data') {
+	      warn('Do not use $data as prop.');
+	      continue;
+	    }
+	
+	    // props could contain dashes, which will be
+	    // interpreted as minus calculations by the parser
+	    // so we need to camelize the path here
+	    path = camelize(name);
+	    if (!identRE$1.test(path)) {
+	      process.env.NODE_ENV !== 'production' && warn('Invalid prop key: "' + name + '". Prop keys ' + 'must be valid identifiers.');
+	      continue;
+	    }
+	
+	    prop = {
+	      name: name,
+	      path: path,
+	      options: options,
+	      mode: propBindingModes.ONE_WAY,
+	      raw: null
+	    };
+	
+	    attr = hyphenate(name);
+	    // first check dynamic version
+	    if ((value = getBindAttr(el, attr)) === null) {
+	      if ((value = getBindAttr(el, attr + '.sync')) !== null) {
+	        prop.mode = propBindingModes.TWO_WAY;
+	      } else if ((value = getBindAttr(el, attr + '.once')) !== null) {
+	        prop.mode = propBindingModes.ONE_TIME;
+	      }
+	    }
+	    if (value !== null) {
+	      // has dynamic binding!
+	      prop.raw = value;
+	      parsed = parseDirective(value);
+	      value = parsed.expression;
+	      prop.filters = parsed.filters;
+	      // check binding type
+	      if (isLiteral(value) && !parsed.filters) {
+	        // for expressions containing literal numbers and
+	        // booleans, there's no need to setup a prop binding,
+	        // so we can optimize them as a one-time set.
+	        prop.optimizedLiteral = true;
+	      } else {
+	        prop.dynamic = true;
+	        // check non-settable path for two-way bindings
+	        if (process.env.NODE_ENV !== 'production' && prop.mode === propBindingModes.TWO_WAY && !settablePathRE.test(value)) {
+	          prop.mode = propBindingModes.ONE_WAY;
+	          warn('Cannot bind two-way prop with non-settable ' + 'parent path: ' + value);
+	        }
+	      }
+	      prop.parentPath = value;
+	
+	      // warn required two-way
+	      if (process.env.NODE_ENV !== 'production' && options.twoWay && prop.mode !== propBindingModes.TWO_WAY) {
+	        warn('Prop "' + name + '" expects a two-way binding type.');
+	      }
+	    } else if ((value = getAttr(el, attr)) !== null) {
+	      // has literal binding!
+	      prop.raw = value;
+	    } else if (process.env.NODE_ENV !== 'production') {
+	      // check possible camelCase prop usage
+	      var lowerCaseName = path.toLowerCase();
+	      value = /[A-Z\-]/.test(name) && (el.getAttribute(lowerCaseName) || el.getAttribute(':' + lowerCaseName) || el.getAttribute('v-bind:' + lowerCaseName) || el.getAttribute(':' + lowerCaseName + '.once') || el.getAttribute('v-bind:' + lowerCaseName + '.once') || el.getAttribute(':' + lowerCaseName + '.sync') || el.getAttribute('v-bind:' + lowerCaseName + '.sync'));
+	      if (value) {
+	        warn('Possible usage error for prop `' + lowerCaseName + '` - ' + 'did you mean `' + attr + '`? HTML is case-insensitive, remember to use ' + 'kebab-case for props in templates.');
+	      } else if (options.required) {
+	        // warn missing required
+	        warn('Missing required prop: ' + name);
+	      }
+	    }
+	    // push prop
+	    props.push(prop);
+	  }
+	  return makePropsLinkFn(props);
+	}
+	
+	/**
+	 * Build a function that applies props to a vm.
+	 *
+	 * @param {Array} props
+	 * @return {Function} propsLinkFn
+	 */
+	
+	function makePropsLinkFn(props) {
+	  return function propsLinkFn(vm, scope) {
+	    // store resolved props info
+	    vm._props = {};
+	    var i = props.length;
+	    var prop, path, options, value, raw;
+	    while (i--) {
+	      prop = props[i];
+	      raw = prop.raw;
+	      path = prop.path;
+	      options = prop.options;
+	      vm._props[path] = prop;
+	      if (raw === null) {
+	        // initialize absent prop
+	        initProp(vm, prop, undefined);
+	      } else if (prop.dynamic) {
+	        // dynamic prop
+	        if (prop.mode === propBindingModes.ONE_TIME) {
+	          // one time binding
+	          value = (scope || vm._context || vm).$get(prop.parentPath);
+	          initProp(vm, prop, value);
+	        } else {
+	          if (vm._context) {
+	            // dynamic binding
+	            vm._bindDir({
+	              name: 'prop',
+	              def: propDef,
+	              prop: prop
+	            }, null, null, scope); // el, host, scope
+	          } else {
+	              // root instance
+	              initProp(vm, prop, vm.$get(prop.parentPath));
+	            }
+	        }
+	      } else if (prop.optimizedLiteral) {
+	        // optimized literal, cast it and just set once
+	        var stripped = stripQuotes(raw);
+	        value = stripped === raw ? toBoolean(toNumber(raw)) : stripped;
+	        initProp(vm, prop, value);
+	      } else {
+	        // string literal, but we need to cater for
+	        // Boolean props with no value, or with same
+	        // literal value (e.g. disabled="disabled")
+	        // see https://github.com/vuejs/vue-loader/issues/182
+	        value = options.type === Boolean && (raw === '' || raw === hyphenate(prop.name)) ? true : raw;
+	        initProp(vm, prop, value);
+	      }
+	    }
+	  };
+	}
+	
+	/**
+	 * Set a prop's initial value on a vm and its data object.
+	 *
+	 * @param {Vue} vm
+	 * @param {Object} prop
+	 * @param {*} value
+	 */
+	
+	function initProp(vm, prop, value) {
+	  var key = prop.path;
+	  value = coerceProp(prop, value);
+	  if (value === undefined) {
+	    value = getPropDefaultValue(vm, prop.options);
+	  }
+	  if (assertProp(prop, value)) {
+	    defineReactive(vm, key, value);
+	  }
+	}
+	
+	/**
+	 * Get the default value of a prop.
+	 *
+	 * @param {Vue} vm
+	 * @param {Object} options
+	 * @return {*}
+	 */
+	
+	function getPropDefaultValue(vm, options) {
+	  // no default, return undefined
+	  if (!hasOwn(options, 'default')) {
+	    // absent boolean value defaults to false
+	    return options.type === Boolean ? false : undefined;
+	  }
+	  var def = options['default'];
+	  // warn against non-factory defaults for Object & Array
+	  if (isObject(def)) {
+	    process.env.NODE_ENV !== 'production' && warn('Object/Array as default prop values will be shared ' + 'across multiple instances. Use a factory function ' + 'to return the default value instead.');
+	  }
+	  // call factory function for non-Function types
+	  return typeof def === 'function' && options.type !== Function ? def.call(vm) : def;
+	}
+	
+	/**
+	 * Assert whether a prop is valid.
+	 *
+	 * @param {Object} prop
+	 * @param {*} value
+	 */
+	
+	function assertProp(prop, value) {
+	  if (!prop.options.required && ( // non-required
+	  prop.raw === null || // abscent
+	  value == null) // null or undefined
+	  ) {
+	      return true;
+	    }
+	  var options = prop.options;
+	  var type = options.type;
+	  var valid = true;
+	  var expectedType;
+	  if (type) {
+	    if (type === String) {
+	      expectedType = 'string';
+	      valid = typeof value === expectedType;
+	    } else if (type === Number) {
+	      expectedType = 'number';
+	      valid = typeof value === 'number';
+	    } else if (type === Boolean) {
+	      expectedType = 'boolean';
+	      valid = typeof value === 'boolean';
+	    } else if (type === Function) {
+	      expectedType = 'function';
+	      valid = typeof value === 'function';
+	    } else if (type === Object) {
+	      expectedType = 'object';
+	      valid = isPlainObject(value);
+	    } else if (type === Array) {
+	      expectedType = 'array';
+	      valid = isArray(value);
+	    } else {
+	      valid = value instanceof type;
+	    }
+	  }
+	  if (!valid) {
+	    process.env.NODE_ENV !== 'production' && warn('Invalid prop: type check failed for ' + prop.path + '="' + prop.raw + '".' + ' Expected ' + formatType(expectedType) + ', got ' + formatValue(value) + '.');
+	    return false;
+	  }
+	  var validator = options.validator;
+	  if (validator) {
+	    if (!validator(value)) {
+	      process.env.NODE_ENV !== 'production' && warn('Invalid prop: custom validator check failed for ' + prop.path + '="' + prop.raw + '"');
+	      return false;
+	    }
+	  }
+	  return true;
+	}
+	
+	/**
+	 * Force parsing value with coerce option.
+	 *
+	 * @param {*} value
+	 * @param {Object} options
+	 * @return {*}
+	 */
+	
+	function coerceProp(prop, value) {
+	  var coerce = prop.options.coerce;
+	  if (!coerce) {
+	    return value;
+	  }
+	  // coerce is a function
+	  return coerce(value);
+	}
+	
+	function formatType(val) {
+	  return val ? val.charAt(0).toUpperCase() + val.slice(1) : 'custom type';
+	}
+	
+	function formatValue(val) {
+	  return Object.prototype.toString.call(val).slice(8, -1);
+	}
+	
 	var bindingModes = config._propBindingModes;
 	
 	var propDef = {
@@ -6052,11 +6313,18 @@
 	    var childKey = prop.path;
 	    var parentKey = prop.parentPath;
 	    var twoWay = prop.mode === bindingModes.TWO_WAY;
+	    var isSimple = isSimplePath(parentKey);
 	
 	    var parentWatcher = this.parentWatcher = new Watcher(parent, parentKey, function (val) {
 	      val = coerceProp(prop, val);
 	      if (assertProp(prop, val)) {
-	        child[childKey] = val;
+	        if (isSimple) {
+	          withoutConversion(function () {
+	            child[childKey] = val;
+	          });
+	        } else {
+	          child[childKey] = val;
+	        }
 	      }
 	    }, {
 	      twoWay: twoWay,
@@ -6067,7 +6335,14 @@
 	    });
 	
 	    // set the child initial value.
-	    initProp(child, prop, parentWatcher.value);
+	    var value = parentWatcher.value;
+	    if (isSimple && value !== undefined) {
+	      withoutConversion(function () {
+	        initProp(child, prop, value);
+	      });
+	    } else {
+	      initProp(child, prop, value);
+	    }
 	
 	    // setup two-way binding
 	    if (twoWay) {
@@ -6134,6 +6409,32 @@
 	var TYPE_ANIMATION = 'animation';
 	var transDurationProp = transitionProp + 'Duration';
 	var animDurationProp = animationProp + 'Duration';
+	
+	/**
+	 * If a just-entered element is applied the
+	 * leave class while its enter transition hasn't started yet,
+	 * and the transitioned property has the same value for both
+	 * enter/leave, then the leave transition will be skipped and
+	 * the transitionend event never fires. This function ensures
+	 * its callback to be called after a transition has started
+	 * by waiting for double raf.
+	 *
+	 * It falls back to setTimeout on devices that support CSS
+	 * transitions but not raf (e.g. Android 4.2 browser) - since
+	 * these environments are usually slow, we are giving it a
+	 * relatively large timeout.
+	 */
+	
+	var raf = inBrowser && window.requestAnimationFrame;
+	var waitForTransitionStart = raf
+	/* istanbul ignore next */
+	? function (fn) {
+	  raf(function () {
+	    raf(fn);
+	  });
+	} : function (fn) {
+	  setTimeout(fn, 50);
+	};
 	
 	/**
 	 * A Transition object that encapsulates the state and logic
@@ -6219,19 +6520,13 @@
 	 */
 	
 	p$1.enterNextTick = function () {
-	  // Important hack:
-	  // in Chrome, if a just-entered element is applied the
-	  // leave class while its interpolated property still has
-	  // a very small value (within one frame), Chrome will
-	  // skip the leave transition entirely and not firing the
-	  // transtionend event. Therefore we need to protected
-	  // against such cases using a one-frame timeout.
-	  this.justEntered = true;
-	  var self = this;
-	  setTimeout(function () {
-	    self.justEntered = false;
-	  }, 17);
+	  var _this = this;
 	
+	  // prevent transition skipping
+	  this.justEntered = true;
+	  waitForTransitionStart(function () {
+	    _this.justEntered = false;
+	  });
 	  var enterDone = this.enterDone;
 	  var type = this.getCssTransitionType(this.enterClass);
 	  if (!this.pendingJsCb) {
@@ -6508,187 +6803,6 @@
 	  transition: transition$1
 	};
 	
-	var propBindingModes = config._propBindingModes;
-	var empty = {};
-	
-	// regexes
-	var identRE$1 = /^[$_a-zA-Z]+[\w$]*$/;
-	var settablePathRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\[[^\[\]]+\])*$/;
-	
-	/**
-	 * Compile props on a root element and return
-	 * a props link function.
-	 *
-	 * @param {Element|DocumentFragment} el
-	 * @param {Array} propOptions
-	 * @return {Function} propsLinkFn
-	 */
-	
-	function compileProps(el, propOptions) {
-	  var props = [];
-	  var names = Object.keys(propOptions);
-	  var i = names.length;
-	  var options, name, attr, value, path, parsed, prop;
-	  while (i--) {
-	    name = names[i];
-	    options = propOptions[name] || empty;
-	
-	    if (process.env.NODE_ENV !== 'production' && name === '$data') {
-	      warn('Do not use $data as prop.');
-	      continue;
-	    }
-	
-	    // props could contain dashes, which will be
-	    // interpreted as minus calculations by the parser
-	    // so we need to camelize the path here
-	    path = camelize(name);
-	    if (!identRE$1.test(path)) {
-	      process.env.NODE_ENV !== 'production' && warn('Invalid prop key: "' + name + '". Prop keys ' + 'must be valid identifiers.');
-	      continue;
-	    }
-	
-	    prop = {
-	      name: name,
-	      path: path,
-	      options: options,
-	      mode: propBindingModes.ONE_WAY,
-	      raw: null
-	    };
-	
-	    attr = hyphenate(name);
-	    // first check dynamic version
-	    if ((value = getBindAttr(el, attr)) === null) {
-	      if ((value = getBindAttr(el, attr + '.sync')) !== null) {
-	        prop.mode = propBindingModes.TWO_WAY;
-	      } else if ((value = getBindAttr(el, attr + '.once')) !== null) {
-	        prop.mode = propBindingModes.ONE_TIME;
-	      }
-	    }
-	    if (value !== null) {
-	      // has dynamic binding!
-	      prop.raw = value;
-	      parsed = parseDirective(value);
-	      value = parsed.expression;
-	      prop.filters = parsed.filters;
-	      // check binding type
-	      if (isLiteral(value) && !parsed.filters) {
-	        // for expressions containing literal numbers and
-	        // booleans, there's no need to setup a prop binding,
-	        // so we can optimize them as a one-time set.
-	        prop.optimizedLiteral = true;
-	      } else {
-	        prop.dynamic = true;
-	        // check non-settable path for two-way bindings
-	        if (process.env.NODE_ENV !== 'production' && prop.mode === propBindingModes.TWO_WAY && !settablePathRE.test(value)) {
-	          prop.mode = propBindingModes.ONE_WAY;
-	          warn('Cannot bind two-way prop with non-settable ' + 'parent path: ' + value);
-	        }
-	      }
-	      prop.parentPath = value;
-	
-	      // warn required two-way
-	      if (process.env.NODE_ENV !== 'production' && options.twoWay && prop.mode !== propBindingModes.TWO_WAY) {
-	        warn('Prop "' + name + '" expects a two-way binding type.');
-	      }
-	    } else if ((value = getAttr(el, attr)) !== null) {
-	      // has literal binding!
-	      prop.raw = value;
-	    } else if (process.env.NODE_ENV !== 'production') {
-	      // check possible camelCase prop usage
-	      var lowerCaseName = path.toLowerCase();
-	      value = /[A-Z\-]/.test(name) && (el.getAttribute(lowerCaseName) || el.getAttribute(':' + lowerCaseName) || el.getAttribute('v-bind:' + lowerCaseName) || el.getAttribute(':' + lowerCaseName + '.once') || el.getAttribute('v-bind:' + lowerCaseName + '.once') || el.getAttribute(':' + lowerCaseName + '.sync') || el.getAttribute('v-bind:' + lowerCaseName + '.sync'));
-	      if (value) {
-	        warn('Possible usage error for prop `' + lowerCaseName + '` - ' + 'did you mean `' + attr + '`? HTML is case-insensitive, remember to use ' + 'kebab-case for props in templates.');
-	      } else if (options.required) {
-	        // warn missing required
-	        warn('Missing required prop: ' + name);
-	      }
-	    }
-	    // push prop
-	    props.push(prop);
-	  }
-	  return makePropsLinkFn(props);
-	}
-	
-	/**
-	 * Build a function that applies props to a vm.
-	 *
-	 * @param {Array} props
-	 * @return {Function} propsLinkFn
-	 */
-	
-	function makePropsLinkFn(props) {
-	  return function propsLinkFn(vm, scope) {
-	    // store resolved props info
-	    vm._props = {};
-	    var i = props.length;
-	    var prop, path, options, value, raw;
-	    while (i--) {
-	      prop = props[i];
-	      raw = prop.raw;
-	      path = prop.path;
-	      options = prop.options;
-	      vm._props[path] = prop;
-	      if (raw === null) {
-	        // initialize absent prop
-	        initProp(vm, prop, getDefault(vm, options));
-	      } else if (prop.dynamic) {
-	        // dynamic prop
-	        if (prop.mode === propBindingModes.ONE_TIME) {
-	          // one time binding
-	          value = (scope || vm._context || vm).$get(prop.parentPath);
-	          initProp(vm, prop, value);
-	        } else {
-	          if (vm._context) {
-	            // dynamic binding
-	            vm._bindDir({
-	              name: 'prop',
-	              def: propDef,
-	              prop: prop
-	            }, null, null, scope); // el, host, scope
-	          } else {
-	              // root instance
-	              initProp(vm, prop, vm.$get(prop.parentPath));
-	            }
-	        }
-	      } else if (prop.optimizedLiteral) {
-	        // optimized literal, cast it and just set once
-	        var stripped = stripQuotes(raw);
-	        value = stripped === raw ? toBoolean(toNumber(raw)) : stripped;
-	        initProp(vm, prop, value);
-	      } else {
-	        // string literal, but we need to cater for
-	        // Boolean props with no value
-	        value = options.type === Boolean && raw === '' ? true : raw;
-	        initProp(vm, prop, value);
-	      }
-	    }
-	  };
-	}
-	
-	/**
-	 * Get the default value of a prop.
-	 *
-	 * @param {Vue} vm
-	 * @param {Object} options
-	 * @return {*}
-	 */
-	
-	function getDefault(vm, options) {
-	  // no default, return undefined
-	  if (!hasOwn(options, 'default')) {
-	    // absent boolean value defaults to false
-	    return options.type === Boolean ? false : undefined;
-	  }
-	  var def = options['default'];
-	  // warn against non-factory defaults for Object & Array
-	  if (isObject(def)) {
-	    process.env.NODE_ENV !== 'production' && warn('Object/Array as default prop values will be shared ' + 'across multiple instances. Use a factory function ' + 'to return the default value instead.');
-	  }
-	  // call factory function for non-Function types
-	  return typeof def === 'function' && options.type !== Function ? def.call(vm) : def;
-	}
-	
 	// special binding prefixes
 	var bindRE = /^v-bind:|^:/;
 	var onRE = /^v-on:|^@/;
@@ -6696,11 +6810,9 @@
 	var modifierRE = /\.[^\.]+/g;
 	var transitionRE = /^(v-bind:|:)?transition$/;
 	
-	// terminal directives
-	var terminalDirectives = ['for', 'if'];
-	
 	// default directive priority
 	var DEFAULT_PRIORITY = 1000;
+	var DEFAULT_TERMINAL_PRIORITY = 2000;
 	
 	/**
 	 * Compile a template and return a reusable composite link
@@ -6973,9 +7085,10 @@
 	  }
 	  var linkFn;
 	  var hasAttrs = el.hasAttributes();
+	  var attrs = hasAttrs && toArray(el.attributes);
 	  // check terminal directives (for & if)
 	  if (hasAttrs) {
-	    linkFn = checkTerminalDirectives(el, options);
+	    linkFn = checkTerminalDirectives(el, attrs, options);
 	  }
 	  // check element directives
 	  if (!linkFn) {
@@ -6987,7 +7100,7 @@
 	  }
 	  // normal directives
 	  if (!linkFn && hasAttrs) {
-	    linkFn = compileDirectives(el.attributes, options);
+	    linkFn = compileDirectives(attrs, options);
 	  }
 	  return linkFn;
 	}
@@ -7216,11 +7329,12 @@
 	 * If it finds one, return a terminal link function.
 	 *
 	 * @param {Element} el
+	 * @param {Array} attrs
 	 * @param {Object} options
 	 * @return {Function} terminalLinkFn
 	 */
 	
-	function checkTerminalDirectives(el, options) {
+	function checkTerminalDirectives(el, attrs, options) {
 	  // skip v-pre
 	  if (getAttr(el, 'v-pre') !== null) {
 	    return skip;
@@ -7232,13 +7346,28 @@
 	      return skip;
 	    }
 	  }
-	  var value, dirName;
-	  for (var i = 0, l = terminalDirectives.length; i < l; i++) {
-	    dirName = terminalDirectives[i];
-	    value = el.getAttribute('v-' + dirName);
-	    if (value != null) {
-	      return makeTerminalNodeLinkFn(el, dirName, value, options);
+	
+	  var attr, name, value, modifiers, matched, dirName, rawName, arg, def, termDef;
+	  for (var i = 0, j = attrs.length; i < j; i++) {
+	    attr = attrs[i];
+	    modifiers = parseModifiers(attr.name);
+	    name = attr.name.replace(modifierRE, '');
+	    if (matched = name.match(dirAttrRE)) {
+	      def = resolveAsset(options, 'directives', matched[1]);
+	      if (def && def.terminal) {
+	        if (!termDef || (def.priority || DEFAULT_TERMINAL_PRIORITY) > termDef.priority) {
+	          termDef = def;
+	          rawName = attr.name;
+	          value = attr.value;
+	          dirName = matched[1];
+	          arg = matched[2];
+	        }
+	      }
 	    }
+	  }
+	
+	  if (termDef) {
+	    return makeTerminalNodeLinkFn(el, dirName, value, options, termDef, rawName, arg, modifiers);
 	  }
 	}
 	
@@ -7255,20 +7384,24 @@
 	 * @param {String} dirName
 	 * @param {String} value
 	 * @param {Object} options
-	 * @param {Object} [def]
+	 * @param {Object} def
+	 * @param {String} [rawName]
+	 * @param {String} [arg]
+	 * @param {Object} [modifiers]
 	 * @return {Function} terminalLinkFn
 	 */
 	
-	function makeTerminalNodeLinkFn(el, dirName, value, options, def) {
+	function makeTerminalNodeLinkFn(el, dirName, value, options, def, rawName, arg, modifiers) {
 	  var parsed = parseDirective(value);
 	  var descriptor = {
 	    name: dirName,
+	    arg: arg,
 	    expression: parsed.expression,
 	    filters: parsed.filters,
 	    raw: value,
-	    // either an element directive, or if/for
-	    // #2366 or custom terminal directive
-	    def: def || resolveAsset(options, 'directives', dirName)
+	    attr: rawName,
+	    modifiers: modifiers,
+	    def: def
 	  };
 	  // check ref for v-for and router-view
 	  if (dirName === 'for' || dirName === 'router-view') {
@@ -7580,7 +7713,7 @@
 	    if (!to.hasAttribute(name) && !specialCharRE.test(name)) {
 	      to.setAttribute(name, value);
 	    } else if (name === 'class' && !parseText(value)) {
-	      value.split(/\s+/).forEach(function (cls) {
+	      value.trim().split(/\s+/).forEach(function (cls) {
 	        addClass(to, cls);
 	      });
 	    }
@@ -7598,39 +7731,28 @@
 	 * @param {Vue} vm
 	 */
 	
-	function scanSlots(template, content, vm) {
+	function resolveSlots(vm, content) {
 	  if (!content) {
 	    return;
 	  }
-	  var contents = vm._slotContents = {};
-	  var slots = template.querySelectorAll('slot');
-	  if (slots.length) {
-	    var hasDefault, slot, name;
-	    for (var i = 0, l = slots.length; i < l; i++) {
-	      slot = slots[i];
-	      /* eslint-disable no-cond-assign */
-	      if (name = slot.getAttribute('name')) {
-	        select(slot, name);
-	      } else if (process.env.NODE_ENV !== 'production' && (name = getBindAttr(slot, 'name'))) {
-	        warn('<slot :name="' + name + '">: slot names cannot be dynamic.');
-	      } else {
-	        // default slot
-	        hasDefault = true;
-	      }
-	      /* eslint-enable no-cond-assign */
+	  var contents = vm._slotContents = Object.create(null);
+	  var el, name;
+	  for (var i = 0, l = content.children.length; i < l; i++) {
+	    el = content.children[i];
+	    /* eslint-disable no-cond-assign */
+	    if (name = el.getAttribute('slot')) {
+	      (contents[name] || (contents[name] = [])).push(el);
 	    }
-	    if (hasDefault) {
-	      contents['default'] = extractFragment(content.childNodes, content);
+	    /* eslint-enable no-cond-assign */
+	    if (process.env.NODE_ENV !== 'production' && getBindAttr(el, 'slot')) {
+	      warn('The "slot" attribute must be static.');
 	    }
 	  }
-	
-	  function select(slot, name) {
-	    // named slot
-	    var selector = '[slot="' + name + '"]';
-	    var nodes = content.querySelectorAll(selector);
-	    if (nodes.length) {
-	      contents[name] = extractFragment(nodes, content);
-	    }
+	  for (name in contents) {
+	    contents[name] = extractFragment(contents[name], content);
+	  }
+	  if (content.hasChildNodes()) {
+	    contents['default'] = extractFragment(content.childNodes, content);
 	  }
 	}
 	
@@ -7638,7 +7760,6 @@
 	 * Extract qualified content nodes from a node list.
 	 *
 	 * @param {NodeList} nodes
-	 * @param {Element} parent
 	 * @return {DocumentFragment}
 	 */
 	
@@ -7647,13 +7768,11 @@
 	  nodes = toArray(nodes);
 	  for (var i = 0, l = nodes.length; i < l; i++) {
 	    var node = nodes[i];
-	    if (node.parentNode === parent) {
-	      if (isTemplate(node) && !node.hasAttribute('v-if') && !node.hasAttribute('v-for')) {
-	        parent.removeChild(node);
-	        node = parseTemplate(node);
-	      }
-	      frag.appendChild(node);
+	    if (isTemplate(node) && !node.hasAttribute('v-if') && !node.hasAttribute('v-for')) {
+	      parent.removeChild(node);
+	      node = parseTemplate(node);
 	    }
+	    frag.appendChild(node);
 	  }
 	  return frag;
 	}
@@ -7664,9 +7783,8 @@
 		compile: compile,
 		compileAndLinkProps: compileAndLinkProps,
 		compileRoot: compileRoot,
-		terminalDirectives: terminalDirectives,
 		transclude: transclude,
-		scanSlots: scanSlots
+		resolveSlots: resolveSlots
 	});
 	
 	function stateMixin (Vue) {
@@ -7726,33 +7844,29 @@
 	   */
 	
 	  Vue.prototype._initData = function () {
-	    var propsData = this._data;
-	    var optionsDataFn = this.$options.data;
-	    var optionsData = optionsDataFn && optionsDataFn();
-	    var runtimeData;
-	    if (process.env.NODE_ENV !== 'production') {
-	      runtimeData = (typeof this._runtimeData === 'function' ? this._runtimeData() : this._runtimeData) || {};
-	      this._runtimeData = null;
+	    var dataFn = this.$options.data;
+	    var data = this._data = dataFn ? dataFn() : {};
+	    if (!isPlainObject(data)) {
+	      data = {};
+	      process.env.NODE_ENV !== 'production' && warn('data functions should return an object.');
 	    }
-	    if (optionsData) {
-	      this._data = optionsData;
-	      for (var prop in propsData) {
-	        if (process.env.NODE_ENV !== 'production' && hasOwn(optionsData, prop) && !hasOwn(runtimeData, prop)) {
-	          warn('Data field "' + prop + '" is already defined ' + 'as a prop. Use prop default value instead.');
-	        }
-	        if (this._props[prop].raw !== null || !hasOwn(optionsData, prop)) {
-	          set(optionsData, prop, propsData[prop]);
-	        }
-	      }
-	    }
-	    var data = this._data;
+	    var props = this._props;
+	    var runtimeData = this._runtimeData ? typeof this._runtimeData === 'function' ? this._runtimeData() : this._runtimeData : null;
 	    // proxy data on instance
 	    var keys = Object.keys(data);
 	    var i, key;
 	    i = keys.length;
 	    while (i--) {
 	      key = keys[i];
-	      this._proxy(key);
+	      // there are two scenarios where we can proxy a data key:
+	      // 1. it's not already defined as a prop
+	      // 2. it's provided via a instantiation option AND there are no
+	      //    template prop present
+	      if (!props || !hasOwn(props, key) || runtimeData && hasOwn(runtimeData, key) && props[key].raw === null) {
+	        this._proxy(key);
+	      } else if (process.env.NODE_ENV !== 'production') {
+	        warn('Data field "' + key + '" is already defined ' + 'as a prop. Use prop default value instead.');
+	      }
 	    }
 	    // observe data
 	    observe(data, this);
@@ -8088,18 +8202,21 @@
 	 * It registers a watcher with the expression and calls
 	 * the DOM update function when a change is triggered.
 	 *
-	 * @param {String} name
-	 * @param {Node} el
-	 * @param {Vue} vm
 	 * @param {Object} descriptor
 	 *                 - {String} name
 	 *                 - {Object} def
 	 *                 - {String} expression
 	 *                 - {Array<Object>} [filters]
+	 *                 - {Object} [modifiers]
 	 *                 - {Boolean} literal
 	 *                 - {String} attr
+	 *                 - {String} arg
 	 *                 - {String} raw
-	 * @param {Object} def - directive definition object
+	 *                 - {String} [ref]
+	 *                 - {Array<Object>} [interp]
+	 *                 - {Boolean} [hasOneTime]
+	 * @param {Vue} vm
+	 * @param {Node} el
 	 * @param {Vue} [host] - transclusion host component
 	 * @param {Object} [scope] - v-for scope
 	 * @param {Fragment} [frag] - owner fragment
@@ -8135,8 +8252,6 @@
 	 * Initialize the directive, mixin definition properties,
 	 * setup the watcher, call definition bind() and update()
 	 * if present.
-	 *
-	 * @param {Object} def
 	 */
 	
 	Directive.prototype._bind = function () {
@@ -8217,7 +8332,7 @@
 	  var i = params.length;
 	  var key, val, mappedKey;
 	  while (i--) {
-	    key = params[i];
+	    key = hyphenate(params[i]);
 	    mappedKey = camelize(key);
 	    val = getBindAttr(this.el, key);
 	    if (val != null) {
@@ -8430,9 +8545,8 @@
 	    var contextOptions = this._context && this._context.$options;
 	    var rootLinker = compileRoot(el, options, contextOptions);
 	
-	    // scan for slot distribution before compiling the content
-	    // so that it's decoupeld from slot/directive compilation order
-	    scanSlots(el, options._content, this);
+	    // resolve slot distribution
+	    resolveSlots(this, options._content);
 	
 	    // compile and link the rest
 	    var contentLinkFn;
@@ -8496,10 +8610,8 @@
 	  /**
 	   * Create and bind a directive to an element.
 	   *
-	   * @param {String} name - directive name
+	   * @param {Object} descriptor - parsed directive descriptor
 	   * @param {Node} node   - target node
-	   * @param {Object} desc - parsed directive descriptor
-	   * @param {Object} def  - directive definition object
 	   * @param {Vue} [host] - transclusion host component
 	   * @param {Object} [scope] - v-for scope
 	   * @param {Fragment} [frag] - owner fragment
@@ -8642,7 +8754,7 @@
 	  Vue.prototype._applyFilters = function (value, oldValue, filters, write) {
 	    var filter, fn, args, arg, offset, i, l, j, k;
 	    for (i = 0, l = filters.length; i < l; i++) {
-	      filter = filters[i];
+	      filter = filters[write ? l - i - 1 : i];
 	      fn = resolveAsset(this.$options, 'filters', filter.name);
 	      if (process.env.NODE_ENV !== 'production') {
 	        assertAsset(fn, 'filter', filter.name);
@@ -8670,14 +8782,19 @@
 	   * resolves asynchronously and caches the resolved
 	   * constructor on the factory.
 	   *
-	   * @param {String} id
+	   * @param {String|Function} value
 	   * @param {Function} cb
 	   */
 	
-	  Vue.prototype._resolveComponent = function (id, cb) {
-	    var factory = resolveAsset(this.$options, 'components', id);
-	    if (process.env.NODE_ENV !== 'production') {
-	      assertAsset(factory, 'component', id);
+	  Vue.prototype._resolveComponent = function (value, cb) {
+	    var factory;
+	    if (typeof value === 'function') {
+	      factory = value;
+	    } else {
+	      factory = resolveAsset(this.$options, 'components', value);
+	      if (process.env.NODE_ENV !== 'production') {
+	        assertAsset(factory, 'component', value);
+	      }
 	    }
 	    if (!factory) {
 	      return;
@@ -8704,7 +8821,7 @@
 	            cbs[i](res);
 	          }
 	        }, function reject(reason) {
-	          process.env.NODE_ENV !== 'production' && warn('Failed to resolve async component: ' + id + '. ' + (reason ? '\nReason: ' + reason : ''));
+	          process.env.NODE_ENV !== 'production' && warn('Failed to resolve async component' + (typeof value === 'string' ? ': ' + value : '') + '. ' + (reason ? '\nReason: ' + reason : ''));
 	        });
 	      }
 	    } else {
@@ -8864,8 +8981,14 @@
 	    }
 	    // include computed fields
 	    if (!path) {
-	      for (var key in this.$options.computed) {
+	      var key;
+	      for (key in this.$options.computed) {
 	        data[key] = clean(this[key]);
+	      }
+	      if (this._props) {
+	        for (key in this._props) {
+	          data[key] = clean(this[key]);
+	        }
 	      }
 	    }
 	    console.log(data);
@@ -9304,6 +9427,9 @@
 	  /**
 	   * Teardown the instance, simply delegate to the internal
 	   * _destroy.
+	   *
+	   * @param {Boolean} remove
+	   * @param {Boolean} deferCleanup
 	   */
 	
 	  Vue.prototype.$destroy = function (remove, deferCleanup) {
@@ -9316,6 +9442,8 @@
 	   *
 	   * @param {Element|DocumentFragment} el
 	   * @param {Vue} [host]
+	   * @param {Object} [scope]
+	   * @param {Fragment} [frag]
 	   * @return {Function}
 	   */
 	
@@ -9498,12 +9626,12 @@
 	    if (j) {
 	      while (j--) {
 	        key = keys[j];
-	        if (key === '$key' && contains$1(item.$key, search) || contains$1(getPath(val, key), search)) {
+	        if (key === '$key' && contains(item.$key, search) || contains(getPath(val, key), search)) {
 	          res.push(item);
 	          break;
 	        }
 	      }
-	    } else if (contains$1(item, search)) {
+	    } else if (contains(item, search)) {
 	      res.push(item);
 	    }
 	  }
@@ -9542,20 +9670,20 @@
 	 * @param {String} search
 	 */
 	
-	function contains$1(val, search) {
+	function contains(val, search) {
 	  var i;
 	  if (isPlainObject(val)) {
 	    var keys = Object.keys(val);
 	    i = keys.length;
 	    while (i--) {
-	      if (contains$1(val[keys[i]], search)) {
+	      if (contains(val[keys[i]], search)) {
 	        return true;
 	      }
 	    }
 	  } else if (isArray(val)) {
 	    i = val.length;
 	    while (i--) {
-	      if (contains$1(val[i], search)) {
+	      if (contains(val[i], search)) {
 	        return true;
 	      }
 	    }
@@ -9852,14 +9980,16 @@
 	
 	installGlobalAPI(Vue);
 	
-	Vue.version = '1.0.17';
+	Vue.version = '1.0.20';
 	
 	// devtools global hook
 	/* istanbul ignore next */
-	if (devtools) {
-	  devtools.emit('init', Vue);
-	} else if (process.env.NODE_ENV !== 'production' && inBrowser && /Chrome\/\d+/.test(window.navigator.userAgent)) {
-	  console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue-devtools');
+	if (config.devtools) {
+	  if (devtools) {
+	    devtools.emit('init', Vue);
+	  } else if (process.env.NODE_ENV !== 'production' && inBrowser && /Chrome\/\d+/.test(window.navigator.userAgent)) {
+	    console.log('Download the Vue Devtools for a better development experience:\n' + 'https://github.com/vuejs/vue-devtools');
+	  }
 	}
 	
 	module.exports = Vue;
@@ -14238,12 +14368,12 @@
 
 	var __vue_script__, __vue_template__
 	__webpack_require__(37)
-	__vue_script__ = __webpack_require__(81)
+	__vue_script__ = __webpack_require__(42)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/main.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(42)
+	__vue_template__ = __webpack_require__(43)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14253,7 +14383,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/main.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/main.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14296,7 +14426,7 @@
 	
 	
 	// module
-	exports.push([module.id, "input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(" + __webpack_require__(40) + ");\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info .user-name {\n  float: none;\n  color: #c2c2c4;\n  font-size: 14px;\n  margin-left: 30px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n", "", {"version":3,"sources":["/./src/components/main.vue"],"names":[],"mappings":"AAAA;;;;;;EAME,UAAU;EACV,WAAW;EACX,iBAAiB;CAClB;AACD;;EAEE,gDAAqC;EACrC,sBAAsB;EACtB,UAAU;EACV,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,0BAA0B;EAC1B,kBAAkB;CACnB;AACD;EACE,gBAAgB;CACjB;AACD;;;;;EAKE,0BAA0B;EAC1B,sBAAsB;CACvB;AACD;EACE,eAAe;CAChB;AACD;EACE,aAAa;EACb,eAAe;EACf,UAAU;EACV,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,kBAAkB;CACnB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,YAAY;EACZ,UAAU;CACX;AACD;EACE,iBAAiB;EACjB,mBAAmB;EACnB,sBAAsB;EACtB,cAAc;EACd,cAAc;EACd,kBAAkB;EAClB,uBAAuB;CACxB;AACD;EACE,mBAAmB;EACnB,OAAO;EACP,QAAQ;EACR,0BAA0B;EAC1B,sBAAsB;EACtB,aAAa;EACb,WAAW;CACZ;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,iCAAiC;EACjC,aAAa;EACb,WAAW;EACX,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,UAAU;EACV,YAAY;EACZ,aAAa;CACd;AACD;EACE,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,aAAa;EACb,kBAAkB;EAClB,aAAa;CACd;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,0BAA0B;EAC1B,eAAe;EACf,+BAA+B;EAC/B,wBAAwB;CACzB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,eAAe;EACf,cAAc;CACf;AACD;EACE,cAAc;CACf;AACD;EACE,YAAY;EACZ,0BAA0B;EAC1B,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,SAAS;CACV;AACD;EACE,mBAAmB;CACpB;AACD;;EAEE,aAAa;EACb,iBAAiB;EACjB,UAAU;EACV,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,aAAa;CACd","file":"main.vue","sourcesContent":["input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(../img/bg.png);\n  background-size: 100%;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info .user-name {\n  float: none;\n  color: #c2c2c4;\n  font-size: 14px;\n  margin-left: 30px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, "input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(" + __webpack_require__(40) + ");\n  background-size: 150% 150%;\n  background-repeat: no-repeat;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info .user-name {\n  float: none;\n  color: #c2c2c4;\n  font-size: 14px;\n  margin-left: 30px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n", "", {"version":3,"sources":["/./src/components/main.vue"],"names":[],"mappings":"AAAA;;;;;;EAME,UAAU;EACV,WAAW;EACX,iBAAiB;CAClB;AACD;;EAEE,gDAAqC;EACrC,2BAA2B;EAC3B,6BAA6B;EAC7B,UAAU;EACV,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,0BAA0B;EAC1B,kBAAkB;CACnB;AACD;EACE,gBAAgB;CACjB;AACD;;;;;EAKE,0BAA0B;EAC1B,sBAAsB;CACvB;AACD;EACE,eAAe;CAChB;AACD;EACE,aAAa;EACb,eAAe;EACf,UAAU;EACV,YAAY;EACZ,mBAAmB;CACpB;AACD;EACE,YAAY;CACb;AACD;EACE,aAAa;CACd;AACD;EACE,kBAAkB;CACnB;AACD;EACE,mBAAmB;CACpB;AACD;EACE,kBAAkB;EAClB,uBAAuB;EACvB,mBAAmB;EACnB,sBAAsB;CACvB;AACD;EACE,0BAA0B;EAC1B,YAAY;EACZ,UAAU;CACX;AACD;EACE,iBAAiB;EACjB,mBAAmB;EACnB,sBAAsB;EACtB,cAAc;EACd,cAAc;EACd,kBAAkB;EAClB,uBAAuB;CACxB;AACD;EACE,mBAAmB;EACnB,OAAO;EACP,QAAQ;EACR,0BAA0B;EAC1B,sBAAsB;EACtB,aAAa;EACb,WAAW;CACZ;AACD;EACE,sBAAsB;EACtB,aAAa;CACd;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,mBAAmB;CACpB;AACD;EACE,sBAAsB;EACtB,iCAAiC;EACjC,aAAa;EACb,WAAW;EACX,kBAAkB;EAClB,iBAAiB;EACjB,eAAe;EACf,sBAAsB;CACvB;AACD;EACE,mBAAmB;EACnB,UAAU;EACV,YAAY;EACZ,aAAa;CACd;AACD;EACE,YAAY;EACZ,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,gBAAgB;EAChB,aAAa;EACb,kBAAkB;EAClB,aAAa;CACd;AACD;EACE,eAAe;EACf,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,0BAA0B;EAC1B,eAAe;EACf,+BAA+B;EAC/B,wBAAwB;CACzB;AACD;EACE,iBAAiB;CAClB;AACD;EACE,iBAAiB;EACjB,gBAAgB;EAChB,cAAc;EACd,mBAAmB;CACpB;AACD;EACE,cAAc;EACd,eAAe;EACf,cAAc;CACf;AACD;EACE,cAAc;CACf;AACD;EACE,YAAY;EACZ,0BAA0B;EAC1B,aAAa;EACb,mBAAmB;EACnB,YAAY;EACZ,SAAS;CACV;AACD;EACE,mBAAmB;CACpB;AACD;;EAEE,aAAa;EACb,iBAAiB;EACjB,UAAU;EACV,0BAA0B;EAC1B,mBAAmB;EACnB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;CACnB;AACD;EACE,aAAa;CACd","file":"main.vue","sourcesContent":["input,\nselect,\nul,\nli,\nol,\np {\n  margin: 0;\n  padding: 0;\n  list-style: none;\n}\nhtml,\nbody {\n  background-image: url(../img/bg.png);\n  background-size: 150% 150%;\n  background-repeat: no-repeat;\n  margin: 0;\n  width: 100%;\n  font-size: 0;\n  text-align: center;\n  color: rgba(0, 0, 0, 0.5);\n  line-height: 20px;\n}\na {\n  cursor: pointer;\n}\na,\na:link,\na:hover,\na:active,\na:visited {\n  color: rgba(0, 0, 0, 0.5);\n  text-decoration: none;\n}\n.clearfix {\n  display: block;\n}\n.clearfix:after {\n  content: \".\";\n  display: block;\n  height: 0;\n  clear: both;\n  visibility: hidden;\n}\n.pull-left {\n  float: left;\n}\n.pull-right {\n  float: right;\n}\n.txt-right {\n  text-align: right;\n}\n.txt-center {\n  text-align: center;\n}\n.btn {\n  padding: 5px 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n  display: inline-block;\n}\n.btn.btn-o {\n  background-color: #faa71b;\n  color: #FFF;\n  border: 0;\n}\n.container {\n  text-align: left;\n  position: relative;\n  display: inline-block;\n  width: 1230px;\n  height: 850px;\n  margin: 30px auto;\n  background-color: #fff;\n}\n.container .menu {\n  position: absolute;\n  top: 0;\n  left: 0;\n  background-color: #3b3a47;\n  display: inline-block;\n  height: 100%;\n  width: 25%;\n}\n.container .menu .brand {\n  display: inline-block;\n  margin: 30px;\n}\n.container .menu .menu-list {\n  list-style: none;\n  font-size: 20px;\n  width: 100%;\n  padding: 0;\n  margin: 0  auto;\n  text-align: center;\n}\n.container .menu .menu-list li a {\n  display: inline-block;\n  border-bottom: 1px solid #4f4e5a;\n  height: 65px;\n  width: 80%;\n  line-height: 65px;\n  text-align: left;\n  color: #9c9ca1;\n  text-decoration: none;\n}\n.container .menu .user-info {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  height: 75px;\n}\n.container .menu .user-info .user-name {\n  float: none;\n  color: #c2c2c4;\n  font-size: 14px;\n  margin-left: 30px;\n}\n.container .menu .user-info span {\n  font-size: 12px;\n  height: 75px;\n  line-height: 75px;\n  float: right;\n}\n.container .menu .user-info span a {\n  color: #c2c2c4;\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.container .menu .user-info span a:first-child {\n  border: none;\n}\n.container .active {\n  background-color: #22212c;\n  color: #f08030;\n  border-left: 2px solid #f08030;\n  width: calc(100% - 2px);\n}\n.container .active a {\n  border-bottom: 0;\n}\n.container .content {\n  margin-left: 25%;\n  font-size: 14px;\n  height: 850px;\n  position: relative;\n}\n.container .content .content-float {\n  height: 750px;\n  overflow: auto;\n  padding: 50px;\n}\n.container .content .content-float.content-h720 {\n  height: 695px;\n}\n.bar {\n  width: 100%;\n  background-color: #f2f2f3;\n  height: 55px;\n  position: absolute;\n  bottom: 0px;\n  right: 0;\n}\n.bar .bar-content {\n  padding: 11px 50px;\n}\n.bar select,\n.bar input {\n  width: 108px;\n  padding: 6px 8px;\n  margin: 0;\n  border: 1px solid #d9d9d9;\n  border-radius: 5px;\n  display: block;\n  font-size: 14px;\n  line-height: 22px;\n}\n.bar select {\n  width: 125px;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
@@ -14589,20 +14719,89 @@
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">高校列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <span class=\"user-name\">{{userName}}</span>\r\n      <!-- <span>\r\n        <a v-link=\"{ path: '/SignIn' }\">登录</a>\r\n        <a v-link=\"{ path: '/SignUp' }\">注册</a>\r\n      </span> -->\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	// <div class="container">
+	//   <div class="menu">
+	//     <ul class="menu-list" id="menu">
+	//       <li class="active"><a v-link="{ path: '/BugList' }">漏洞列表</a></li>
+	//       <li><a v-link="{ path: '/SubmitBug' }">提交漏洞</a></li>
+	//       <li><a v-link="{ path: '/BugSummary' }">漏洞统计</a></li>
+	//       <li><a v-link="{ path: '/UserList' }">白帽子列表</a></li>
+	//       <li><a v-link="{ path: '/CompanyList' }">高校列表</a></li>
+	//     </ul>
+	//     <div class="user-info">
+	//       <span class="user-name">{{userName}}</span>
+	//       <!-- <span>
+	//         <a v-link="{ path: '/SignIn' }">登录</a>
+	//         <a v-link="{ path: '/SignUp' }">注册</a>
+	//       </span> -->
+	//     </div>
+	//   </div>
+	//   <div class="content">
+	//     <div class="content-float">
+	//       <router-view
+	//         class="view"
+	//         transition
+	//         transition-mode="out-in">
+	//       </router-view>
+	//     </div>
+	//   </div>
+	// </div>
+	// </template>
+	// <style lang="less">
+	// @import url("../less/main.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'main',
+	  data: function data() {
+	    return {
+	      userName: GLOBAL.userName
+	    };
+	  },
+	
+	  computed: {
+	    userName: function userName() {
+	      return GLOBAL.userName;
+	    }
+	  },
+	  ready: function ready() {
+	    if (!GLOBAL.userName) {
+	      this.$router.go({ name: 'SignIn' });
+	    } else {
+	      alert(23);
+	      this.userName = GLOBAL.userName;
+	      alert(this.userName);
+	    }
+	  }
+	};
+	// </script>
+
+	/* generated by vue-loader */
 
 /***/ },
 /* 43 */
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<div class=\"container\">\r\n  <div class=\"menu\">\r\n    <ul class=\"menu-list\" id=\"menu\">\r\n      <li class=\"active\"><a v-link=\"{ path: '/BugList' }\">漏洞列表</a></li>\r\n      <li><a v-link=\"{ path: '/SubmitBug' }\">提交漏洞</a></li>\r\n      <li><a v-link=\"{ path: '/BugSummary' }\">漏洞统计</a></li>\r\n      <li><a v-link=\"{ path: '/UserList' }\">白帽子列表</a></li>\r\n      <li><a v-link=\"{ path: '/CompanyList' }\">高校列表</a></li>\r\n    </ul>\r\n    <div class=\"user-info\">\r\n      <span class=\"user-name\">{{userName}}</span>\r\n      <!-- <span>\r\n        <a v-link=\"{ path: '/SignIn' }\">登录</a>\r\n        <a v-link=\"{ path: '/SignUp' }\">注册</a>\r\n      </span> -->\r\n    </div>\r\n  </div>\r\n  <div class=\"content\">\r\n    <div class=\"content-float\">\r\n      <router-view\r\n        class=\"view\"\r\n        transition\r\n        transition-mode=\"out-in\">\r\n      </router-view>\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+
+/***/ },
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(44)
-	__vue_script__ = __webpack_require__(47)
+	__webpack_require__(45)
+	__vue_script__ = __webpack_require__(48)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/bugList.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(48)
+	__vue_template__ = __webpack_require__(49)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14612,7 +14811,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugList.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/bugList.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14621,13 +14820,13 @@
 	})()}
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(45);
+	var content = __webpack_require__(46);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(41)(content, {});
@@ -14647,7 +14846,7 @@
 	}
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -14655,19 +14854,19 @@
 	
 	
 	// module
-	exports.push([module.id, ".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(" + __webpack_require__(46) + ") no-repeat;\n}\n", "", {"version":3,"sources":["/./src/components/bugList.vue"],"names":[],"mappings":"AAAA;EACE,8BAA8B;CAC/B;AACD;EACE,kBAAkB;EAClB,kBAAkB;EAClB,iCAAiC;CAClC;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,oBAAoB;EACpB,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,qBAAqB;CACtB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,oDAA6C;CAC9C","file":"bugList.vue","sourcesContent":[".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(\"../img/goto.png\") no-repeat;\n}\n"],"sourceRoot":"webpack://"}]);
+	exports.push([module.id, ".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(" + __webpack_require__(47) + ") no-repeat;\n}\n", "", {"version":3,"sources":["/./src/components/bugList.vue"],"names":[],"mappings":"AAAA;EACE,8BAA8B;CAC/B;AACD;EACE,kBAAkB;EAClB,kBAAkB;EAClB,iCAAiC;CAClC;AACD;EACE,sBAAsB;EACtB,gBAAgB;EAChB,oBAAoB;EACpB,aAAa;EACb,aAAa;EACb,iBAAiB;EACjB,wBAAwB;EACxB,oBAAoB;CACrB;AACD;EACE,sBAAsB;EACtB,YAAY;EACZ,qBAAqB;CACtB;AACD;EACE,aAAa;CACd;AACD;EACE,mBAAmB;EACnB,oBAAoB;EACpB,+BAA+B;CAChC;AACD;EACE,aAAa;CACd;AACD;EACE,sBAAsB;EACtB,kBAAkB;EAClB,WAAW;EACX,aAAa;EACb,oDAA6C;CAC9C","file":"bugList.vue","sourcesContent":[".bug-list {\n  border-top: 1px solid #d9d9d9;\n}\n.bug-list li {\n  line-height: 20px;\n  padding-top: 22px;\n  border-bottom: 1px solid #d9d9d9;\n}\n.bug-list li .buglist-pull-left {\n  display: inline-block;\n  font-size: 18px;\n  font-weight: bolder;\n  width: 600px;\n  height: 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n.bug-list li .data {\n  display: inline-block;\n  width: 100%;\n  margin: 10px 0 5px 0;\n}\n.bug-list li .goto-buginfo {\n  float: right;\n}\n.bug-list li .goto-buginfo a {\n  padding-left: 12px;\n  padding-right: 12px;\n  border-left: 1px solid #d9d9d9;\n}\n.bug-list li .goto-buginfo a:first-child {\n  border: none;\n}\n.bug-list li .goto-buginfo em {\n  display: inline-block;\n  margin-left: 10px;\n  width: 8px;\n  height: 14px;\n  background: url(\"../img/goto.png\") no-repeat;\n}\n"],"sourceRoot":"webpack://"}]);
 	
 	// exports
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAOCAYAAAASVl2WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKTWlDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVN3WJP3Fj7f92UPVkLY8LGXbIEAIiOsCMgQWaIQkgBhhBASQMWFiApWFBURnEhVxILVCkidiOKgKLhnQYqIWotVXDjuH9yntX167+3t+9f7vOec5/zOec8PgBESJpHmomoAOVKFPDrYH49PSMTJvYACFUjgBCAQ5svCZwXFAADwA3l4fnSwP/wBr28AAgBw1S4kEsfh/4O6UCZXACCRAOAiEucLAZBSAMguVMgUAMgYALBTs2QKAJQAAGx5fEIiAKoNAOz0ST4FANipk9wXANiiHKkIAI0BAJkoRyQCQLsAYFWBUiwCwMIAoKxAIi4EwK4BgFm2MkcCgL0FAHaOWJAPQGAAgJlCLMwAIDgCAEMeE80DIEwDoDDSv+CpX3CFuEgBAMDLlc2XS9IzFLiV0Bp38vDg4iHiwmyxQmEXKRBmCeQinJebIxNI5wNMzgwAABr50cH+OD+Q5+bk4eZm52zv9MWi/mvwbyI+IfHf/ryMAgQAEE7P79pf5eXWA3DHAbB1v2upWwDaVgBo3/ldM9sJoFoK0Hr5i3k4/EAenqFQyDwdHAoLC+0lYqG9MOOLPv8z4W/gi372/EAe/tt68ABxmkCZrcCjg/1xYW52rlKO58sEQjFu9+cj/seFf/2OKdHiNLFcLBWK8ViJuFAiTcd5uVKRRCHJleIS6X8y8R+W/QmTdw0ArIZPwE62B7XLbMB+7gECiw5Y0nYAQH7zLYwaC5EAEGc0Mnn3AACTv/mPQCsBAM2XpOMAALzoGFyolBdMxggAAESggSqwQQcMwRSswA6cwR28wBcCYQZEQAwkwDwQQgbkgBwKoRiWQRlUwDrYBLWwAxqgEZrhELTBMTgN5+ASXIHrcBcGYBiewhi8hgkEQcgIE2EhOogRYo7YIs4IF5mOBCJhSDSSgKQg6YgUUSLFyHKkAqlCapFdSCPyLXIUOY1cQPqQ28ggMor8irxHMZSBslED1AJ1QLmoHxqKxqBz0XQ0D12AlqJr0Rq0Hj2AtqKn0UvodXQAfYqOY4DRMQ5mjNlhXIyHRWCJWBomxxZj5Vg1Vo81Yx1YN3YVG8CeYe8IJAKLgBPsCF6EEMJsgpCQR1hMWEOoJewjtBK6CFcJg4Qxwicik6hPtCV6EvnEeGI6sZBYRqwm7iEeIZ4lXicOE1+TSCQOyZLkTgohJZAySQtJa0jbSC2kU6Q+0hBpnEwm65Btyd7kCLKArCCXkbeQD5BPkvvJw+S3FDrFiOJMCaIkUqSUEko1ZT/lBKWfMkKZoKpRzame1AiqiDqfWkltoHZQL1OHqRM0dZolzZsWQ8ukLaPV0JppZ2n3aC/pdLoJ3YMeRZfQl9Jr6Afp5+mD9HcMDYYNg8dIYigZaxl7GacYtxkvmUymBdOXmchUMNcyG5lnmA+Yb1VYKvYqfBWRyhKVOpVWlX6V56pUVXNVP9V5qgtUq1UPq15WfaZGVbNQ46kJ1Bar1akdVbupNq7OUndSj1DPUV+jvl/9gvpjDbKGhUaghkijVGO3xhmNIRbGMmXxWELWclYD6yxrmE1iW7L57Ex2Bfsbdi97TFNDc6pmrGaRZp3mcc0BDsax4PA52ZxKziHODc57LQMtPy2x1mqtZq1+rTfaetq+2mLtcu0W7eva73VwnUCdLJ31Om0693UJuja6UbqFutt1z+o+02PreekJ9cr1Dund0Uf1bfSj9Rfq79bv0R83MDQINpAZbDE4Y/DMkGPoa5hpuNHwhOGoEctoupHEaKPRSaMnuCbuh2fjNXgXPmasbxxirDTeZdxrPGFiaTLbpMSkxeS+Kc2Ua5pmutG003TMzMgs3KzYrMnsjjnVnGueYb7ZvNv8jYWlRZzFSos2i8eW2pZ8ywWWTZb3rJhWPlZ5VvVW16xJ1lzrLOtt1ldsUBtXmwybOpvLtqitm63Edptt3xTiFI8p0in1U27aMez87ArsmuwG7Tn2YfYl9m32zx3MHBId1jt0O3xydHXMdmxwvOuk4TTDqcSpw+lXZxtnoXOd8zUXpkuQyxKXdpcXU22niqdun3rLleUa7rrStdP1o5u7m9yt2W3U3cw9xX2r+00umxvJXcM970H08PdY4nHM452nm6fC85DnL152Xlle+70eT7OcJp7WMG3I28Rb4L3Le2A6Pj1l+s7pAz7GPgKfep+Hvqa+It89viN+1n6Zfgf8nvs7+sv9j/i/4XnyFvFOBWABwQHlAb2BGoGzA2sDHwSZBKUHNQWNBbsGLww+FUIMCQ1ZH3KTb8AX8hv5YzPcZyya0RXKCJ0VWhv6MMwmTB7WEY6GzwjfEH5vpvlM6cy2CIjgR2yIuB9pGZkX+X0UKSoyqi7qUbRTdHF09yzWrORZ+2e9jvGPqYy5O9tqtnJ2Z6xqbFJsY+ybuIC4qriBeIf4RfGXEnQTJAntieTE2MQ9ieNzAudsmjOc5JpUlnRjruXcorkX5unOy553PFk1WZB8OIWYEpeyP+WDIEJQLxhP5aduTR0T8oSbhU9FvqKNolGxt7hKPJLmnVaV9jjdO31D+miGT0Z1xjMJT1IreZEZkrkj801WRNberM/ZcdktOZSclJyjUg1plrQr1zC3KLdPZisrkw3keeZtyhuTh8r35CP5c/PbFWyFTNGjtFKuUA4WTC+oK3hbGFt4uEi9SFrUM99m/ur5IwuCFny9kLBQuLCz2Lh4WfHgIr9FuxYji1MXdy4xXVK6ZHhp8NJ9y2jLspb9UOJYUlXyannc8o5Sg9KlpUMrglc0lamUycturvRauWMVYZVkVe9ql9VbVn8qF5VfrHCsqK74sEa45uJXTl/VfPV5bdra3kq3yu3rSOuk626s91m/r0q9akHV0IbwDa0b8Y3lG19tSt50oXpq9Y7NtM3KzQM1YTXtW8y2rNvyoTaj9nqdf13LVv2tq7e+2Sba1r/dd3vzDoMdFTve75TsvLUreFdrvUV99W7S7oLdjxpiG7q/5n7duEd3T8Wej3ulewf2Re/ranRvbNyvv7+yCW1SNo0eSDpw5ZuAb9qb7Zp3tXBaKg7CQeXBJ9+mfHvjUOihzsPcw83fmX+39QjrSHkr0jq/dawto22gPaG97+iMo50dXh1Hvrf/fu8x42N1xzWPV56gnSg98fnkgpPjp2Snnp1OPz3Umdx590z8mWtdUV29Z0PPnj8XdO5Mt1/3yfPe549d8Lxw9CL3Ytslt0utPa49R35w/eFIr1tv62X3y+1XPK509E3rO9Hv03/6asDVc9f41y5dn3m978bsG7duJt0cuCW69fh29u0XdwruTNxdeo94r/y+2v3qB/oP6n+0/rFlwG3g+GDAYM/DWQ/vDgmHnv6U/9OH4dJHzEfVI0YjjY+dHx8bDRq98mTOk+GnsqcTz8p+Vv9563Or59/94vtLz1j82PAL+YvPv655qfNy76uprzrHI8cfvM55PfGm/K3O233vuO+638e9H5ko/ED+UPPR+mPHp9BP9z7nfP78L/eE8/sl0p8zAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAEFSURBVHjabNExSsVAEAbg2cTCPk0gIdmdbAoPYSHPwsJCrFTUxsZGrLyBJ3gp7ARBBRG0e4WIPFsbD5Dk36yBIOQEEgI2NjGZ+oP5/xmRZdl73/dfzHxEE+N0XfchpTwsy/JqEmitLwCcK6VOAdyMABGR1noO4CSKomMATyPwh66ttXthGO4YYxYjQESUJMlDXdfbQRBsVVX1QkS08n9nkiQLY0zseZ4B8OlMJRdC/AghhOM4qyNgjJn5vv/dtu1SSrk2AEVR7Mdx/No0zRszzwYhARww8721dsnMm4MWeZ6fMfMdgFul1MbgDmVZXqZpOgfwrLUe/cNxXXcdwCMz7041+h0AC8lkxi/irm0AAAAASUVORK5CYII="
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14678,9 +14877,9 @@
 	// <template class="bugList">
 	//   <ul class="bug-list">
 	//     <li class="clearfix" v-for="item in items">
-	//       <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">{{item.title}}</a>
+	//       <a class="buglist-pull-left" v-link="{ name: 'BugInfo', params: {id: item._id}}" href="#">{{item.title}}</a>
 	//       <span class="goto-buginfo">
-	//         <a v-link="{ name: 'BugInfo', params: {id: item.title}}" href="#">详情<em></em></a>
+	//         <a v-link="{ name: 'BugInfo', params: {id: item._id}}" href="#">详情<em></em></a>
 	//       </span>
 	//       <span class="data">{{item.date}}</span>
 	//     </li>
@@ -14726,7 +14925,7 @@
 	        pageSize: 10,
 	        pageIndex: this.index
 	      };
-	      this.$http({ url: 'http://10.235.147.5:8080/bugList', method: 'POST', data: data }).then(function (response) {
+	      this.$http({ url: '/post/bugList', method: 'POST', data: data }).then(function (response) {
 	        var data = response.data;
 	        t.items = data.data;
 	        for (var x in t.items) {
@@ -14748,18 +14947,23 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<ul class=\"bug-list\">\n  <li class=\"clearfix\" v-for=\"item in items\">\n    <a class=\"buglist-pull-left\" v-link=\"{ name: 'BugInfo', params: {id: item.title}}\" href=\"#\">{{item.title}}</a>\n    <span class=\"goto-buginfo\">\n      <a v-link=\"{ name: 'BugInfo', params: {id: item.title}}\" href=\"#\">详情<em></em></a>\n    </span>\n    <span class=\"data\">{{item.date}}</span>\n  </li>\n</ul>\n<!-- <nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav> -->\n";
+	module.exports = "\n<ul class=\"bug-list\">\n  <li class=\"clearfix\" v-for=\"item in items\">\n    <a class=\"buglist-pull-left\" v-link=\"{ name: 'BugInfo', params: {id: item._id}}\" href=\"#\">{{item.title}}</a>\n    <span class=\"goto-buginfo\">\n      <a v-link=\"{ name: 'BugInfo', params: {id: item._id}}\" href=\"#\">详情<em></em></a>\n    </span>\n    <span class=\"data\">{{item.date}}</span>\n  </li>\n</ul>\n<!-- <nav>\n  <ul class=\"pagination\">\n    <li>\n      <a href=\"#\" aria-label=\"Previous\">\n        <span aria-hidden=\"true\">&laquo;</span>\n      </a>\n    </li>\n    <li><a href=\"#\">1</a></li>\n    <li><a href=\"#\">2</a></li>\n    <li><a href=\"#\">3</a></li>\n    <li><a href=\"#\">4</a></li>\n    <li><a href=\"#\">5</a></li>\n    <li>\n      <a href=\"#\" aria-label=\"Next\">\n        <span aria-hidden=\"true\">&raquo;</span>\n      </a>\n    </li>\n  </ul>\n</nav> -->\n";
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(50)
-	__vue_template__ = __webpack_require__(52)
+	__webpack_require__(51)
+	__vue_script__ = __webpack_require__(53)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src/components/bugInfo.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(54)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14769,7 +14973,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugInfo.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/bugInfo.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14778,13 +14982,13 @@
 	})()}
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(51);
+	var content = __webpack_require__(52);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(41)(content, {});
@@ -14804,7 +15008,7 @@
 	}
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -14818,23 +15022,145 @@
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"bugInfo\">\n  <div class=\"head-title\">\n    <p>漏洞概要</p>\n  </div>\n  <div>\n    <ul class=\"bug-summaryList\">\n      <li>缺陷编号：<span>{{bugInfo.bugNum}}</span></li>\n      <li>漏洞标题：<span>{{bugInfo.bugTitle}}</span></li>\n      <li>相关高校：<span>{{bugInfo.schoolName}}</span></li>\n      <li>漏洞作者：<span>{{bugInfo.userName}}</span></li>\n      <li>提交时间：<span>{{bugInfo.submitDate}}</span></li>\n      <li>公开时间：<span>{{bugInfo.publicDate}}</span></li>\n      <li>漏洞类型：<span>{{bugInfo.bugType}}</span></li>\n      <li>危害等级：<span>{{bugInfo.bugLevel}}</span></li>\n      <li>漏洞状态：<span>{{bugInfo.bugStatus}}</span></li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞详情</p>\n  </div>\n  <div>\n    <ul class=\"bug-detailsList\">\n      <li>\n        <span class=\"tag-title\">披露状态：</span>\n        <ul v-for=\"statusItem in statusItems\">\n          <li><span>{{statusItem.date}}：</span>{{statusItem.statusDetail}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">简要描述：</span>\n        <ul>\n          <li>{{bugInfo.description}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">漏洞hash：</span>{{bugInfo.hash}}\n      </li>\n      <li>\n        <span class=\"tag-title\">版权声明：</span>转载请注明来源 {{bugInfo.userName}}@xxx\n      </li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞回应</p>\n  </div>\n  <div class=\"school-response\">\n    <ul>\n      <li>\n        <span class=\"tag-title\">高校回应：</span>\n        <ul><li>暂无</li></ul>\n    </li>\n    </ul>\n  </div>\n  <!-- <div class=\"head-title\">\n    <p>评论</p>\n  </div>\n  <div class=\"comments\">\n    <p class=\"visible\"  >登录后才能发表评论，请先 <a href=\"#\">登录</a> 。</p>\n    <div class=\" \">\n      <ul>\n        <li>aaaaa</li>\n        <li>aaawewwwaa</li>\n        <li>aaasdfaasdfaa</li>\n        <li>aaadsfsdafaa</li>\n        <li>aaaaa</li>\n      </ul>\n      <textarea name=\"addComments\" class=\"addComments\"></textarea>\n      <br>\n      <button class=\"btn btn-primary\">提交</button>\n    </div>\n  </div>  -->\n</div>\n";
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="bugInfo">
+	//     <div class="head-title">
+	//       <p>漏洞概要</p>
+	//     </div>
+	//     <div>
+	//       <ul class="bug-summaryList">
+	//         <li>缺陷编号：<span>{{bugInfo._id}}</span></li>
+	//         <li>漏洞标题：<span>{{bugInfo.title}}</span></li>
+	//         <li>相关高校：<span>{{bugInfo.school}}</span></li>
+	//         <li>漏洞作者：<span>{{bugInfo.uid}}</span></li>
+	//         <li>提交时间：<span>{{bugInfo.date}}</span></li>
+	//         <li>公开时间：<span></span></li>
+	//         <li>漏洞类型：<span>{{bugInfo.bugType}}</span></li>
+	//         <li>危害等级：<span>{{bugInfo.level}}</span></li>
+	//         <li>漏洞状态：<span></span></li>
+	//       </ul>
+	//     </div>
+	//     <div class="head-title">
+	//       <p>漏洞详情</p>
+	//     </div>
+	//     <div>
+	//       <ul class="bug-detailsList">
+	//         <li>
+	//           <span class="tag-title">披露状态：</span>
+	//           <ul v-for="statusItem in statusItems">
+	//             <li><span>{{statusItem.date}}：</span>{{statusItem.statusDetail}}</li>
+	//           </ul>
+	//         </li>
+	//         <li>
+	//           <span class="tag-title">简要描述：</span>
+	//           <ul>
+	//             <li>{{bugInfo.description}}</li>
+	//           </ul>
+	//         </li>
+	//         <li>
+	//           <span class="tag-title">漏洞hash：</span>{{bugInfo._id}}
+	//         </li>
+	//         <li>
+	//           <span class="tag-title">版权声明：</span>转载请注明来源 {{bugInfo.uid}}@xxx
+	//         </li>
+	//       </ul>
+	//     </div>
+	//     <div class="head-title">
+	//       <p>漏洞回应</p>
+	//     </div>
+	//     <div class="school-response">
+	//       <ul>
+	//         <li>
+	//           <span class="tag-title">高校回应：</span>
+	//           <ul><li>暂无</li></ul>
+	//       </li>
+	//       </ul>
+	//     </div>
+	//     <!-- <div class="head-title">
+	//       <p>评论</p>
+	//     </div>
+	//     <div class="comments">
+	//       <p class="visible"  >登录后才能发表评论，请先 <a href="#">登录</a> 。</p>
+	//       <div class=" ">
+	//         <ul>
+	//           <li>aaaaa</li>
+	//           <li>aaawewwwaa</li>
+	//           <li>aaasdfaasdfaa</li>
+	//           <li>aaadsfsdafaa</li>
+	//           <li>aaaaa</li>
+	//         </ul>
+	//         <textarea name="addComments" class="addComments"></textarea>
+	//         <br>
+	//         <button class="btn btn-primary">提交</button>
+	//       </div>
+	//     </div>  -->
+	//   </div>
+	// </template>
+	// <style lang="less">
+	// @import url("../less/bugInfo.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'BugInfo',
+	  data: function data() {
+	    return {
+	      bugInfo: [],
+	      bugId: ''
+	    };
+	  },
+	
+	  methods: {
+	    getBugInfo: function getBugInfo(id) {
+	      var t = this;
+	      var data = {
+	        id: id
+	      };
+	      this.$http({ url: '/post/bugDetail', method: 'POST', data: data }).then(function (response) {
+	        var data = response.data;
+	        if (data.error == 0) {
+	          t.bugInfo = data.data[0];
+	          var tmp = t.bugInfo.date.split("T");
+	          t.bugInfo.date = tmp[0];
+	        } else {
+	          alert(data.content);
+	        }
+	      }, function (response) {});
+	    }
+	  },
+	  ready: function ready() {
+	    this.bugId = this.$route.params.id;
+	    this.getBugInfo(this.bugId);
+	  }
+	};
+	// </script>
+	/* generated by vue-loader */
 
 /***/ },
-/* 53 */
+/* 54 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"bugInfo\">\n  <div class=\"head-title\">\n    <p>漏洞概要</p>\n  </div>\n  <div>\n    <ul class=\"bug-summaryList\">\n      <li>缺陷编号：<span>{{bugInfo._id}}</span></li>\n      <li>漏洞标题：<span>{{bugInfo.title}}</span></li>\n      <li>相关高校：<span>{{bugInfo.school}}</span></li>\n      <li>漏洞作者：<span>{{bugInfo.uid}}</span></li>\n      <li>提交时间：<span>{{bugInfo.date}}</span></li>\n      <li>公开时间：<span></span></li>\n      <li>漏洞类型：<span>{{bugInfo.bugType}}</span></li>\n      <li>危害等级：<span>{{bugInfo.level}}</span></li>\n      <li>漏洞状态：<span></span></li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞详情</p>\n  </div>\n  <div>\n    <ul class=\"bug-detailsList\">\n      <li>\n        <span class=\"tag-title\">披露状态：</span>\n        <ul v-for=\"statusItem in statusItems\">\n          <li><span>{{statusItem.date}}：</span>{{statusItem.statusDetail}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">简要描述：</span>\n        <ul>\n          <li>{{bugInfo.description}}</li>\n        </ul>\n      </li>\n      <li>\n        <span class=\"tag-title\">漏洞hash：</span>{{bugInfo._id}}\n      </li>\n      <li>\n        <span class=\"tag-title\">版权声明：</span>转载请注明来源 {{bugInfo.uid}}@xxx\n      </li>\n    </ul>\n  </div>\n  <div class=\"head-title\">\n    <p>漏洞回应</p>\n  </div>\n  <div class=\"school-response\">\n    <ul>\n      <li>\n        <span class=\"tag-title\">高校回应：</span>\n        <ul><li>暂无</li></ul>\n    </li>\n    </ul>\n  </div>\n  <!-- <div class=\"head-title\">\n    <p>评论</p>\n  </div>\n  <div class=\"comments\">\n    <p class=\"visible\"  >登录后才能发表评论，请先 <a href=\"#\">登录</a> 。</p>\n    <div class=\" \">\n      <ul>\n        <li>aaaaa</li>\n        <li>aaawewwwaa</li>\n        <li>aaasdfaasdfaa</li>\n        <li>aaadsfsdafaa</li>\n        <li>aaaaa</li>\n      </ul>\n      <textarea name=\"addComments\" class=\"addComments\"></textarea>\n      <br>\n      <button class=\"btn btn-primary\">提交</button>\n    </div>\n  </div>  -->\n</div>\n";
+
+/***/ },
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(54)
-	__vue_script__ = __webpack_require__(56)
+	__webpack_require__(56)
+	__vue_script__ = __webpack_require__(58)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/submitBug.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(57)
+	__vue_template__ = __webpack_require__(59)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -14844,7 +15170,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/submitBug.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/submitBug.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14853,13 +15179,13 @@
 	})()}
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(55);
+	var content = __webpack_require__(57);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(41)(content, {});
@@ -14879,7 +15205,7 @@
 	}
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -14893,7 +15219,7 @@
 
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -14914,7 +15240,7 @@
 	//     <span class="tagTitle">问题高校：</span>
 	//     <select v-model="schoolName">
 	//       <option value="">--选择问题高校--</option>
-	//       <option value="a">天津理工大学</option>
+	//       <option value="天津理工大学">天津理工大学</option>
 	//       <option value="b">B</option>
 	//       <option value="c">C</option>
 	//       <option value="other">其他高校</option>
@@ -14924,13 +15250,13 @@
 	//     <span class="tagTitle">漏洞类型：</span>
 	//     <select v-model="bugType">
 	//       <option value="">--选择漏洞大类--</option>
-	//       <option value="6">网络设备/硬件设施</option>
-	//       <option value="7">操作系统/系统服务</option>
-	//       <option value="8">基础组件/开发框架</option>
-	//       <option value="9">建站软件/web应用</option>
-	//       <option value="10">常用软件/客户端应用</option>
-	//       <option value="11">入侵事件/安全情报</option>
-	//       <option value="0">其他类型</option>
+	//       <option value="网络设备/硬件设施">网络设备/硬件设施</option>
+	//       <option value="操作系统/系统服务">操作系统/系统服务</option>
+	//       <option value="基础组件/开发框架">基础组件/开发框架</option>
+	//       <option value="建站软件/web应用">建站软件/web应用</option>
+	//       <option value="常用软件/客户端应用">常用软件/客户端应用</option>
+	//       <option value="入侵事件/安全情报">入侵事件/安全情报</option>
+	//       <option value="其他类型">其他类型</option>
 	//     </select>
 	//     </div>
 	//       <div class="submit-item">
@@ -14941,9 +15267,9 @@
 	//       <span class="tagTitle">漏洞等级：</span>
 	//       <select v-model="bugLevel">
 	//         <option value="">--选择漏洞等级--</option>
-	//         <option value="0">低</option>
-	//         <option value="1">中</option>
-	//         <option value="2">高</option>
+	//         <option value="低">低</option>
+	//         <option value="中">中</option>
+	//         <option value="高">高</option>
 	//       </select>
 	//     </div>
 	//     <div class="submit-item">
@@ -15007,7 +15333,7 @@
 	        xiufu: t.bugFix
 	      };
 	      this.$http({
-	        url: 'http://10.235.147.5:8080/addBug',
+	        url: '/post/addBug',
 	        method: 'POST',
 	        data: data
 	      }).then(function (response) {
@@ -15036,23 +15362,23 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题类型：</span>\n    <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n    <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n    <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n    <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"a\">天津理工大学</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他高校</option>\n  </select> \n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"6\">网络设备/硬件设施</option>\n    <option value=\"7\">操作系统/系统服务</option>\n    <option value=\"8\">基础组件/开发框架</option>\n    <option value=\"9\">建站软件/web应用</option>\n    <option value=\"10\">常用软件/客户端应用</option>\n    <option value=\"11\">入侵事件/安全情报</option>\n    <option value=\"0\">其他类型</option>\n  </select>\n  </div>\n    <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞标题：</span>\n    <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞等级：</span>\n    <select v-model=\"bugLevel\">\n      <option value=\"\">--选择漏洞等级--</option>\n      <option value=\"0\">低</option>\n      <option value=\"1\">中</option>\n      <option value=\"2\">高</option>\n    </select>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题描述：</span>\n    <textarea class=\"bug-description\" v-model=\"bugDescription\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">详细说明：</span>\n    <textarea v-model=\"bugDetail\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞证明：</span>\n    <textarea v-model=\"bugProve\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞修复：</span>\n    <textarea v-model=\"bugFix\"></textarea>\n  </div>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\" v-on:click=\"submit\">确 定</button>\n    <button class=\"btn btn-cancel\" v-link=\"{ path: '/BugList' }\">取 消</button>\n  </div>\n</div>\n";
+	module.exports = "\n<div class=\"submitBugs\">\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题类型：</span>\n    <input type=\"radio\" id=\"web\" value=\"web\" v-model=\"submitType\">\n    <label for=\"web\">互联网应用（如微博，网站，web邮箱等）</label>\n    <input type=\"radio\" id=\"app\" value=\"app\" v-model=\"submitType\">\n    <label for=\"app\">通用性软件（如客户端浏览器，手机应用，开源cms等）</label>\n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">问题高校：</span>\n  <select v-model=\"schoolName\">\n    <option value=\"\">--选择问题高校--</option>\n    <option value=\"天津理工大学\">天津理工大学</option>\n    <option value=\"b\">B</option>\n    <option value=\"c\">C</option>\n    <option value=\"other\">其他高校</option>\n  </select>\n  </div>\n  <div class=\"submit-item\">\n  <span class=\"tagTitle\">漏洞类型：</span>\n  <select v-model=\"bugType\">\n    <option value=\"\">--选择漏洞大类--</option>\n    <option value=\"网络设备/硬件设施\">网络设备/硬件设施</option>\n    <option value=\"操作系统/系统服务\">操作系统/系统服务</option>\n    <option value=\"基础组件/开发框架\">基础组件/开发框架</option>\n    <option value=\"建站软件/web应用\">建站软件/web应用</option>\n    <option value=\"常用软件/客户端应用\">常用软件/客户端应用</option>\n    <option value=\"入侵事件/安全情报\">入侵事件/安全情报</option>\n    <option value=\"其他类型\">其他类型</option>\n  </select>\n  </div>\n    <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞标题：</span>\n    <input type=\"text\" class=\"bug-name\" v-model=\"bugName\"/>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞等级：</span>\n    <select v-model=\"bugLevel\">\n      <option value=\"\">--选择漏洞等级--</option>\n      <option value=\"低\">低</option>\n      <option value=\"中\">中</option>\n      <option value=\"高\">高</option>\n    </select>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">问题描述：</span>\n    <textarea class=\"bug-description\" v-model=\"bugDescription\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">详细说明：</span>\n    <textarea v-model=\"bugDetail\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞证明：</span>\n    <textarea v-model=\"bugProve\"></textarea>\n  </div>\n  <div class=\"submit-item\">\n    <span class=\"tagTitle\">漏洞修复：</span>\n    <textarea v-model=\"bugFix\"></textarea>\n  </div>\n  <div class=\"sumbit-btn\">\n    <button class=\"btn btn-submit\" v-on:click=\"submit\">确 定</button>\n    <button class=\"btn btn-cancel\" v-link=\"{ path: '/BugList' }\">取 消</button>\n  </div>\n</div>\n";
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(59)
-	__vue_script__ = __webpack_require__(82)
+	__webpack_require__(61)
+	__vue_script__ = __webpack_require__(63)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/companyList.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(61)
+	__vue_template__ = __webpack_require__(64)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15062,7 +15388,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/companyList.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/companyList.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15071,13 +15397,13 @@
 	})()}
 
 /***/ },
-/* 59 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(60);
+	var content = __webpack_require__(62);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(41)(content, {});
@@ -15097,7 +15423,7 @@
 	}
 
 /***/ },
-/* 60 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -15111,29 +15437,63 @@
 
 
 /***/ },
-/* 61 */
-/***/ function(module, exports, __webpack_require__) {
+/* 63 */
+/***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"company-list\">\n  <a href=\"http://www.tjut.edu.cn/\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(62) + "\" alt=\"天津理工大学\"></a>\n</div>\n";
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// <template>
+	//   <div class="company-list">
+	//     <a href="http://www.tjut.edu.cn/" target="view_window" class="logo"><img src="../img/tjut.jpg" alt="天津理工大学"></a>
+	//   </div>
+	// </template>
+	// <style lang="less">
+	// @import url("../less/companyList.less");
+	// </style>
+	// <script>
+	exports.default = {
+	  name: 'CompanyList',
+	  data: function data() {
+	    return {};
+	  },
+	
+	  ready: function ready() {
+	    if (!GLOBAL.userName) {
+	      this.$router.go({ name: 'SignIn' });
+	    }
+	  }
+	};
+	// </script>
+
+	/* generated by vue-loader */
 
 /***/ },
-/* 62 */
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "\n<div class=\"company-list\">\n  <a href=\"http://www.tjut.edu.cn/\" target=\"view_window\" class=\"logo\"><img src=\"" + __webpack_require__(65) + "\" alt=\"天津理工大学\"></a>\n</div>\n";
+
+/***/ },
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "1281ea140e16e39e77c9d4c5229670a6.jpg";
 
 /***/ },
-/* 63 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(64)
-	__vue_script__ = __webpack_require__(66)
+	__webpack_require__(67)
+	__vue_script__ = __webpack_require__(69)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/userList.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(67)
+	__vue_template__ = __webpack_require__(70)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15143,7 +15503,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/userList.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/userList.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15152,13 +15512,13 @@
 	})()}
 
 /***/ },
-/* 64 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(65);
+	var content = __webpack_require__(68);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(41)(content, {});
@@ -15178,7 +15538,7 @@
 	}
 
 /***/ },
-/* 65 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -15192,7 +15552,7 @@
 
 
 /***/ },
-/* 66 */
+/* 69 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15217,7 +15577,7 @@
 	//           <td class="user-name">{{item.name}}</td>
 	//           <td class="user-level">{{item.level}}</td>
 	//           <td class="submit-bugNum">{{item.bugNum}}</td>
-	//         </tr>       
+	//         </tr>
 	//       </tbody>
 	//     </table>
 	//   </div>
@@ -15241,12 +15601,28 @@
 	      });
 	    },
 	    getUserList: function getUserList() {
-	      //获取列表
+	      var t = this;
+	      this.$http({ url: '/post/useList', method: 'POST' }).then(function (response) {
+	        var data = response.data;
+	        if (data.error == 0) {
+	          t.items = data.data;
+	          for (var x in t.items) {
+	            var tmp = t.items[x].date.split("T");
+	            t.items[x].date = tmp[0];
+	          }
+	        } else {
+	          alert(data.content);
+	        }
+	      }, function (response) {
+	        //回调
+	      });
 	    }
 	  },
 	  ready: function ready() {
 	    if (!GLOBAL.userName) {
 	      this.$router.go({ name: 'SignIn' });
+	    } else {
+	      this.getUserList();
 	    }
 	  }
 	};
@@ -15255,22 +15631,22 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 67 */
+/* 70 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"userList\">\n  <table class=\"userInfoList\">\n    <thead>\n      <tr>\n        <th class=\"user-date\">注册日期</th>\n        <th class=\"user-name\">昵称</th>\n        <th class=\"user-level\">等级</th> \n        <th class=\"submit-bugNum\">提交漏洞数</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"item in items\">\n        <td class=\"user-date\">{{item.date}}</td>\n        <td class=\"user-name\">{{item.name}}</td>\n        <td class=\"user-level\">{{item.level}}</td>\n        <td class=\"submit-bugNum\">{{item.bugNum}}</td>\n      </tr>        \n    </tbody>\n  </table>\n</div>\n";
+	module.exports = "\n<div class=\"userList\">\n  <table class=\"userInfoList\">\n    <thead>\n      <tr>\n        <th class=\"user-date\">注册日期</th>\n        <th class=\"user-name\">昵称</th>\n        <th class=\"user-level\">等级</th>\n        <th class=\"submit-bugNum\">提交漏洞数</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr v-for=\"item in items\">\n        <td class=\"user-date\">{{item.date}}</td>\n        <td class=\"user-name\">{{item.name}}</td>\n        <td class=\"user-level\">{{item.level}}</td>\n        <td class=\"submit-bugNum\">{{item.bugNum}}</td>\n      </tr>\n    </tbody>\n  </table>\n</div>\n";
 
 /***/ },
-/* 68 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__vue_script__ = __webpack_require__(69)
+	__vue_script__ = __webpack_require__(72)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/bugSummary.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(70)
+	__vue_template__ = __webpack_require__(73)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15280,7 +15656,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/bugSummary.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/bugSummary.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15289,7 +15665,7 @@
 	})()}
 
 /***/ },
-/* 69 */
+/* 72 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15359,23 +15735,23 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 70 */
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div id=\"container\" style=\"min-width:400px;height:400px\"></div>\n";
 
 /***/ },
-/* 71 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(72)
-	__vue_script__ = __webpack_require__(74)
+	__webpack_require__(75)
+	__vue_script__ = __webpack_require__(77)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/signUp.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(75)
+	__vue_template__ = __webpack_require__(78)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15385,7 +15761,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/signUp.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/signUp.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15394,13 +15770,13 @@
 	})()}
 
 /***/ },
-/* 72 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(73);
+	var content = __webpack_require__(76);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(41)(content, {});
@@ -15420,7 +15796,7 @@
 	}
 
 /***/ },
-/* 73 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -15434,7 +15810,7 @@
 
 
 /***/ },
-/* 74 */
+/* 77 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15491,7 +15867,7 @@
 	        name: t.name,
 	        pwd: t.pwd
 	      };
-	      this.$http({ url: 'http://10.235.147.5:8080/register', method: 'POST', data: data }).then(function (response) {
+	      this.$http({ url: '/post/register', method: 'POST', data: data }).then(function (response) {
 	        var data = response.data;
 	        if (data.error == 0) {
 	          this.$router.go({ name: "SignIn" });
@@ -15521,23 +15897,23 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 75 */
+/* 78 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"sign\">\n  <h1>注册漏洞平台帐号</h1>\n  <br>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"uid\" v-model=\"uid\" placeholder=\"请输入帐号\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"name\" v-model=\"name\" placeholder=\"请输入昵称\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"pwd\" v-model=\"pwd\" placeholder=\"请输入密码\">\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"repwd\" v-model=\"repwd\" placeholder=\"请确认密码\" debounce=\"500\">\n  </span>\n  <div class=\"tip\"  v-if=\"pwdError\">两次输入的密码不一致哦~</div>\n  <!-- <div class=\"tip\">帐号重复了哦~</div> -->\n  <span class=\"sign-item\">\n    <a class=\"btn btn-submit\" v-on:click=\"signUp\">注 册</a>\n  </span>\n  <a class=\"link\" v-link=\"{ path: '/SignIn' }\">已经有帐号了，前去登录 ></a>\n</div>\n";
 
 /***/ },
-/* 76 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
-	__webpack_require__(77)
-	__vue_script__ = __webpack_require__(79)
+	__webpack_require__(80)
+	__vue_script__ = __webpack_require__(82)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src/components/signIn.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(80)
+	__vue_template__ = __webpack_require__(83)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	if (__vue_template__) {
@@ -15547,7 +15923,7 @@
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), true)
 	  if (!hotAPI.compatible) return
-	  var id = "/Users/berenice/Graduation-Project/platform/src/components/signIn.vue"
+	  var id = "/Users/mcdong/Graduation-Project/platform/src/components/signIn.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15556,13 +15932,13 @@
 	})()}
 
 /***/ },
-/* 77 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(78);
+	var content = __webpack_require__(81);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(41)(content, {});
@@ -15582,7 +15958,7 @@
 	}
 
 /***/ },
-/* 78 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(39)();
@@ -15596,7 +15972,7 @@
 
 
 /***/ },
-/* 79 */
+/* 82 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -15642,7 +16018,7 @@
 	          uid: t.uid,
 	          pwd: t.pwd
 	        };
-	        this.$http({ url: 'http://10.235.147.5:8080/login', method: 'POST', data: data }).then(function (response) {
+	        this.$http({ url: '/post/login', method: 'POST', data: data }).then(function (response) {
 	          var data = response.data;
 	          if (data.error != 0) {
 	            alert(data.content);
@@ -15664,113 +16040,10 @@
 	/* generated by vue-loader */
 
 /***/ },
-/* 80 */
+/* 83 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"sign\">\n  <h1>漏洞预警平台登录</h1>\n  <br>\n  <span class=\"sign-item\">\n    <input type=\"text\" id=\"logInfo\" placeholder=\"请输入帐号\" v-model=\"uid\" >\n  </span>\n  <span class=\"sign-item\">\n    <input type=\"password\" id=\"pwd\" placeholder=\"请输入密码\" v-model=\"pwd\">\n  </span>\n  <span class=\"sign-item\">\n    <a class=\"btn btn-submit\" v-on:click=\"signIn\">登 录</a>\n  </span>\n  <br>\n  <a class=\"link\" v-link=\"{ path: '/SignUp' }\">没有帐号，前去注册 ></a>\n</div>\n";
-
-/***/ },
-/* 81 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	// <div class="container">
-	//   <div class="menu">
-	//     <ul class="menu-list" id="menu">
-	//       <li class="active"><a v-link="{ path: '/BugList' }">漏洞列表</a></li>
-	//       <li><a v-link="{ path: '/SubmitBug' }">提交漏洞</a></li>
-	//       <li><a v-link="{ path: '/BugSummary' }">漏洞统计</a></li>
-	//       <li><a v-link="{ path: '/UserList' }">白帽子列表</a></li>
-	//       <li><a v-link="{ path: '/CompanyList' }">高校列表</a></li>
-	//     </ul>
-	//     <div class="user-info">
-	//       <span class="user-name">{{userName}}</span>
-	//       <!-- <span>
-	//         <a v-link="{ path: '/SignIn' }">登录</a>
-	//         <a v-link="{ path: '/SignUp' }">注册</a>
-	//       </span> -->
-	//     </div>
-	//   </div>
-	//   <div class="content">
-	//     <div class="content-float">
-	//       <router-view
-	//         class="view"
-	//         transition
-	//         transition-mode="out-in">
-	//       </router-view>
-	//     </div>
-	//   </div>
-	// </div>
-	// </template>
-	// <style lang="less">
-	// @import url("../less/main.less");
-	// </style>
-	// <script>
-	exports.default = {
-	  name: 'main',
-	  data: function data() {
-	    return {
-	      userName: GLOBAL.userName
-	    };
-	  },
-	
-	  computed: {
-	    userName: function userName() {
-	      return GLOBAL.userName;
-	    }
-	  },
-	  ready: function ready() {
-	    if (!GLOBAL.userName) {
-	      this.$router.go({ name: 'SignIn' });
-	    } else {
-	      alert(23);
-	      this.userName = GLOBAL.userName;
-	      alert(this.userName);
-	    }
-	  }
-	};
-	// </script>
-
-	/* generated by vue-loader */
-
-/***/ },
-/* 82 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	// <template>
-	//   <div class="company-list">
-	//     <a href="http://www.tjut.edu.cn/" target="view_window" class="logo"><img src="../img/tjut.jpg" alt="天津理工大学"></a>
-	//   </div>
-	// </template>
-	// <style lang="less">
-	// @import url("../less/companyList.less");
-	// </style>
-	// <script>
-	exports.default = {
-	  name: 'CompanyList',
-	  data: function data() {
-	    return {};
-	  },
-	
-	  ready: function ready() {
-	    if (!GLOBAL.userName) {
-	      this.$router.go({ name: 'SignIn' });
-	    }
-	  }
-	};
-	// </script>
-
-	/* generated by vue-loader */
 
 /***/ }
 /******/ ]);

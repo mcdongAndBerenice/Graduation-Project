@@ -11,6 +11,7 @@ var cors = require('cors')
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var post = require('./routes/post');
 
 global.dbHandel = require('./database/dbHandel');
 global.db = mongoose.connect("mongodb://localhost:27017/graduationProject");
@@ -51,6 +52,7 @@ app.use(function(req,res,next){
 app.use('/', routes)  // 即为为路径 / 设置路由
 app.use("/add", routes)
 app.use('/users', users) // 即为为路径 /users 设置路由
+app.use('/post', post)
 app.use('/login',routes) // 即为为路径 /login 设置路由
 app.use('/register',routes) // 即为为路径 /register 设置路由
 app.use('/home',routes) // 即为为路径 /home 设置路由

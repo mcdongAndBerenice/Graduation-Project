@@ -5,15 +5,15 @@
     </div>
     <div>
       <ul class="bug-summaryList">
-        <li>缺陷编号：<span>{{bugInfo.bugNum}}</span></li>
-        <li>漏洞标题：<span>{{bugInfo.bugTitle}}</span></li>
-        <li>相关高校：<span>{{bugInfo.schoolName}}</span></li>
-        <li>漏洞作者：<span>{{bugInfo.userName}}</span></li>
-        <li>提交时间：<span>{{bugInfo.submitDate}}</span></li>
-        <li>公开时间：<span>{{bugInfo.publicDate}}</span></li>
+        <li>缺陷编号：<span>{{bugInfo._id}}</span></li>
+        <li>漏洞标题：<span>{{bugInfo.title}}</span></li>
+        <li>相关高校：<span>{{bugInfo.school}}</span></li>
+        <li>漏洞作者：<span>{{bugInfo.uid}}</span></li>
+        <li>提交时间：<span>{{bugInfo.date}}</span></li>
+        <li>公开时间：<span></span></li>
         <li>漏洞类型：<span>{{bugInfo.bugType}}</span></li>
-        <li>危害等级：<span>{{bugInfo.bugLevel}}</span></li>
-        <li>漏洞状态：<span>{{bugInfo.bugStatus}}</span></li>
+        <li>危害等级：<span>{{bugInfo.level}}</span></li>
+        <li>漏洞状态：<span></span></li>
       </ul>
     </div>
     <div class="head-title">
@@ -34,10 +34,10 @@
           </ul>
         </li>
         <li>
-          <span class="tag-title">漏洞hash：</span>{{bugInfo.hash}}
+          <span class="tag-title">漏洞hash：</span>{{bugInfo._id}}
         </li>
         <li>
-          <span class="tag-title">版权声明：</span>转载请注明来源 {{bugInfo.userName}}@xxx
+          <span class="tag-title">版权声明：</span>转载请注明来源 {{bugInfo.uid}}@xxx
         </li>
       </ul>
     </div>
@@ -75,3 +75,37 @@
 <style lang="less">
 @import url("../less/bugInfo.less");
 </style>
+<script>
+  export default{
+    name: 'BugInfo',
+    data(){
+      return {
+        bugInfo: [],
+        bugId: ''
+      }
+    },
+    methods:{
+      getBugInfo:function(id){
+        var t = this
+        var data = {
+          id: id
+        }
+        this.$http({url:'/post/bugDetail', method:'POST', data:data})
+        .then(function(response){
+          var data = response.data
+          if(data.error == 0){
+            t.bugInfo = data.data[0]
+            var tmp = t.bugInfo.date.split("T")
+            t.bugInfo.date = tmp[0]
+          }else{
+            alert(data.content)
+          }
+        },function(response){})
+      }
+    },
+    ready:function(){
+      this.bugId = this.$route.params.id
+      this.getBugInfo(this.bugId)
+    }
+  }
+</script>

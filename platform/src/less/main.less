@@ -1,11 +1,12 @@
-input,select,ul,li,ol,p{ 
-  margin: 0; 
+input,select,ul,li,ol,p{
+  margin: 0;
   padding: 0;
-  list-style: none; 
+  list-style: none;
 }
-html,body{ 
+html,body{
   background-image: url(../img/bg.png);
-  background-size: 100%;
+  background-size: 150% 150%;
+  background-repeat: no-repeat;
   margin: 0;
   width: 100%;
   font-size: 0;
@@ -15,44 +16,44 @@ html,body{
 }
 
 
-a{ 
+a{
   cursor: pointer;
   &,&:link,&:hover,&:active,&:visited{
     color: rgba(0,0,0,0.5);
-    text-decoration: none; 
-  } 
-}
-
-.clearfix { 
-  display: block; 
-  &:after { 
-    content: "."; 
-    display: block; 
-    height: 0; 
-    clear: both; 
-    visibility: hidden; 
+    text-decoration: none;
   }
 }
-.pull-left{ 
+
+.clearfix {
+  display: block;
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+.pull-left{
   float: left;
 }
-.pull-right{ 
+.pull-right{
   float: right;
 }
-.txt-right{ 
+.txt-right{
   text-align: right;
 }
-.txt-center{ 
+.txt-center{
   text-align: center;
 }
-.btn{ 
-  padding: 5px 10px; 
-  border: 1px solid #ccc; 
-  border-radius: 5px; 
+.btn{
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   display:inline-block;
-  &.btn-o{ 
-    background-color: #faa71b; 
-    color: #FFF; 
+  &.btn-o{
+    background-color: #faa71b;
+    color: #FFF;
     border: 0;
   }
 }
@@ -87,7 +88,7 @@ a{
       li{
         a{
           display: inline-block;
-          border-bottom: 1px solid #4f4e5a; 
+          border-bottom: 1px solid #4f4e5a;
           height: 65px;
           width: 80%;
           line-height: 65px;
@@ -115,10 +116,10 @@ a{
         float: right;
         a{
           color: #c2c2c4;
-          padding-left: 12px; 
-          padding-right: 12px; 
+          padding-left: 12px;
+          padding-right: 12px;
           border-left:1px solid #d9d9d9;
-          &:first-child{ 
+          &:first-child{
             border: none;
           }
         }
@@ -137,10 +138,10 @@ a{
   .content{
     margin-left: 25%;
     font-size : 14px;
-    height: 850px; 
+    height: 850px;
     position: relative;
     .content-float{
-      height: 750px; 
+      height: 750px;
       overflow: auto;
       padding: 50px;
       &.content-h720{ height:695px;}
@@ -149,25 +150,25 @@ a{
 }
 @borderColor : #d9d9d9;
 .bar{
-  width: 100%; 
-  background-color: #f2f2f3;  
-  height: 55px; 
-  position: absolute; 
-  bottom: 0px; 
+  width: 100%;
+  background-color: #f2f2f3;
+  height: 55px;
+  position: absolute;
+  bottom: 0px;
   right: 0;
-  .bar-content{ 
+  .bar-content{
     padding: 11px 50px;
   }
-  select,input{ 
-    width: 108px; 
-    padding: 6px 8px; 
-    margin: 0; 
+  select,input{
+    width: 108px;
+    padding: 6px 8px;
+    margin: 0;
     border: 1px solid @borderColor;
-    border-radius: 5px; 
-    display: block; 
-    font-size: 14px; 
+    border-radius: 5px;
+    display: block;
+    font-size: 14px;
     line-height: 22px; }
-  select{ 
+  select{
     width: 125px;
   }
 }
